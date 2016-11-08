@@ -1,0 +1,27 @@
+h1 {
+    text-align: center
+}
+
+circle {
+  stroke-width: 1.5px;
+}
+
+line {
+  stroke: #999;
+}
+
+#chart {
+    border: 1px solid black;
+}
+
+
+
+
+
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
