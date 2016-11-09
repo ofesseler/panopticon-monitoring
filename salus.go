@@ -140,6 +140,12 @@ func getLinksForNodes(nodes []Node) ([]Link) {
 
 func GetUniqueLinks(links_dirty []Link) ([]Link) {
 	var links []Link
+	if (links_dirty== nil) {
+		return []Link{}
+	}
+	if (len(links_dirty) <= 1) {
+		return links_dirty
+	}
 	ld, links_dirty := links_dirty[0], links_dirty[1:]
 	links = append(links, ld)
 	for _, link_dirty := range links_dirty {
