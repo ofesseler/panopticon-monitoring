@@ -76,7 +76,7 @@ func promQuery(query string) (Status_Check_Received, Error_Status) {
 	fmt.Println(check_url)
 	request, err := http.NewRequest("GET", check_url.String(), nil)
 	client := &http.Client{
-		Timeout: 15 * time.Second,
+		Timeout: 3 * time.Second,
 	}
 	resp, err := client.Do(request)
 
