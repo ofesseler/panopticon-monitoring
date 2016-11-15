@@ -70,7 +70,7 @@ func checkPromResponse(resp Status_Check_Received) bool {
 
 func promQuery(query string) (Status_Check_Received, Error_Status) {
 	var error_status Error_Status
-	api_url := "http://localhost:9090/api/v1/query"
+	api_url := "http://prom-wolke:9090/api/v1/query"
 	url_values := url.Values{}
 	url_values.Set("query", query)
 	check_url, err := url.Parse(api_url + "?" + url_values.Encode())
