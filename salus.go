@@ -191,10 +191,17 @@ func consul_catalog_service_node_healthy(w http.ResponseWriter, r *http.Request)
 	json.NewEncoder(w).Encode(dudu)
 }
 
+func links (w http.ResponseWriter, r *http.Request) {
+	resp, _ := promQuery(`consul_catalog_service_node_healthy`)
+	dudu := resp.Data
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(dudu)
+}
 func main() {
 	fmt.Println("Start")
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/", fs)
+	http.HandleFunc("/api/links", links)
 	http.HandleFunc("/api/health", index)
 	http.HandleFunc("/api/consul/up", up)
 	http.HandleFunc("/api/consul/peers", consul_raft_peers)
