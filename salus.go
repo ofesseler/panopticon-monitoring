@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"net/url"
 	"strconv"
+	"path/filepath"
 )
 
 type Status_Check_Received struct {
@@ -197,10 +198,38 @@ func links (w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(dudu)
 }
+
+type StatusRespWr struct {
+	http.ResponseWriter // We embed http.ResponseWriter
+	status int
+}
+
+func (w *StatusRespWr) WriteHeader(status int) {
+	w.status = status // Store the status for our own use
+	w.ResponseWriter.WriteHeader(status)
+}
+
+func wrapHandler(h http.Handler) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		srw := &StatusRespWr{ResponseWriter: w}
+		h.ServeHTTP(srw, r)
+		if srw.status >= 400 { // 400+ codes are the error codes
+			log.Printf("Error status code: %d when serving path: %s",
+				srw.status, r.RequestURI)
+		}
+	}
+}
+
+func ls(w http.ResponseWriter, r *http.Request) {
+	files, _ := filepath.Glob("*")
+	json.NewEncoder(w).Encode(files)
+}
+
 func main() {
 	fmt.Println("Start")
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/", fs)
+	//fs := http.FileServer(http.Dir("static"))
+	http.HandleFunc("/", wrapHandler(http.StripPrefix("/", http.FileServer(http.Dir("static")))))
+	http.HandleFunc("/ls", ls)
 	http.HandleFunc("/api/links", links)
 	http.HandleFunc("/api/health", index)
 	http.HandleFunc("/api/consul/up", up)
