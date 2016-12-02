@@ -4,3 +4,5 @@
 panopticon
 vendor/*
 !vendor/vendor.json
+debug
+debug.test
