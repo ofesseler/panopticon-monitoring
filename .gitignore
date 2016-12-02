@@ -1,4 +1,6 @@
 .idea/
 *.[oa]
 *~
-/salus
+panopticon
+vendor/*
+!vendor/vendor.json
