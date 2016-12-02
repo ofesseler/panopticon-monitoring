@@ -23,7 +23,7 @@
             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Links <span class="sr-only">(current)</span></a>
         </li>
     </ul>
 </nav>
@@ -34,7 +34,8 @@
             <ul>
                 <li><a href="http://localhost:9090/api/v1/query?query=(consul_up!=1)">consul_exporter: Consul Down</a></li>
                 <li><a href="http://localhost:9090/api/v1/query?query=(container_scrape_error!=0)">cadvisor: Container Scrape Error</a></li>
-                <li><a href="http://localhost:9090/api/v1/query?query=(container_scrape_error!=0)">cadvisor: Container Scrape Error</a></li>
+                <li><a href="http://localhost:9090/api/v1/query?query=(weave_connection_terminations_total)">weave: total connection terminations</a></li>
+                <li><a href="http://localhost:9090/api/v1/query?query=(weave_connections)">weave: connections in state {connecting|retrying|established|pending|failed}</a></li>
             </ul>
         </div>
     </div>
