@@ -11,7 +11,9 @@ import (
 	"time"
 
 	log "github.com/Sirupsen/logrus"
+
 )
+
 
 var (
 	promHost      = flag.String("prom-host", "localhost:9090", "Enter hostname of prometheus")
@@ -71,7 +73,7 @@ func checkerr(err error) {
 
 func checkPromResponse(resp StatusCheckReceived) bool {
 	if resp.Status != "success" {
-		log.WithFields(log.Fields{"resp": resp}).Error("prometheus request failed")
+		log.WithFields(log.Fields{"response": resp}).Error("prometheus request failed")
 		return false
 	}
 	if resp.Data.ResultType != "vector" {
@@ -90,7 +92,6 @@ func promQuery(query string) (StatusCheckReceived, ErrorStatus) {
 	concatedURL := apiURL + "?" + urlValues.Encode()
 	checkURL, err := url.Parse(concatedURL)
 	checkerr(err)
-	fmt.Println(checkURL)
 	request, err := http.NewRequest("GET", checkURL.String(), nil)
 	checkerr(err)
 	client := &http.Client{
@@ -120,7 +121,7 @@ func decodeResponse(response *http.Response) (StatusCheckReceived, ErrorStatus) 
 func index(w http.ResponseWriter, r *http.Request) {
 	status := make(map[string]string)
 	status["status"] = "ok"
-	status["heath"] = "green"
+	status["health"] = "green"
 	json.NewEncoder(w).Encode(status)
 }
 
@@ -142,14 +143,14 @@ func getLinksForNodes(nodes []Node) []Link {
 	var links []Link
 	var linksDirty []Link
 	for _, node := range nodes {
-		fmt.Println("instance: ", node.Instance)
 		resp, _ := promQuery(`consulCatalogServiceNodeHealthy{instance="` + node.Instance + `"}`)
 		checkPromResponse(resp)
 		for _, v := range resp.Data.Result {
 			fnn := v.Metric.Node + ":9000"
 			value, err := strconv.Atoi(v.Value[1].(string))
 			checkerr(err)
-			linksDirty = append(linksDirty, Link{Source: v.Metric.Instance, Target: fnn, Value: value})
+			print(v.Metric)
+			//linksDirty = append(linksDirty, Link{Source: v.Metric.Instance, Target: fnn, Value: value})
 		}
 	}
 	links = GetUniqueLinks(linksDirty)
@@ -246,11 +247,11 @@ func ls(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(files)
 }
 
-func main() {
 
+func main() {
 	flag.Parse()
 
-	fmt.Println("Start")
+	fmt.Println("Start panopticon")
 	//fs := http.FileServer(http.Dir("static"))
 	http.HandleFunc("/", wrapHandler(http.StripPrefix("/", http.FileServer(http.Dir("static")))))
 	http.HandleFunc("/ls", ls)
