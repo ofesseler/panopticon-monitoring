@@ -13,7 +13,7 @@ build: gotest
 
 docker: gotest build
 	docker build -t panopticon:latest .
-	docker run --rm --privileged=true -p 8888:8888 -i panopticon --name panopticon-test
+	docker run --rm --privileged=true -p 8888:8888 -i --name panopticon-test panopticon 
 
 gotest: fmt
 	$(GO) test -v $(pkgs)
