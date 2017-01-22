@@ -1,0 +1,281 @@
+# HELP cadvisor_version_info A metric with a constant '1' value labeled by kernel version, OS version, docker version, cadvisor version & cadvisor revision.
+# TYPE cadvisor_version_info gauge
+cadvisor_version_info{cadvisorRevision="ae6934c",cadvisorVersion="v0.24.1",dockerVersion="Unknown",kernelVersion="4.8.13-1-ARCH",osVersion="Alpine Linux v3.4"} 1
+# HELP container_cpu_system_seconds_total Cumulative system cpu time consumed in seconds.
+# TYPE container_cpu_system_seconds_total counter
+container_cpu_system_seconds_total{id="/"} 0.06
+# HELP container_cpu_usage_seconds_total Cumulative cpu time consumed per cpu in seconds.
+# TYPE container_cpu_usage_seconds_total counter
+container_cpu_usage_seconds_total{cpu="cpu00",id="/"} 0.021500307
+container_cpu_usage_seconds_total{cpu="cpu01",id="/"} 0.035209761
+container_cpu_usage_seconds_total{cpu="cpu02",id="/"} 0.035759571
+container_cpu_usage_seconds_total{cpu="cpu03",id="/"} 0.036927414
+container_cpu_usage_seconds_total{cpu="cpu04",id="/"} 0.026973985
+container_cpu_usage_seconds_total{cpu="cpu05",id="/"} 0.025615507
+container_cpu_usage_seconds_total{cpu="cpu06",id="/"} 0.02526103
+container_cpu_usage_seconds_total{cpu="cpu07",id="/"} 0.022461103
+container_cpu_usage_seconds_total{cpu="cpu08",id="/"} 0
+container_cpu_usage_seconds_total{cpu="cpu09",id="/"} 0
+container_cpu_usage_seconds_total{cpu="cpu10",id="/"} 0
+container_cpu_usage_seconds_total{cpu="cpu11",id="/"} 0
+container_cpu_usage_seconds_total{cpu="cpu12",id="/"} 0
+container_cpu_usage_seconds_total{cpu="cpu13",id="/"} 0
+container_cpu_usage_seconds_total{cpu="cpu14",id="/"} 0
+container_cpu_usage_seconds_total{cpu="cpu15",id="/"} 0
+# HELP container_cpu_user_seconds_total Cumulative user cpu time consumed in seconds.
+# TYPE container_cpu_user_seconds_total counter
+container_cpu_user_seconds_total{id="/"} 0.15
+# HELP container_fs_io_current Number of I/Os currently in progress
+# TYPE container_fs_io_current gauge
+container_fs_io_current{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_io_current{device="/dev/sda1",id="/"} 0
+# HELP container_fs_io_time_seconds_total Cumulative count of seconds spent doing I/Os
+# TYPE container_fs_io_time_seconds_total counter
+container_fs_io_time_seconds_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_io_time_seconds_total{device="/dev/sda1",id="/"} 7.015e-05
+# HELP container_fs_io_time_weighted_seconds_total Cumulative weighted I/O time in seconds
+# TYPE container_fs_io_time_weighted_seconds_total counter
+container_fs_io_time_weighted_seconds_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_io_time_weighted_seconds_total{device="/dev/sda1",id="/"} 0.003378976
+# HELP container_fs_limit_bytes Number of bytes that can be consumed by the container on this filesystem.
+# TYPE container_fs_limit_bytes gauge
+container_fs_limit_bytes{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 1.0434699264e+10
+container_fs_limit_bytes{device="/dev/sda1",id="/"} 1.25832286208e+11
+# HELP container_fs_read_seconds_total Cumulative count of seconds spent reading
+# TYPE container_fs_read_seconds_total counter
+container_fs_read_seconds_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_read_seconds_total{device="/dev/sda1",id="/"} 5.286e-05
+# HELP container_fs_reads_merged_total Cumulative count of reads merged
+# TYPE container_fs_reads_merged_total counter
+container_fs_reads_merged_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_reads_merged_total{device="/dev/sda1",id="/"} 20601
+# HELP container_fs_reads_total Cumulative count of reads completed
+# TYPE container_fs_reads_total counter
+container_fs_reads_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_reads_total{device="/dev/sda1",id="/"} 53754
+# HELP container_fs_sector_reads_total Cumulative count of sector reads completed
+# TYPE container_fs_sector_reads_total counter
+container_fs_sector_reads_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_sector_reads_total{device="/dev/sda1",id="/"} 3.142802e+06
+# HELP container_fs_sector_writes_total Cumulative count of sector writes completed
+# TYPE container_fs_sector_writes_total counter
+container_fs_sector_writes_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_sector_writes_total{device="/dev/sda1",id="/"} 1.0736328e+07
+# HELP container_fs_usage_bytes Number of bytes that are consumed by the container on this filesystem.
+# TYPE container_fs_usage_bytes gauge
+container_fs_usage_bytes{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 7.3334784e+07
+container_fs_usage_bytes{device="/dev/sda1",id="/"} 6.7958288384e+10
+# HELP container_fs_write_seconds_total Cumulative count of seconds spent writing
+# TYPE container_fs_write_seconds_total counter
+container_fs_write_seconds_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_write_seconds_total{device="/dev/sda1",id="/"} 0.00332608
+# HELP container_fs_writes_merged_total Cumulative count of writes merged
+# TYPE container_fs_writes_merged_total counter
+container_fs_writes_merged_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_writes_merged_total{device="/dev/sda1",id="/"} 41915
+# HELP container_fs_writes_total Cumulative count of writes completed
+# TYPE container_fs_writes_total counter
+container_fs_writes_total{device="/dev/mapper/docker-8:1-6553775-08d028ba8d8ba83b7d8f09d9774dadc208801535df8ea6ba945dc53e7de71cc5",id="/"} 0
+container_fs_writes_total{device="/dev/sda1",id="/"} 55527
+# HELP container_last_seen Last time a container was seen by the exporter
+# TYPE container_last_seen gauge
+container_last_seen{id="/"} 1.485120121e+09
+# HELP container_memory_cache Number of bytes of page cache memory.
+# TYPE container_memory_cache gauge
+container_memory_cache{id="/"} 1.8219008e+07
+# HELP container_memory_failcnt Number of memory usage hits limits
+# TYPE container_memory_failcnt counter
+container_memory_failcnt{id="/"} 0
+# HELP container_memory_failures_total Cumulative count of memory allocation failures.
+# TYPE container_memory_failures_total counter
+container_memory_failures_total{id="/",scope="container",type="pgfault"} 4589
+container_memory_failures_total{id="/",scope="container",type="pgmajfault"} 161
+container_memory_failures_total{id="/",scope="hierarchy",type="pgfault"} 4589
+container_memory_failures_total{id="/",scope="hierarchy",type="pgmajfault"} 161
+# HELP container_memory_rss Size of RSS in bytes.
+# TYPE container_memory_rss gauge
+container_memory_rss{id="/"} 1.2222464e+07
+# HELP container_memory_swap Container swap usage in bytes.
+# TYPE container_memory_swap gauge
+container_memory_swap{id="/"} 0
+# HELP container_memory_usage_bytes Current memory usage in bytes.
+# TYPE container_memory_usage_bytes gauge
+container_memory_usage_bytes{id="/"} 3.2403456e+07
+# HELP container_memory_working_set_bytes Current working set in bytes.
+# TYPE container_memory_working_set_bytes gauge
+container_memory_working_set_bytes{id="/"} 1.5183872e+07
+# HELP container_network_receive_bytes_total Cumulative count of bytes received
+# TYPE container_network_receive_bytes_total counter
+container_network_receive_bytes_total{id="/",interface="eth0"} 137328
+# HELP container_network_receive_errors_total Cumulative count of errors encountered while receiving
+# TYPE container_network_receive_errors_total counter
+container_network_receive_errors_total{id="/",interface="eth0"} 0
+# HELP container_network_receive_packets_dropped_total Cumulative count of packets dropped while receiving
+# TYPE container_network_receive_packets_dropped_total counter
+container_network_receive_packets_dropped_total{id="/",interface="eth0"} 0
+# HELP container_network_receive_packets_total Cumulative count of packets received
+# TYPE container_network_receive_packets_total counter
+container_network_receive_packets_total{id="/",interface="eth0"} 1493
+# HELP container_network_transmit_bytes_total Cumulative count of bytes transmitted
+# TYPE container_network_transmit_bytes_total counter
+container_network_transmit_bytes_total{id="/",interface="eth0"} 3.403956e+06
+# HELP container_network_transmit_errors_total Cumulative count of errors encountered while transmitting
+# TYPE container_network_transmit_errors_total counter
+container_network_transmit_errors_total{id="/",interface="eth0"} 0
+# HELP container_network_transmit_packets_dropped_total Cumulative count of packets dropped while transmitting
+# TYPE container_network_transmit_packets_dropped_total counter
+container_network_transmit_packets_dropped_total{id="/",interface="eth0"} 0
+# HELP container_network_transmit_packets_total Cumulative count of packets transmitted
+# TYPE container_network_transmit_packets_total counter
+container_network_transmit_packets_total{id="/",interface="eth0"} 2339
+# HELP container_scrape_error 1 if there was an error while getting container metrics, 0 otherwise
+# TYPE container_scrape_error gauge
+container_scrape_error 0
+# HELP container_spec_cpu_period CPU period of the container.
+# TYPE container_spec_cpu_period gauge
+container_spec_cpu_period{id="/"} 100000
+# HELP container_spec_cpu_shares CPU share of the container.
+# TYPE container_spec_cpu_shares gauge
+container_spec_cpu_shares{id="/"} 1024
+# HELP container_spec_memory_limit_bytes Memory limit for the container.
+# TYPE container_spec_memory_limit_bytes gauge
+container_spec_memory_limit_bytes{id="/"} 1.0478534656e+10
+# HELP container_spec_memory_swap_limit_bytes Memory swap limit for the container.
+# TYPE container_spec_memory_swap_limit_bytes gauge
+container_spec_memory_swap_limit_bytes{id="/"} 0
+# HELP container_start_time_seconds Start time of the container since unix epoch in seconds.
+# TYPE container_start_time_seconds gauge
+container_start_time_seconds{id="/"} 1.4851201e+09
+# HELP container_tasks_state Number of tasks in given state
+# TYPE container_tasks_state gauge
+container_tasks_state{id="/",state="iowaiting"} 0
+container_tasks_state{id="/",state="running"} 0
+container_tasks_state{id="/",state="sleeping"} 0
+container_tasks_state{id="/",state="stopped"} 0
+container_tasks_state{id="/",state="uninterruptible"} 0
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0"} 0.000292656
+go_gc_duration_seconds{quantile="0.25"} 0.000334308
+go_gc_duration_seconds{quantile="0.5"} 0.000369926
+go_gc_duration_seconds{quantile="0.75"} 0.000380254
+go_gc_duration_seconds{quantile="1"} 0.0022673370000000003
+go_gc_duration_seconds_sum 0.003644481
+go_gc_duration_seconds_count 5
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 27
+# HELP go_memstats_alloc_bytes Number of bytes allocated and still in use.
+# TYPE go_memstats_alloc_bytes gauge
+go_memstats_alloc_bytes 3.97208e+06
+# HELP go_memstats_alloc_bytes_total Total number of bytes allocated, even if freed.
+# TYPE go_memstats_alloc_bytes_total counter
+go_memstats_alloc_bytes_total 1.371056e+07
+# HELP go_memstats_buck_hash_sys_bytes Number of bytes used by the profiling bucket hash table.
+# TYPE go_memstats_buck_hash_sys_bytes gauge
+go_memstats_buck_hash_sys_bytes 1.449498e+06
+# HELP go_memstats_frees_total Total number of frees.
+# TYPE go_memstats_frees_total counter
+go_memstats_frees_total 56499
+# HELP go_memstats_gc_sys_bytes Number of bytes used for garbage collection system metadata.
+# TYPE go_memstats_gc_sys_bytes gauge
+go_memstats_gc_sys_bytes 309248
+# HELP go_memstats_heap_alloc_bytes Number of heap bytes allocated and still in use.
+# TYPE go_memstats_heap_alloc_bytes gauge
+go_memstats_heap_alloc_bytes 3.97208e+06
+# HELP go_memstats_heap_idle_bytes Number of heap bytes waiting to be used.
+# TYPE go_memstats_heap_idle_bytes gauge
+go_memstats_heap_idle_bytes 1.990656e+06
+# HELP go_memstats_heap_inuse_bytes Number of heap bytes that are in use.
+# TYPE go_memstats_heap_inuse_bytes gauge
+go_memstats_heap_inuse_bytes 5.316608e+06
+# HELP go_memstats_heap_objects Number of allocated objects.
+# TYPE go_memstats_heap_objects gauge
+go_memstats_heap_objects 18154
+# HELP go_memstats_heap_released_bytes_total Total number of heap bytes released to OS.
+# TYPE go_memstats_heap_released_bytes_total counter
+go_memstats_heap_released_bytes_total 0
+# HELP go_memstats_heap_sys_bytes Number of heap bytes obtained from system.
+# TYPE go_memstats_heap_sys_bytes gauge
+go_memstats_heap_sys_bytes 7.307264e+06
+# HELP go_memstats_last_gc_time_seconds Number of seconds since 1970 of last garbage collection.
+# TYPE go_memstats_last_gc_time_seconds gauge
+go_memstats_last_gc_time_seconds 1.4851201201986046e+19
+# HELP go_memstats_lookups_total Total number of pointer lookups.
+# TYPE go_memstats_lookups_total counter
+go_memstats_lookups_total 1165
+# HELP go_memstats_mallocs_total Total number of mallocs.
+# TYPE go_memstats_mallocs_total counter
+go_memstats_mallocs_total 74653
+# HELP go_memstats_mcache_inuse_bytes Number of bytes in use by mcache structures.
+# TYPE go_memstats_mcache_inuse_bytes gauge
+go_memstats_mcache_inuse_bytes 9600
+# HELP go_memstats_mcache_sys_bytes Number of bytes used for mcache structures obtained from system.
+# TYPE go_memstats_mcache_sys_bytes gauge
+go_memstats_mcache_sys_bytes 16384
+# HELP go_memstats_mspan_inuse_bytes Number of bytes in use by mspan structures.
+# TYPE go_memstats_mspan_inuse_bytes gauge
+go_memstats_mspan_inuse_bytes 49080
+# HELP go_memstats_mspan_sys_bytes Number of bytes used for mspan structures obtained from system.
+# TYPE go_memstats_mspan_sys_bytes gauge
+go_memstats_mspan_sys_bytes 65536
+# HELP go_memstats_next_gc_bytes Number of heap bytes when next garbage collection will take place.
+# TYPE go_memstats_next_gc_bytes gauge
+go_memstats_next_gc_bytes 6.715534e+06
+# HELP go_memstats_other_sys_bytes Number of bytes used for other system allocations.
+# TYPE go_memstats_other_sys_bytes gauge
+go_memstats_other_sys_bytes 2.03235e+06
+# HELP go_memstats_stack_inuse_bytes Number of bytes in use by the stack allocator.
+# TYPE go_memstats_stack_inuse_bytes gauge
+go_memstats_stack_inuse_bytes 1.081344e+06
+# HELP go_memstats_stack_sys_bytes Number of bytes obtained from system for stack allocator.
+# TYPE go_memstats_stack_sys_bytes gauge
+go_memstats_stack_sys_bytes 1.081344e+06
+# HELP go_memstats_sys_bytes Number of bytes obtained by system. Sum of all system allocations.
+# TYPE go_memstats_sys_bytes gauge
+go_memstats_sys_bytes 1.2261624e+07
+# HELP http_request_duration_microseconds The HTTP request latencies in microseconds.
+# TYPE http_request_duration_microseconds summary
+http_request_duration_microseconds{handler="prometheus",quantile="0.5"} NaN
+http_request_duration_microseconds{handler="prometheus",quantile="0.9"} NaN
+http_request_duration_microseconds{handler="prometheus",quantile="0.99"} NaN
+http_request_duration_microseconds_sum{handler="prometheus"} 0
+http_request_duration_microseconds_count{handler="prometheus"} 0
+# HELP http_request_size_bytes The HTTP request sizes in bytes.
+# TYPE http_request_size_bytes summary
+http_request_size_bytes{handler="prometheus",quantile="0.5"} NaN
+http_request_size_bytes{handler="prometheus",quantile="0.9"} NaN
+http_request_size_bytes{handler="prometheus",quantile="0.99"} NaN
+http_request_size_bytes_sum{handler="prometheus"} 0
+http_request_size_bytes_count{handler="prometheus"} 0
+# HELP http_response_size_bytes The HTTP response sizes in bytes.
+# TYPE http_response_size_bytes summary
+http_response_size_bytes{handler="prometheus",quantile="0.5"} NaN
+http_response_size_bytes{handler="prometheus",quantile="0.9"} NaN
+http_response_size_bytes{handler="prometheus",quantile="0.99"} NaN
+http_response_size_bytes_sum{handler="prometheus"} 0
+http_response_size_bytes_count{handler="prometheus"} 0
+# HELP machine_cpu_cores Number of CPU cores on the machine.
+# TYPE machine_cpu_cores gauge
+machine_cpu_cores 8
+# HELP machine_memory_bytes Amount of memory installed on the machine.
+# TYPE machine_memory_bytes gauge
+machine_memory_bytes 1.0478534656e+10
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 0.22
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 65536
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 14
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.6206208e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.4851200998e+09
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 7.08288512e+08
