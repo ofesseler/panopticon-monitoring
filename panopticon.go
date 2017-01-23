@@ -149,8 +149,7 @@ func getLinksForNodes(nodes []Node) []Link {
 			fnn := v.Metric.Node + ":9000"
 			value, err := strconv.Atoi(v.Value[1].(string))
 			checkerr(err)
-			print(v.Metric)
-			//linksDirty = append(linksDirty, Link{Source: v.Metric.Instance, Target: fnn, Value: value})
+			linksDirty = append(linksDirty, Link{Source: v.Metric.Instance, Target: fnn, Value: value})
 		}
 	}
 	links = GetUniqueLinks(linksDirty)
