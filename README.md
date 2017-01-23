@@ -1,4 +1,4 @@
-# Salus 
+# Panopticon
 
-Dashboard for your Docker Swarm Cluster
+Dashboard for your Docker Swarm Cluster with Weave Net, Consul, GlusterFs
 

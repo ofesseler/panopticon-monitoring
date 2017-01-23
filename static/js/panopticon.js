@@ -1,12 +1,6 @@
 url = "api/consul/up";
 
 $(document).ready(function () {
-    // shows json request data
-    $.getJSON(url, function (data) {
-        $("#json_raw").text(JSON.stringify(data, null, 2));
-    });
-
-
     var radius = 40;
     var distance = radius * 5;
     var strength = 0.5;
@@ -47,6 +41,8 @@ $(document).ready(function () {
 
     d3.json(url, function (error, graph) {
         if (error) throw error;
+
+        $("#json_raw").text(JSON.stringify(graph, null, 2));
 
         var link = svg.append("g")
             .attr("class", "links")

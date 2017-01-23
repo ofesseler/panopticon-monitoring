@@ -46,4 +46,3 @@ EXPOSE 9090 8080
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 #ENTRYPOINT /bin/sh
-
