@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"flag"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -10,60 +9,10 @@ import (
 	"strconv"
 	"time"
 
+	"flag"
 	log "github.com/Sirupsen/logrus"
-
+	api "github.com/ofesseler/panopticon/promapi"
 )
-
-
-var (
-	promHost      = flag.String("prom-host", "localhost:9090", "Enter hostname of prometheus")
-	listenAddress = flag.String("listen-address", ":8888", "Enter port number to listen on")
-)
-
-// StatusCheckReceived struct represents json response
-type StatusCheckReceived struct {
-	Status string `json:"status"`
-	Data   struct {
-		ResultType string `json:"resultType"`
-		Result     []struct {
-			Metric struct {
-				Name     string `json:"__name__"`
-				Check    string `json:"check"`
-				Instance string `json:"instance"`
-				Job      string `json:"job"`
-				Node     string `json:"node"`
-			} `json:"metric"`
-			Value []interface{} `json:"value"`
-		} `json:"result"`
-	} `json:"data"`
-}
-
-// ErrorStatus struct represents json error response
-type ErrorStatus struct {
-	Status    string `json:"status"`
-	ErrorType string `json:"errorType"`
-	Error     string `json:"error"`
-}
-
-// Node struct represents json node response
-type Node struct {
-	Instance string `json:"instance"`
-	Group    int    `json:"group"`
-	ID       int    `json:"id"`
-}
-
-// Link struct represents json
-type Link struct {
-	Source string `json:"source"`
-	Target string `json:"target"`
-	Value  int    `json:"value"`
-}
-
-// Status sturct represents json
-type Status struct {
-	Nodes []Node `json:"nodes"`
-	Links []Link `json:"links"`
-}
 
 func checkerr(err error) {
 	if err != nil {
@@ -71,7 +20,7 @@ func checkerr(err error) {
 	}
 }
 
-func checkPromResponse(resp StatusCheckReceived) bool {
+func checkPromResponse(resp api.StatusCheckReceived) bool {
 	if resp.Status != "success" {
 		log.WithFields(log.Fields{"response": resp}).Error("prometheus request failed")
 		return false
@@ -83,8 +32,8 @@ func checkPromResponse(resp StatusCheckReceived) bool {
 	return true
 }
 
-func promQuery(query string) (StatusCheckReceived, ErrorStatus) {
-	var errorStatus ErrorStatus
+func promQuery(query string) (api.StatusCheckReceived, api.ErrorStatus) {
+	var errorStatus api.ErrorStatus
 
 	apiURL := fmt.Sprintf("http://%v/api/v1/query", *promHost)
 	urlValues := url.Values{}
@@ -106,10 +55,10 @@ func promQuery(query string) (StatusCheckReceived, ErrorStatus) {
 	return body, errorStatus
 }
 
-func decodeResponse(response *http.Response) (StatusCheckReceived, ErrorStatus) {
-	var errorStatus ErrorStatus
+func decodeResponse(response *http.Response) (api.StatusCheckReceived, api.ErrorStatus) {
+	var errorStatus api.ErrorStatus
 	decoder := json.NewDecoder(response.Body)
-	var body StatusCheckReceived
+	var body api.StatusCheckReceived
 	err := decoder.Decode(&body)
 	checkerr(err)
 	if body.Status != "success" {
@@ -125,23 +74,23 @@ func index(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(status)
 }
 
-func upFunc() ([]Node, []Link) {
+func upFunc() ([]api.Node, []api.Link) {
 	resp, _ := promQuery(`up{job="consul_wolke"}`)
 	checkPromResponse(resp)
-	var nodesStatus []Node
-	var linksStatus []Link
+	var nodesStatus []api.Node
+	var linksStatus []api.Link
 	for _, v := range resp.Data.Result {
 		value, _ := strconv.Atoi(v.Value[1].(string))
-		node := Node{Instance: v.Metric.Instance, Group: value}
+		node := api.Node{Instance: v.Metric.Instance, Group: value}
 		nodesStatus = append(nodesStatus, node)
 	}
 	linksStatus = getLinksForNodes(nodesStatus)
 	return nodesStatus, linksStatus
 }
 
-func getLinksForNodes(nodes []Node) []Link {
-	var links []Link
-	var linksDirty []Link
+func getLinksForNodes(nodes []api.Node) []api.Link {
+	var links []api.Link
+	var linksDirty []api.Link
 	for _, node := range nodes {
 		resp, _ := promQuery(`consulCatalogServiceNodeHealthy{instance="` + node.Instance + `"}`)
 		checkPromResponse(resp)
@@ -149,7 +98,8 @@ func getLinksForNodes(nodes []Node) []Link {
 			fnn := v.Metric.Node + ":9000"
 			value, err := strconv.Atoi(v.Value[1].(string))
 			checkerr(err)
-			linksDirty = append(linksDirty, Link{Source: v.Metric.Instance, Target: fnn, Value: value})
+			//print(v.Metric)
+			linksDirty = append(linksDirty, api.Link{Source: v.Metric.Instance, Target: fnn, Value: value})
 		}
 	}
 	links = GetUniqueLinks(linksDirty)
@@ -157,10 +107,10 @@ func getLinksForNodes(nodes []Node) []Link {
 }
 
 // GetUniqueLinks take a array/slice of Link and and returns one with only unique entries
-func GetUniqueLinks(linksDirty []Link) []Link {
-	var links []Link
+func GetUniqueLinks(linksDirty []api.Link) []api.Link {
+	var links []api.Link
 	if linksDirty == nil {
-		return []Link{}
+		return []api.Link{}
 	}
 	if len(linksDirty) <= 1 {
 		return linksDirty
@@ -187,13 +137,6 @@ func GetUniqueLinks(linksDirty []Link) []Link {
 		}
 	}
 	return links
-}
-
-func up(w http.ResponseWriter, r *http.Request) {
-
-	nodesStatus, linksStatus := upFunc()
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(Status{Nodes: nodesStatus, Links: linksStatus})
 }
 
 func consulRaftPeers(w http.ResponseWriter, r *http.Request) {
@@ -246,8 +189,8 @@ func ls(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(files)
 }
 
+func oldmain() {
 
-func main() {
 	flag.Parse()
 
 	fmt.Println("Start panopticon")
@@ -256,8 +199,13 @@ func main() {
 	http.HandleFunc("/ls", ls)
 	http.HandleFunc("/api/links", links)
 	http.HandleFunc("/api/health", index)
+	//http.HandleFunc("/api/consul/health", consulHealth)
 	http.HandleFunc("/api/consul/up", up)
 	http.HandleFunc("/api/consul/peers", consulRaftPeers)
 	http.HandleFunc("/api/consul/node_healthy", consulCatalogServiceNodeHealthy)
+
+	http.HandleFunc("/api/v1/up", up)
+	http.HandleFunc("/api/consul/up", consulUp)
+
 	log.Fatal(http.ListenAndServe(*listenAddress, nil))
 }

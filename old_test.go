@@ -4,16 +4,17 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	api "github.com/ofesseler/panopticon/promapi"
 	"reflect"
 	"testing"
 )
 
 func TestGetUniqueLinks(t *testing.T) {
-	links := []Link{
+	links := []api.Link{
 		{Source: "w1", Target: "w2", Value: 2},
 		{Source: "w2", Target: "w3", Value: 2},
 	}
-	linksDirty := []Link{
+	linksDirty := []api.Link{
 		{Source: "w1", Target: "w2", Value: 1},
 		{Source: "w2", Target: "w3", Value: 1},
 		{Source: "w2", Target: "w1", Value: 1},
@@ -31,25 +32,25 @@ func TestGetUniqueLinks(t *testing.T) {
 
 func TestCheckPromResponse(t *testing.T) {
 
-	scrOk := StatusCheckReceived{Status: "success"}
+	scrOk := api.StatusCheckReceived{Status: "success"}
 	scrOk.Data.ResultType = "vector"
 	result := checkPromResponse(scrOk)
 	if result == false {
 		t.Errorf("checkprom respone wasn't successful with struct %v and returned %v", scrOk, result)
 	}
-	scrEmpty := StatusCheckReceived{}
+	scrEmpty := api.StatusCheckReceived{}
 	result = checkPromResponse(scrEmpty)
 	if result == true {
 		t.Error("sent empty StatusCheckReceived struct and returned true. Shuld be false.")
 	}
 
-	scrResultTypeEmpty := StatusCheckReceived{Status: "success"}
+	scrResultTypeEmpty := api.StatusCheckReceived{Status: "success"}
 	result = checkPromResponse(scrResultTypeEmpty)
 	if result == true {
 		t.Error("ResultType was empty and checkPromResponse returned true")
 	}
 
-	scrResultTypeNotVector := StatusCheckReceived{Status: "success"}
+	scrResultTypeNotVector := api.StatusCheckReceived{Status: "success"}
 	scrResultTypeNotVector.Data.ResultType = "novector"
 	result = checkPromResponse(scrResultTypeNotVector)
 	if result == true {
