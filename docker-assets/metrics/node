@@ -1,0 +1,2898 @@
+# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0"} 7.2773e-05
+go_gc_duration_seconds{quantile="0.25"} 0.00026284800000000004
+go_gc_duration_seconds{quantile="0.5"} 0.000533825
+go_gc_duration_seconds{quantile="0.75"} 0.001156406
+go_gc_duration_seconds{quantile="1"} 0.018434886
+go_gc_duration_seconds_sum 0.160376294
+go_gc_duration_seconds_count 124
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 34
+# HELP go_memstats_alloc_bytes Number of bytes allocated and still in use.
+# TYPE go_memstats_alloc_bytes gauge
+go_memstats_alloc_bytes 4.623728e+06
+# HELP go_memstats_alloc_bytes_total Total number of bytes allocated, even if freed.
+# TYPE go_memstats_alloc_bytes_total counter
+go_memstats_alloc_bytes_total 4.13104776e+08
+# HELP go_memstats_buck_hash_sys_bytes Number of bytes used by the profiling bucket hash table.
+# TYPE go_memstats_buck_hash_sys_bytes gauge
+go_memstats_buck_hash_sys_bytes 1.490741e+06
+# HELP go_memstats_frees_total Total number of frees.
+# TYPE go_memstats_frees_total counter
+go_memstats_frees_total 4.796291e+06
+# HELP go_memstats_gc_sys_bytes Number of bytes used for garbage collection system metadata.
+# TYPE go_memstats_gc_sys_bytes gauge
+go_memstats_gc_sys_bytes 598016
+# HELP go_memstats_heap_alloc_bytes Number of heap bytes allocated and still in use.
+# TYPE go_memstats_heap_alloc_bytes gauge
+go_memstats_heap_alloc_bytes 4.623728e+06
+# HELP go_memstats_heap_idle_bytes Number of heap bytes waiting to be used.
+# TYPE go_memstats_heap_idle_bytes gauge
+go_memstats_heap_idle_bytes 5.128192e+06
+# HELP go_memstats_heap_inuse_bytes Number of heap bytes that are in use.
+# TYPE go_memstats_heap_inuse_bytes gauge
+go_memstats_heap_inuse_bytes 5.947392e+06
+# HELP go_memstats_heap_objects Number of allocated objects.
+# TYPE go_memstats_heap_objects gauge
+go_memstats_heap_objects 27633
+# HELP go_memstats_heap_released_bytes_total Total number of heap bytes released to OS.
+# TYPE go_memstats_heap_released_bytes_total counter
+go_memstats_heap_released_bytes_total 0
+# HELP go_memstats_heap_sys_bytes Number of heap bytes obtained from system.
+# TYPE go_memstats_heap_sys_bytes gauge
+go_memstats_heap_sys_bytes 1.1075584e+07
+# HELP go_memstats_last_gc_time_seconds Number of seconds since 1970 of last garbage collection.
+# TYPE go_memstats_last_gc_time_seconds gauge
+go_memstats_last_gc_time_seconds 1.4860482193641116e+19
+# HELP go_memstats_lookups_total Total number of pointer lookups.
+# TYPE go_memstats_lookups_total counter
+go_memstats_lookups_total 6630
+# HELP go_memstats_mallocs_total Total number of mallocs.
+# TYPE go_memstats_mallocs_total counter
+go_memstats_mallocs_total 4.823924e+06
+# HELP go_memstats_mcache_inuse_bytes Number of bytes in use by mcache structures.
+# TYPE go_memstats_mcache_inuse_bytes gauge
+go_memstats_mcache_inuse_bytes 2400
+# HELP go_memstats_mcache_sys_bytes Number of bytes used for mcache structures obtained from system.
+# TYPE go_memstats_mcache_sys_bytes gauge
+go_memstats_mcache_sys_bytes 16384
+# HELP go_memstats_mspan_inuse_bytes Number of bytes in use by mspan structures.
+# TYPE go_memstats_mspan_inuse_bytes gauge
+go_memstats_mspan_inuse_bytes 74880
+# HELP go_memstats_mspan_sys_bytes Number of bytes used for mspan structures obtained from system.
+# TYPE go_memstats_mspan_sys_bytes gauge
+go_memstats_mspan_sys_bytes 98304
+# HELP go_memstats_next_gc_bytes Number of heap bytes when next garbage collection will take place.
+# TYPE go_memstats_next_gc_bytes gauge
+go_memstats_next_gc_bytes 7.83752e+06
+# HELP go_memstats_other_sys_bytes Number of bytes used for other system allocations.
+# TYPE go_memstats_other_sys_bytes gauge
+go_memstats_other_sys_bytes 657859
+# HELP go_memstats_stack_inuse_bytes Number of bytes in use by the stack allocator.
+# TYPE go_memstats_stack_inuse_bytes gauge
+go_memstats_stack_inuse_bytes 458752
+# HELP go_memstats_stack_sys_bytes Number of bytes obtained from system for stack allocator.
+# TYPE go_memstats_stack_sys_bytes gauge
+go_memstats_stack_sys_bytes 458752
+# HELP go_memstats_sys_bytes Number of bytes obtained by system. Sum of all system allocations.
+# TYPE go_memstats_sys_bytes gauge
+go_memstats_sys_bytes 1.439564e+07
+# HELP http_request_duration_microseconds The HTTP request latencies in microseconds.
+# TYPE http_request_duration_microseconds summary
+http_request_duration_microseconds{handler="prometheus",quantile="0.5"} 36320.553
+http_request_duration_microseconds{handler="prometheus",quantile="0.9"} 50767.744
+http_request_duration_microseconds{handler="prometheus",quantile="0.99"} 60729.902
+http_request_duration_microseconds_sum{handler="prometheus"} 1.4278711289000005e+07
+http_request_duration_microseconds_count{handler="prometheus"} 84
+# HELP http_request_size_bytes The HTTP request sizes in bytes.
+# TYPE http_request_size_bytes summary
+http_request_size_bytes{handler="prometheus",quantile="0.5"} 238
+http_request_size_bytes{handler="prometheus",quantile="0.9"} 238
+http_request_size_bytes{handler="prometheus",quantile="0.99"} 238
+http_request_size_bytes_sum{handler="prometheus"} 20155
+http_request_size_bytes_count{handler="prometheus"} 84
+# HELP http_requests_total Total number of HTTP requests made.
+# TYPE http_requests_total counter
+http_requests_total{code="200",handler="prometheus",method="get"} 84
+# HELP http_response_size_bytes The HTTP response sizes in bytes.
+# TYPE http_response_size_bytes summary
+http_response_size_bytes{handler="prometheus",quantile="0.5"} 19189
+http_response_size_bytes{handler="prometheus",quantile="0.9"} 19205
+http_response_size_bytes{handler="prometheus",quantile="0.99"} 19210
+http_response_size_bytes_sum{handler="prometheus"} 1.600309e+06
+http_response_size_bytes_count{handler="prometheus"} 84
+# HELP node_boot_time Node boot time, in unixtime.
+# TYPE node_boot_time gauge
+node_boot_time 1.486046959e+09
+# HELP node_context_switches Total number of context switches.
+# TYPE node_context_switches counter
+node_context_switches 3.057089e+06
+# HELP node_cpu Seconds the cpus spent in each mode.
+# TYPE node_cpu counter
+node_cpu{cpu="cpu0",mode="guest"} 0
+node_cpu{cpu="cpu0",mode="idle"} 1099.2
+node_cpu{cpu="cpu0",mode="iowait"} 71.02
+node_cpu{cpu="cpu0",mode="irq"} 0
+node_cpu{cpu="cpu0",mode="nice"} 0.05
+node_cpu{cpu="cpu0",mode="softirq"} 1.17
+node_cpu{cpu="cpu0",mode="steal"} 0
+node_cpu{cpu="cpu0",mode="system"} 37.71
+node_cpu{cpu="cpu0",mode="user"} 55.22
+node_cpu{cpu="cpu1",mode="guest"} 0
+node_cpu{cpu="cpu1",mode="idle"} 1099.1
+node_cpu{cpu="cpu1",mode="iowait"} 73.28
+node_cpu{cpu="cpu1",mode="irq"} 0
+node_cpu{cpu="cpu1",mode="nice"} 0.04
+node_cpu{cpu="cpu1",mode="softirq"} 1.09
+node_cpu{cpu="cpu1",mode="steal"} 0
+node_cpu{cpu="cpu1",mode="system"} 34.64
+node_cpu{cpu="cpu1",mode="user"} 56.18
+# HELP node_disk_bytes_read The total number of bytes read successfully.
+# TYPE node_disk_bytes_read counter
+node_disk_bytes_read{device="sda"} 4.31502336e+08
+node_disk_bytes_read{device="sr0"} 0
+# HELP node_disk_bytes_written The total number of bytes written successfully.
+# TYPE node_disk_bytes_written counter
+node_disk_bytes_written{device="sda"} 1.348726784e+09
+node_disk_bytes_written{device="sr0"} 0
+# HELP node_disk_io_now The number of I/Os currently in progress.
+# TYPE node_disk_io_now gauge
+node_disk_io_now{device="sda"} 0
+node_disk_io_now{device="sr0"} 0
+# HELP node_disk_io_time_ms Milliseconds spent doing I/Os.
+# TYPE node_disk_io_time_ms counter
+node_disk_io_time_ms{device="sda"} 114312
+node_disk_io_time_ms{device="sr0"} 0
+# HELP node_disk_io_time_weighted The weighted # of milliseconds spent doing I/Os. See https://www.kernel.org/doc/Documentation/iostats.txt.
+# TYPE node_disk_io_time_weighted counter
+node_disk_io_time_weighted{device="sda"} 2.829808e+06
+node_disk_io_time_weighted{device="sr0"} 0
+# HELP node_disk_read_time_ms The total number of milliseconds spent by all reads.
+# TYPE node_disk_read_time_ms counter
+node_disk_read_time_ms{device="sda"} 382460
+node_disk_read_time_ms{device="sr0"} 0
+# HELP node_disk_reads_completed The total number of reads completed successfully.
+# TYPE node_disk_reads_completed counter
+node_disk_reads_completed{device="sda"} 10200
+node_disk_reads_completed{device="sr0"} 0
+# HELP node_disk_reads_merged The number of reads merged. See https://www.kernel.org/doc/Documentation/iostats.txt.
+# TYPE node_disk_reads_merged counter
+node_disk_reads_merged{device="sda"} 3879
+node_disk_reads_merged{device="sr0"} 0
+# HELP node_disk_sectors_read The total number of sectors read successfully.
+# TYPE node_disk_sectors_read counter
+node_disk_sectors_read{device="sda"} 842778
+node_disk_sectors_read{device="sr0"} 0
+# HELP node_disk_sectors_written The total number of sectors written successfully.
+# TYPE node_disk_sectors_written counter
+node_disk_sectors_written{device="sda"} 2.634232e+06
+node_disk_sectors_written{device="sr0"} 0
+# HELP node_disk_write_time_ms This is the total number of milliseconds spent by all writes.
+# TYPE node_disk_write_time_ms counter
+node_disk_write_time_ms{device="sda"} 2.447276e+06
+node_disk_write_time_ms{device="sr0"} 0
+# HELP node_disk_writes_completed The total number of writes completed successfully.
+# TYPE node_disk_writes_completed counter
+node_disk_writes_completed{device="sda"} 12081
+node_disk_writes_completed{device="sr0"} 0
+# HELP node_disk_writes_merged The number of writes merged. See https://www.kernel.org/doc/Documentation/iostats.txt.
+# TYPE node_disk_writes_merged counter
+node_disk_writes_merged{device="sda"} 8496
+node_disk_writes_merged{device="sr0"} 0
+# HELP node_entropy_available_bits Bits of available entropy.
+# TYPE node_entropy_available_bits gauge
+node_entropy_available_bits 832
+# HELP node_exporter_build_info A metric with a constant '1' value labeled by version, revision, branch, and goversion from which node_exporter was built.
+# TYPE node_exporter_build_info gauge
+node_exporter_build_info{branch="master",goversion="go1.7.1",revision="2ff8e5f0e4553371161b98293d52ed98ecb8117b",version="0.13.0-rc.1"} 1
+# HELP node_exporter_scrape_duration_seconds node_exporter: Duration of a scrape job.
+# TYPE node_exporter_scrape_duration_seconds summary
+node_exporter_scrape_duration_seconds{collector="conntrack",result="success",quantile="0.5"} 6.121800000000001e-05
+node_exporter_scrape_duration_seconds{collector="conntrack",result="success",quantile="0.9"} 8.2713e-05
+node_exporter_scrape_duration_seconds{collector="conntrack",result="success",quantile="0.99"} 8.9411e-05
+node_exporter_scrape_duration_seconds_sum{collector="conntrack",result="success"} 0.0059032040000000004
+node_exporter_scrape_duration_seconds_count{collector="conntrack",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="diskstats",result="success",quantile="0.5"} 0.000289979
+node_exporter_scrape_duration_seconds{collector="diskstats",result="success",quantile="0.9"} 0.00033456500000000005
+node_exporter_scrape_duration_seconds{collector="diskstats",result="success",quantile="0.99"} 0.004684922
+node_exporter_scrape_duration_seconds_sum{collector="diskstats",result="success"} 0.036860841
+node_exporter_scrape_duration_seconds_count{collector="diskstats",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="entropy",result="success",quantile="0.5"} 4.095e-05
+node_exporter_scrape_duration_seconds{collector="entropy",result="success",quantile="0.9"} 6.7131e-05
+node_exporter_scrape_duration_seconds{collector="entropy",result="success",quantile="0.99"} 0.002358124
+node_exporter_scrape_duration_seconds_sum{collector="entropy",result="success"} 0.020378696999999994
+node_exporter_scrape_duration_seconds_count{collector="entropy",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="filefd",result="success",quantile="0.5"} 4.6972000000000004e-05
+node_exporter_scrape_duration_seconds{collector="filefd",result="success",quantile="0.9"} 5.4559000000000004e-05
+node_exporter_scrape_duration_seconds{collector="filefd",result="success",quantile="0.99"} 6.2628e-05
+node_exporter_scrape_duration_seconds_sum{collector="filefd",result="success"} 0.015923206000000006
+node_exporter_scrape_duration_seconds_count{collector="filefd",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="filesystem",result="success",quantile="0.5"} 0.004167472
+node_exporter_scrape_duration_seconds{collector="filesystem",result="success",quantile="0.9"} 0.010700555
+node_exporter_scrape_duration_seconds{collector="filesystem",result="success",quantile="0.99"} 0.02253271
+node_exporter_scrape_duration_seconds_sum{collector="filesystem",result="success"} 11.453837074000006
+node_exporter_scrape_duration_seconds_count{collector="filesystem",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="hwmon",result="success",quantile="0.5"} 0.000803483
+node_exporter_scrape_duration_seconds{collector="hwmon",result="success",quantile="0.9"} 0.0023515190000000003
+node_exporter_scrape_duration_seconds{collector="hwmon",result="success",quantile="0.99"} 0.0037238780000000003
+node_exporter_scrape_duration_seconds_sum{collector="hwmon",result="success"} 0.10907742700000002
+node_exporter_scrape_duration_seconds_count{collector="hwmon",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="loadavg",result="success",quantile="0.5"} 6.0493000000000005e-05
+node_exporter_scrape_duration_seconds{collector="loadavg",result="success",quantile="0.9"} 7.176900000000001e-05
+node_exporter_scrape_duration_seconds{collector="loadavg",result="success",quantile="0.99"} 0.000202214
+node_exporter_scrape_duration_seconds_sum{collector="loadavg",result="success"} 0.011552358000000002
+node_exporter_scrape_duration_seconds_count{collector="loadavg",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="mdadm",result="success",quantile="0.5"} 3.1913000000000004e-05
+node_exporter_scrape_duration_seconds{collector="mdadm",result="success",quantile="0.9"} 3.8978000000000005e-05
+node_exporter_scrape_duration_seconds{collector="mdadm",result="success",quantile="0.99"} 5.3017000000000004e-05
+node_exporter_scrape_duration_seconds_sum{collector="mdadm",result="success"} 0.008583470000000001
+node_exporter_scrape_duration_seconds_count{collector="mdadm",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="meminfo",result="success",quantile="0.5"} 0.000492268
+node_exporter_scrape_duration_seconds{collector="meminfo",result="success",quantile="0.9"} 0.003641908
+node_exporter_scrape_duration_seconds{collector="meminfo",result="success",quantile="0.99"} 0.006371531000000001
+node_exporter_scrape_duration_seconds_sum{collector="meminfo",result="success"} 0.10545118500000004
+node_exporter_scrape_duration_seconds_count{collector="meminfo",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="netdev",result="success",quantile="0.5"} 0.000750295
+node_exporter_scrape_duration_seconds{collector="netdev",result="success",quantile="0.9"} 0.000839585
+node_exporter_scrape_duration_seconds{collector="netdev",result="success",quantile="0.99"} 0.002185775
+node_exporter_scrape_duration_seconds_sum{collector="netdev",result="success"} 0.09918228500000001
+node_exporter_scrape_duration_seconds_count{collector="netdev",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="netstat",result="success",quantile="0.5"} 0.001637006
+node_exporter_scrape_duration_seconds{collector="netstat",result="success",quantile="0.9"} 0.005212339000000001
+node_exporter_scrape_duration_seconds{collector="netstat",result="success",quantile="0.99"} 0.008104091
+node_exporter_scrape_duration_seconds_sum{collector="netstat",result="success"} 0.21389109899999997
+node_exporter_scrape_duration_seconds_count{collector="netstat",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="sockstat",result="success",quantile="0.5"} 0.000160568
+node_exporter_scrape_duration_seconds{collector="sockstat",result="success",quantile="0.9"} 0.00018911200000000001
+node_exporter_scrape_duration_seconds{collector="sockstat",result="success",quantile="0.99"} 0.0023679340000000004
+node_exporter_scrape_duration_seconds_sum{collector="sockstat",result="success"} 0.03795897800000002
+node_exporter_scrape_duration_seconds_count{collector="sockstat",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="stat",result="success",quantile="0.5"} 0.000174033
+node_exporter_scrape_duration_seconds{collector="stat",result="success",quantile="0.9"} 0.000192966
+node_exporter_scrape_duration_seconds{collector="stat",result="success",quantile="0.99"} 0.000608728
+node_exporter_scrape_duration_seconds_sum{collector="stat",result="success"} 0.03786442699999999
+node_exporter_scrape_duration_seconds_count{collector="stat",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="supervisord",result="success",quantile="0.5"} 0.00558566
+node_exporter_scrape_duration_seconds{collector="supervisord",result="success",quantile="0.9"} 0.010196076
+node_exporter_scrape_duration_seconds{collector="supervisord",result="success",quantile="0.99"} 0.013441943000000001
+node_exporter_scrape_duration_seconds_sum{collector="supervisord",result="success"} 0.6479146610000003
+node_exporter_scrape_duration_seconds_count{collector="supervisord",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="systemd",result="success",quantile="0.5"} 0.020195286
+node_exporter_scrape_duration_seconds{collector="systemd",result="success",quantile="0.9"} 0.02888307
+node_exporter_scrape_duration_seconds{collector="systemd",result="success",quantile="0.99"} 0.040449114
+node_exporter_scrape_duration_seconds_sum{collector="systemd",result="success"} 1.772294202
+node_exporter_scrape_duration_seconds_count{collector="systemd",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="textfile",result="success",quantile="0.5"} 3.28e-07
+node_exporter_scrape_duration_seconds{collector="textfile",result="success",quantile="0.9"} 3.7e-07
+node_exporter_scrape_duration_seconds{collector="textfile",result="success",quantile="0.99"} 4.63e-07
+node_exporter_scrape_duration_seconds_sum{collector="textfile",result="success"} 3.108300000000001e-05
+node_exporter_scrape_duration_seconds_count{collector="textfile",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="time",result="success",quantile="0.5"} 1.7679e-05
+node_exporter_scrape_duration_seconds{collector="time",result="success",quantile="0.9"} 2.2971e-05
+node_exporter_scrape_duration_seconds{collector="time",result="success",quantile="0.99"} 4.1925e-05
+node_exporter_scrape_duration_seconds_sum{collector="time",result="success"} 0.008059703000000003
+node_exporter_scrape_duration_seconds_count{collector="time",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="uname",result="success",quantile="0.5"} 3.2105000000000005e-05
+node_exporter_scrape_duration_seconds{collector="uname",result="success",quantile="0.9"} 3.8051000000000006e-05
+node_exporter_scrape_duration_seconds{collector="uname",result="success",quantile="0.99"} 0.002685619
+node_exporter_scrape_duration_seconds_sum{collector="uname",result="success"} 0.02790957
+node_exporter_scrape_duration_seconds_count{collector="uname",result="success"} 85
+node_exporter_scrape_duration_seconds{collector="vmstat",result="success",quantile="0.5"} 0.000919414
+node_exporter_scrape_duration_seconds{collector="vmstat",result="success",quantile="0.9"} 0.0028771530000000003
+node_exporter_scrape_duration_seconds{collector="vmstat",result="success",quantile="0.99"} 0.006657774
+node_exporter_scrape_duration_seconds_sum{collector="vmstat",result="success"} 0.15559641400000007
+node_exporter_scrape_duration_seconds_count{collector="vmstat",result="success"} 85
+# HELP node_filefd_allocated File descriptor statistics: allocated.
+# TYPE node_filefd_allocated gauge
+node_filefd_allocated 1664
+# HELP node_filefd_maximum File descriptor statistics: maximum.
+# TYPE node_filefd_maximum gauge
+node_filefd_maximum 201321
+# HELP node_filesystem_avail Filesystem space available to non-root users in bytes.
+# TYPE node_filesystem_avail gauge
+node_filesystem_avail{device="/dev/loop0",fstype="ext4",mountpoint="/mnt/gluster"} 1.8976329728e+10
+node_filesystem_avail{device="/dev/sda1",fstype="ext4",mountpoint="/"} 4.344541184e+10
+node_filesystem_avail{device="/dev/sda1",fstype="ext4",mountpoint="/var/lib/docker/aufs"} 4.344541184e+10
+node_filesystem_avail{device="localhost:gv_leoticket",fstype="fuse.glusterfs",mountpoint="/mnt/leoticket"} 1.8976210944e+10
+node_filesystem_avail{device="rootfs",fstype="rootfs",mountpoint="/"} 4.344541184e+10
+node_filesystem_avail{device="rpc_pipefs",fstype="rpc_pipefs",mountpoint="/run/rpc_pipefs"} 0
+node_filesystem_avail{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 4.0992768e+08
+node_filesystem_avail{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 5.24288e+06
+# HELP node_filesystem_files Filesystem total file nodes.
+# TYPE node_filesystem_files gauge
+node_filesystem_files{device="/dev/loop0",fstype="ext4",mountpoint="/mnt/gluster"} 1.28112e+06
+node_filesystem_files{device="/dev/sda1",fstype="ext4",mountpoint="/"} 4.690944e+06
+node_filesystem_files{device="/dev/sda1",fstype="ext4",mountpoint="/var/lib/docker/aufs"} 4.690944e+06
+node_filesystem_files{device="localhost:gv_leoticket",fstype="fuse.glusterfs",mountpoint="/mnt/leoticket"} 1.28112e+06
+node_filesystem_files{device="rootfs",fstype="rootfs",mountpoint="/"} 4.690944e+06
+node_filesystem_files{device="rpc_pipefs",fstype="rpc_pipefs",mountpoint="/run/rpc_pipefs"} 0
+node_filesystem_files{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 253956
+node_filesystem_files{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 253956
+# HELP node_filesystem_files_free Filesystem total free file nodes.
+# TYPE node_filesystem_files_free gauge
+node_filesystem_files_free{device="/dev/loop0",fstype="ext4",mountpoint="/mnt/gluster"} 1.280953e+06
+node_filesystem_files_free{device="/dev/sda1",fstype="ext4",mountpoint="/"} 4.594544e+06
+node_filesystem_files_free{device="/dev/sda1",fstype="ext4",mountpoint="/var/lib/docker/aufs"} 4.594544e+06
+node_filesystem_files_free{device="localhost:gv_leoticket",fstype="fuse.glusterfs",mountpoint="/mnt/leoticket"} 1.280953e+06
+node_filesystem_files_free{device="rootfs",fstype="rootfs",mountpoint="/"} 4.594544e+06
+node_filesystem_files_free{device="rpc_pipefs",fstype="rpc_pipefs",mountpoint="/run/rpc_pipefs"} 0
+node_filesystem_files_free{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 253319
+node_filesystem_files_free{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 253953
+# HELP node_filesystem_free Filesystem free space in bytes.
+# TYPE node_filesystem_free gauge
+node_filesystem_free{device="/dev/loop0",fstype="ext4",mountpoint="/mnt/gluster"} 2.0041682944e+10
+node_filesystem_free{device="/dev/sda1",fstype="ext4",mountpoint="/"} 4.6573883392e+10
+node_filesystem_free{device="/dev/sda1",fstype="ext4",mountpoint="/var/lib/docker/aufs"} 4.6573883392e+10
+node_filesystem_free{device="localhost:gv_leoticket",fstype="fuse.glusterfs",mountpoint="/mnt/leoticket"} 2.004156416e+10
+node_filesystem_free{device="rootfs",fstype="rootfs",mountpoint="/"} 4.6573883392e+10
+node_filesystem_free{device="rpc_pipefs",fstype="rpc_pipefs",mountpoint="/run/rpc_pipefs"} 0
+node_filesystem_free{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 4.0992768e+08
+node_filesystem_free{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 5.24288e+06
+# HELP node_filesystem_readonly Filesystem read-only status.
+# TYPE node_filesystem_readonly gauge
+node_filesystem_readonly{device="/dev/loop0",fstype="ext4",mountpoint="/mnt/gluster"} 0
+node_filesystem_readonly{device="/dev/sda1",fstype="ext4",mountpoint="/"} 0
+node_filesystem_readonly{device="/dev/sda1",fstype="ext4",mountpoint="/var/lib/docker/aufs"} 0
+node_filesystem_readonly{device="localhost:gv_leoticket",fstype="fuse.glusterfs",mountpoint="/mnt/leoticket"} 0
+node_filesystem_readonly{device="rootfs",fstype="rootfs",mountpoint="/"} 0
+node_filesystem_readonly{device="rpc_pipefs",fstype="rpc_pipefs",mountpoint="/run/rpc_pipefs"} 0
+node_filesystem_readonly{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 0
+node_filesystem_readonly{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 0
+# HELP node_filesystem_size Filesystem size in bytes.
+# TYPE node_filesystem_size gauge
+node_filesystem_size{device="/dev/loop0",fstype="ext4",mountpoint="/mnt/gluster"} 2.050791424e+10
+node_filesystem_size{device="/dev/sda1",fstype="ext4",mountpoint="/"} 7.6069937152e+10
+node_filesystem_size{device="/dev/sda1",fstype="ext4",mountpoint="/var/lib/docker/aufs"} 7.6069937152e+10
+node_filesystem_size{device="localhost:gv_leoticket",fstype="fuse.glusterfs",mountpoint="/mnt/leoticket"} 2.0507787264e+10
+node_filesystem_size{device="rootfs",fstype="rootfs",mountpoint="/"} 7.6069937152e+10
+node_filesystem_size{device="rpc_pipefs",fstype="rpc_pipefs",mountpoint="/run/rpc_pipefs"} 0
+node_filesystem_size{device="tmpfs",fstype="tmpfs",mountpoint="/run"} 4.16083968e+08
+node_filesystem_size{device="tmpfs",fstype="tmpfs",mountpoint="/run/lock"} 5.24288e+06
+# HELP node_forks Total number of forks.
+# TYPE node_forks counter
+node_forks 9912
+# HELP node_hwmon_temp_celsius Hardware monitor for temperature (input)
+# TYPE node_hwmon_temp_celsius gauge
+node_hwmon_temp_celsius{chip="coretemp",sensor="core_0"} 34
+node_hwmon_temp_celsius{chip="coretemp",sensor="core_1"} 36
+# HELP node_hwmon_temp_crit_alarm_celsius Hardware monitor for temperature (crit_alarm)
+# TYPE node_hwmon_temp_crit_alarm_celsius gauge
+node_hwmon_temp_crit_alarm_celsius{chip="coretemp",sensor="core_0"} 0
+node_hwmon_temp_crit_alarm_celsius{chip="coretemp",sensor="core_1"} 0
+# HELP node_hwmon_temp_crit_celsius Hardware monitor for temperature (crit)
+# TYPE node_hwmon_temp_crit_celsius gauge
+node_hwmon_temp_crit_celsius{chip="coretemp",sensor="core_0"} 100
+node_hwmon_temp_crit_celsius{chip="coretemp",sensor="core_1"} 100
+# HELP node_hwmon_temp_max_celsius Hardware monitor for temperature (max)
+# TYPE node_hwmon_temp_max_celsius gauge
+node_hwmon_temp_max_celsius{chip="coretemp",sensor="core_0"} 78
+node_hwmon_temp_max_celsius{chip="coretemp",sensor="core_1"} 78
+# HELP node_intr Total number of interrupts serviced.
+# TYPE node_intr counter
+node_intr 1.088788e+06
+# HELP node_load1 1m load average.
+# TYPE node_load1 gauge
+node_load1 0.63
+# HELP node_load15 15m load average.
+# TYPE node_load15 gauge
+node_load15 0.25
+# HELP node_load5 5m load average.
+# TYPE node_load5 gauge
+node_load5 0.23
+# HELP node_memory_Active Memory information field Active.
+# TYPE node_memory_Active gauge
+node_memory_Active 7.8145536e+08
+# HELP node_memory_Active_anon Memory information field Active_anon.
+# TYPE node_memory_Active_anon gauge
+node_memory_Active_anon 3.18455808e+08
+# HELP node_memory_Active_file Memory information field Active_file.
+# TYPE node_memory_Active_file gauge
+node_memory_Active_file 4.62999552e+08
+# HELP node_memory_AnonHugePages Memory information field AnonHugePages.
+# TYPE node_memory_AnonHugePages gauge
+node_memory_AnonHugePages 0
+# HELP node_memory_AnonPages Memory information field AnonPages.
+# TYPE node_memory_AnonPages gauge
+node_memory_AnonPages 4.21384192e+08
+# HELP node_memory_Bounce Memory information field Bounce.
+# TYPE node_memory_Bounce gauge
+node_memory_Bounce 0
+# HELP node_memory_Buffers Memory information field Buffers.
+# TYPE node_memory_Buffers gauge
+node_memory_Buffers 2.656256e+07
+# HELP node_memory_Cached Memory information field Cached.
+# TYPE node_memory_Cached gauge
+node_memory_Cached 1.418461184e+09
+# HELP node_memory_CommitLimit Memory information field CommitLimit.
+# TYPE node_memory_CommitLimit gauge
+node_memory_CommitLimit 3.761778688e+09
+# HELP node_memory_Committed_AS Memory information field Committed_AS.
+# TYPE node_memory_Committed_AS gauge
+node_memory_Committed_AS 3.024633856e+09
+# HELP node_memory_DirectMap2M Memory information field DirectMap2M.
+# TYPE node_memory_DirectMap2M gauge
+node_memory_DirectMap2M 2.059403264e+09
+# HELP node_memory_DirectMap4k Memory information field DirectMap4k.
+# TYPE node_memory_DirectMap4k gauge
+node_memory_DirectMap4k 6.0489728e+07
+# HELP node_memory_Dirty Memory information field Dirty.
+# TYPE node_memory_Dirty gauge
+node_memory_Dirty 139264
+# HELP node_memory_HardwareCorrupted Memory information field HardwareCorrupted.
+# TYPE node_memory_HardwareCorrupted gauge
+node_memory_HardwareCorrupted 0
+# HELP node_memory_HugePages_Free Memory information field HugePages_Free.
+# TYPE node_memory_HugePages_Free gauge
+node_memory_HugePages_Free 0
+# HELP node_memory_HugePages_Rsvd Memory information field HugePages_Rsvd.
+# TYPE node_memory_HugePages_Rsvd gauge
+node_memory_HugePages_Rsvd 0
+# HELP node_memory_HugePages_Surp Memory information field HugePages_Surp.
+# TYPE node_memory_HugePages_Surp gauge
+node_memory_HugePages_Surp 0
+# HELP node_memory_HugePages_Total Memory information field HugePages_Total.
+# TYPE node_memory_HugePages_Total gauge
+node_memory_HugePages_Total 0
+# HELP node_memory_Hugepagesize Memory information field Hugepagesize.
+# TYPE node_memory_Hugepagesize gauge
+node_memory_Hugepagesize 2.097152e+06
+# HELP node_memory_Inactive Memory information field Inactive.
+# TYPE node_memory_Inactive gauge
+node_memory_Inactive 1.084960768e+09
+# HELP node_memory_Inactive_anon Memory information field Inactive_anon.
+# TYPE node_memory_Inactive_anon gauge
+node_memory_Inactive_anon 1.09694976e+08
+# HELP node_memory_Inactive_file Memory information field Inactive_file.
+# TYPE node_memory_Inactive_file gauge
+node_memory_Inactive_file 9.75265792e+08
+# HELP node_memory_KernelStack Memory information field KernelStack.
+# TYPE node_memory_KernelStack gauge
+node_memory_KernelStack 7.192576e+06
+# HELP node_memory_Mapped Memory information field Mapped.
+# TYPE node_memory_Mapped gauge
+node_memory_Mapped 1.52879104e+08
+# HELP node_memory_MemAvailable Memory information field MemAvailable.
+# TYPE node_memory_MemAvailable gauge
+node_memory_MemAvailable 1.442967552e+09
+# HELP node_memory_MemFree Memory information field MemFree.
+# TYPE node_memory_MemFree gauge
+node_memory_MemFree 9.3925376e+07
+# HELP node_memory_MemTotal Memory information field MemTotal.
+# TYPE node_memory_MemTotal gauge
+node_memory_MemTotal 2.080411648e+09
+# HELP node_memory_Mlocked Memory information field Mlocked.
+# TYPE node_memory_Mlocked gauge
+node_memory_Mlocked 0
+# HELP node_memory_NFS_Unstable Memory information field NFS_Unstable.
+# TYPE node_memory_NFS_Unstable gauge
+node_memory_NFS_Unstable 0
+# HELP node_memory_PageTables Memory information field PageTables.
+# TYPE node_memory_PageTables gauge
+node_memory_PageTables 7.757824e+06
+# HELP node_memory_SReclaimable Memory information field SReclaimable.
+# TYPE node_memory_SReclaimable gauge
+node_memory_SReclaimable 5.2207616e+07
+# HELP node_memory_SUnreclaim Memory information field SUnreclaim.
+# TYPE node_memory_SUnreclaim gauge
+node_memory_SUnreclaim 2.1192704e+07
+# HELP node_memory_Shmem Memory information field Shmem.
+# TYPE node_memory_Shmem gauge
+node_memory_Shmem 6.766592e+06
+# HELP node_memory_Slab Memory information field Slab.
+# TYPE node_memory_Slab gauge
+node_memory_Slab 7.340032e+07
+# HELP node_memory_SwapCached Memory information field SwapCached.
+# TYPE node_memory_SwapCached gauge
+node_memory_SwapCached 0
+# HELP node_memory_SwapFree Memory information field SwapFree.
+# TYPE node_memory_SwapFree gauge
+node_memory_SwapFree 2.721574912e+09
+# HELP node_memory_SwapTotal Memory information field SwapTotal.
+# TYPE node_memory_SwapTotal gauge
+node_memory_SwapTotal 2.721574912e+09
+# HELP node_memory_Unevictable Memory information field Unevictable.
+# TYPE node_memory_Unevictable gauge
+node_memory_Unevictable 0
+# HELP node_memory_VmallocChunk Memory information field VmallocChunk.
+# TYPE node_memory_VmallocChunk gauge
+node_memory_VmallocChunk 3.518434285568e+13
+# HELP node_memory_VmallocTotal Memory information field VmallocTotal.
+# TYPE node_memory_VmallocTotal gauge
+node_memory_VmallocTotal 3.5184372087808e+13
+# HELP node_memory_VmallocUsed Memory information field VmallocUsed.
+# TYPE node_memory_VmallocUsed gauge
+node_memory_VmallocUsed 2.6238976e+07
+# HELP node_memory_Writeback Memory information field Writeback.
+# TYPE node_memory_Writeback gauge
+node_memory_Writeback 0
+# HELP node_memory_WritebackTmp Memory information field WritebackTmp.
+# TYPE node_memory_WritebackTmp gauge
+node_memory_WritebackTmp 0
+# HELP node_netstat_Icmp_InAddrMaskReps Protocol Icmp statistic InAddrMaskReps.
+# TYPE node_netstat_Icmp_InAddrMaskReps untyped
+node_netstat_Icmp_InAddrMaskReps 0
+# HELP node_netstat_Icmp_InAddrMasks Protocol Icmp statistic InAddrMasks.
+# TYPE node_netstat_Icmp_InAddrMasks untyped
+node_netstat_Icmp_InAddrMasks 0
+# HELP node_netstat_Icmp_InCsumErrors Protocol Icmp statistic InCsumErrors.
+# TYPE node_netstat_Icmp_InCsumErrors untyped
+node_netstat_Icmp_InCsumErrors 0
+# HELP node_netstat_Icmp_InDestUnreachs Protocol Icmp statistic InDestUnreachs.
+# TYPE node_netstat_Icmp_InDestUnreachs untyped
+node_netstat_Icmp_InDestUnreachs 0
+# HELP node_netstat_Icmp_InEchoReps Protocol Icmp statistic InEchoReps.
+# TYPE node_netstat_Icmp_InEchoReps untyped
+node_netstat_Icmp_InEchoReps 0
+# HELP node_netstat_Icmp_InEchos Protocol Icmp statistic InEchos.
+# TYPE node_netstat_Icmp_InEchos untyped
+node_netstat_Icmp_InEchos 0
+# HELP node_netstat_Icmp_InErrors Protocol Icmp statistic InErrors.
+# TYPE node_netstat_Icmp_InErrors untyped
+node_netstat_Icmp_InErrors 0
+# HELP node_netstat_Icmp_InMsgs Protocol Icmp statistic InMsgs.
+# TYPE node_netstat_Icmp_InMsgs untyped
+node_netstat_Icmp_InMsgs 0
+# HELP node_netstat_Icmp_InParmProbs Protocol Icmp statistic InParmProbs.
+# TYPE node_netstat_Icmp_InParmProbs untyped
+node_netstat_Icmp_InParmProbs 0
+# HELP node_netstat_Icmp_InRedirects Protocol Icmp statistic InRedirects.
+# TYPE node_netstat_Icmp_InRedirects untyped
+node_netstat_Icmp_InRedirects 0
+# HELP node_netstat_Icmp_InSrcQuenchs Protocol Icmp statistic InSrcQuenchs.
+# TYPE node_netstat_Icmp_InSrcQuenchs untyped
+node_netstat_Icmp_InSrcQuenchs 0
+# HELP node_netstat_Icmp_InTimeExcds Protocol Icmp statistic InTimeExcds.
+# TYPE node_netstat_Icmp_InTimeExcds untyped
+node_netstat_Icmp_InTimeExcds 0
+# HELP node_netstat_Icmp_InTimestampReps Protocol Icmp statistic InTimestampReps.
+# TYPE node_netstat_Icmp_InTimestampReps untyped
+node_netstat_Icmp_InTimestampReps 0
+# HELP node_netstat_Icmp_InTimestamps Protocol Icmp statistic InTimestamps.
+# TYPE node_netstat_Icmp_InTimestamps untyped
+node_netstat_Icmp_InTimestamps 0
+# HELP node_netstat_Icmp_OutAddrMaskReps Protocol Icmp statistic OutAddrMaskReps.
+# TYPE node_netstat_Icmp_OutAddrMaskReps untyped
+node_netstat_Icmp_OutAddrMaskReps 0
+# HELP node_netstat_Icmp_OutAddrMasks Protocol Icmp statistic OutAddrMasks.
+# TYPE node_netstat_Icmp_OutAddrMasks untyped
+node_netstat_Icmp_OutAddrMasks 0
+# HELP node_netstat_Icmp_OutDestUnreachs Protocol Icmp statistic OutDestUnreachs.
+# TYPE node_netstat_Icmp_OutDestUnreachs untyped
+node_netstat_Icmp_OutDestUnreachs 0
+# HELP node_netstat_Icmp_OutEchoReps Protocol Icmp statistic OutEchoReps.
+# TYPE node_netstat_Icmp_OutEchoReps untyped
+node_netstat_Icmp_OutEchoReps 0
+# HELP node_netstat_Icmp_OutEchos Protocol Icmp statistic OutEchos.
+# TYPE node_netstat_Icmp_OutEchos untyped
+node_netstat_Icmp_OutEchos 0
+# HELP node_netstat_Icmp_OutErrors Protocol Icmp statistic OutErrors.
+# TYPE node_netstat_Icmp_OutErrors untyped
+node_netstat_Icmp_OutErrors 0
+# HELP node_netstat_Icmp_OutMsgs Protocol Icmp statistic OutMsgs.
+# TYPE node_netstat_Icmp_OutMsgs untyped
+node_netstat_Icmp_OutMsgs 0
+# HELP node_netstat_Icmp_OutParmProbs Protocol Icmp statistic OutParmProbs.
+# TYPE node_netstat_Icmp_OutParmProbs untyped
+node_netstat_Icmp_OutParmProbs 0
+# HELP node_netstat_Icmp_OutRedirects Protocol Icmp statistic OutRedirects.
+# TYPE node_netstat_Icmp_OutRedirects untyped
+node_netstat_Icmp_OutRedirects 0
+# HELP node_netstat_Icmp_OutSrcQuenchs Protocol Icmp statistic OutSrcQuenchs.
+# TYPE node_netstat_Icmp_OutSrcQuenchs untyped
+node_netstat_Icmp_OutSrcQuenchs 0
+# HELP node_netstat_Icmp_OutTimeExcds Protocol Icmp statistic OutTimeExcds.
+# TYPE node_netstat_Icmp_OutTimeExcds untyped
+node_netstat_Icmp_OutTimeExcds 0
+# HELP node_netstat_Icmp_OutTimestampReps Protocol Icmp statistic OutTimestampReps.
+# TYPE node_netstat_Icmp_OutTimestampReps untyped
+node_netstat_Icmp_OutTimestampReps 0
+# HELP node_netstat_Icmp_OutTimestamps Protocol Icmp statistic OutTimestamps.
+# TYPE node_netstat_Icmp_OutTimestamps untyped
+node_netstat_Icmp_OutTimestamps 0
+# HELP node_netstat_IpExt_InBcastOctets Protocol IpExt statistic InBcastOctets.
+# TYPE node_netstat_IpExt_InBcastOctets untyped
+node_netstat_IpExt_InBcastOctets 18032
+# HELP node_netstat_IpExt_InBcastPkts Protocol IpExt statistic InBcastPkts.
+# TYPE node_netstat_IpExt_InBcastPkts untyped
+node_netstat_IpExt_InBcastPkts 205
+# HELP node_netstat_IpExt_InCEPkts Protocol IpExt statistic InCEPkts.
+# TYPE node_netstat_IpExt_InCEPkts untyped
+node_netstat_IpExt_InCEPkts 0
+# HELP node_netstat_IpExt_InCsumErrors Protocol IpExt statistic InCsumErrors.
+# TYPE node_netstat_IpExt_InCsumErrors untyped
+node_netstat_IpExt_InCsumErrors 0
+# HELP node_netstat_IpExt_InECT0Pkts Protocol IpExt statistic InECT0Pkts.
+# TYPE node_netstat_IpExt_InECT0Pkts untyped
+node_netstat_IpExt_InECT0Pkts 0
+# HELP node_netstat_IpExt_InECT1Pkts Protocol IpExt statistic InECT1Pkts.
+# TYPE node_netstat_IpExt_InECT1Pkts untyped
+node_netstat_IpExt_InECT1Pkts 0
+# HELP node_netstat_IpExt_InMcastOctets Protocol IpExt statistic InMcastOctets.
+# TYPE node_netstat_IpExt_InMcastOctets untyped
+node_netstat_IpExt_InMcastOctets 0
+# HELP node_netstat_IpExt_InMcastPkts Protocol IpExt statistic InMcastPkts.
+# TYPE node_netstat_IpExt_InMcastPkts untyped
+node_netstat_IpExt_InMcastPkts 0
+# HELP node_netstat_IpExt_InNoECTPkts Protocol IpExt statistic InNoECTPkts.
+# TYPE node_netstat_IpExt_InNoECTPkts untyped
+node_netstat_IpExt_InNoECTPkts 408064
+# HELP node_netstat_IpExt_InNoRoutes Protocol IpExt statistic InNoRoutes.
+# TYPE node_netstat_IpExt_InNoRoutes untyped
+node_netstat_IpExt_InNoRoutes 0
+# HELP node_netstat_IpExt_InOctets Protocol IpExt statistic InOctets.
+# TYPE node_netstat_IpExt_InOctets untyped
+node_netstat_IpExt_InOctets 1.838747595e+09
+# HELP node_netstat_IpExt_InTruncatedPkts Protocol IpExt statistic InTruncatedPkts.
+# TYPE node_netstat_IpExt_InTruncatedPkts untyped
+node_netstat_IpExt_InTruncatedPkts 0
+# HELP node_netstat_IpExt_OutBcastOctets Protocol IpExt statistic OutBcastOctets.
+# TYPE node_netstat_IpExt_OutBcastOctets untyped
+node_netstat_IpExt_OutBcastOctets 0
+# HELP node_netstat_IpExt_OutBcastPkts Protocol IpExt statistic OutBcastPkts.
+# TYPE node_netstat_IpExt_OutBcastPkts untyped
+node_netstat_IpExt_OutBcastPkts 0
+# HELP node_netstat_IpExt_OutMcastOctets Protocol IpExt statistic OutMcastOctets.
+# TYPE node_netstat_IpExt_OutMcastOctets untyped
+node_netstat_IpExt_OutMcastOctets 0
+# HELP node_netstat_IpExt_OutMcastPkts Protocol IpExt statistic OutMcastPkts.
+# TYPE node_netstat_IpExt_OutMcastPkts untyped
+node_netstat_IpExt_OutMcastPkts 0
+# HELP node_netstat_IpExt_OutOctets Protocol IpExt statistic OutOctets.
+# TYPE node_netstat_IpExt_OutOctets untyped
+node_netstat_IpExt_OutOctets 1.845341277e+09
+# HELP node_netstat_Ip_DefaultTTL Protocol Ip statistic DefaultTTL.
+# TYPE node_netstat_Ip_DefaultTTL untyped
+node_netstat_Ip_DefaultTTL 64
+# HELP node_netstat_Ip_ForwDatagrams Protocol Ip statistic ForwDatagrams.
+# TYPE node_netstat_Ip_ForwDatagrams untyped
+node_netstat_Ip_ForwDatagrams 2489
+# HELP node_netstat_Ip_Forwarding Protocol Ip statistic Forwarding.
+# TYPE node_netstat_Ip_Forwarding untyped
+node_netstat_Ip_Forwarding 1
+# HELP node_netstat_Ip_FragCreates Protocol Ip statistic FragCreates.
+# TYPE node_netstat_Ip_FragCreates untyped
+node_netstat_Ip_FragCreates 492
+# HELP node_netstat_Ip_FragFails Protocol Ip statistic FragFails.
+# TYPE node_netstat_Ip_FragFails untyped
+node_netstat_Ip_FragFails 0
+# HELP node_netstat_Ip_FragOKs Protocol Ip statistic FragOKs.
+# TYPE node_netstat_Ip_FragOKs untyped
+node_netstat_Ip_FragOKs 12
+# HELP node_netstat_Ip_InAddrErrors Protocol Ip statistic InAddrErrors.
+# TYPE node_netstat_Ip_InAddrErrors untyped
+node_netstat_Ip_InAddrErrors 0
+# HELP node_netstat_Ip_InDelivers Protocol Ip statistic InDelivers.
+# TYPE node_netstat_Ip_InDelivers untyped
+node_netstat_Ip_InDelivers 403264
+# HELP node_netstat_Ip_InDiscards Protocol Ip statistic InDiscards.
+# TYPE node_netstat_Ip_InDiscards untyped
+node_netstat_Ip_InDiscards 0
+# HELP node_netstat_Ip_InHdrErrors Protocol Ip statistic InHdrErrors.
+# TYPE node_netstat_Ip_InHdrErrors untyped
+node_netstat_Ip_InHdrErrors 0
+# HELP node_netstat_Ip_InReceives Protocol Ip statistic InReceives.
+# TYPE node_netstat_Ip_InReceives untyped
+node_netstat_Ip_InReceives 406438
+# HELP node_netstat_Ip_InUnknownProtos Protocol Ip statistic InUnknownProtos.
+# TYPE node_netstat_Ip_InUnknownProtos untyped
+node_netstat_Ip_InUnknownProtos 0
+# HELP node_netstat_Ip_OutDiscards Protocol Ip statistic OutDiscards.
+# TYPE node_netstat_Ip_OutDiscards untyped
+node_netstat_Ip_OutDiscards 0
+# HELP node_netstat_Ip_OutNoRoutes Protocol Ip statistic OutNoRoutes.
+# TYPE node_netstat_Ip_OutNoRoutes untyped
+node_netstat_Ip_OutNoRoutes 0
+# HELP node_netstat_Ip_OutRequests Protocol Ip statistic OutRequests.
+# TYPE node_netstat_Ip_OutRequests untyped
+node_netstat_Ip_OutRequests 374612
+# HELP node_netstat_Ip_ReasmFails Protocol Ip statistic ReasmFails.
+# TYPE node_netstat_Ip_ReasmFails untyped
+node_netstat_Ip_ReasmFails 0
+# HELP node_netstat_Ip_ReasmOKs Protocol Ip statistic ReasmOKs.
+# TYPE node_netstat_Ip_ReasmOKs untyped
+node_netstat_Ip_ReasmOKs 12
+# HELP node_netstat_Ip_ReasmReqds Protocol Ip statistic ReasmReqds.
+# TYPE node_netstat_Ip_ReasmReqds untyped
+node_netstat_Ip_ReasmReqds 492
+# HELP node_netstat_Ip_ReasmTimeout Protocol Ip statistic ReasmTimeout.
+# TYPE node_netstat_Ip_ReasmTimeout untyped
+node_netstat_Ip_ReasmTimeout 0
+# HELP node_netstat_TcpExt_ArpFilter Protocol TcpExt statistic ArpFilter.
+# TYPE node_netstat_TcpExt_ArpFilter untyped
+node_netstat_TcpExt_ArpFilter 0
+# HELP node_netstat_TcpExt_BusyPollRxPackets Protocol TcpExt statistic BusyPollRxPackets.
+# TYPE node_netstat_TcpExt_BusyPollRxPackets untyped
+node_netstat_TcpExt_BusyPollRxPackets 0
+# HELP node_netstat_TcpExt_DelayedACKLocked Protocol TcpExt statistic DelayedACKLocked.
+# TYPE node_netstat_TcpExt_DelayedACKLocked untyped
+node_netstat_TcpExt_DelayedACKLocked 0
+# HELP node_netstat_TcpExt_DelayedACKLost Protocol TcpExt statistic DelayedACKLost.
+# TYPE node_netstat_TcpExt_DelayedACKLost untyped
+node_netstat_TcpExt_DelayedACKLost 19
+# HELP node_netstat_TcpExt_DelayedACKs Protocol TcpExt statistic DelayedACKs.
+# TYPE node_netstat_TcpExt_DelayedACKs untyped
+node_netstat_TcpExt_DelayedACKs 991
+# HELP node_netstat_TcpExt_EmbryonicRsts Protocol TcpExt statistic EmbryonicRsts.
+# TYPE node_netstat_TcpExt_EmbryonicRsts untyped
+node_netstat_TcpExt_EmbryonicRsts 0
+# HELP node_netstat_TcpExt_IPReversePathFilter Protocol TcpExt statistic IPReversePathFilter.
+# TYPE node_netstat_TcpExt_IPReversePathFilter untyped
+node_netstat_TcpExt_IPReversePathFilter 0
+# HELP node_netstat_TcpExt_ListenDrops Protocol TcpExt statistic ListenDrops.
+# TYPE node_netstat_TcpExt_ListenDrops untyped
+node_netstat_TcpExt_ListenDrops 0
+# HELP node_netstat_TcpExt_ListenOverflows Protocol TcpExt statistic ListenOverflows.
+# TYPE node_netstat_TcpExt_ListenOverflows untyped
+node_netstat_TcpExt_ListenOverflows 0
+# HELP node_netstat_TcpExt_LockDroppedIcmps Protocol TcpExt statistic LockDroppedIcmps.
+# TYPE node_netstat_TcpExt_LockDroppedIcmps untyped
+node_netstat_TcpExt_LockDroppedIcmps 0
+# HELP node_netstat_TcpExt_OfoPruned Protocol TcpExt statistic OfoPruned.
+# TYPE node_netstat_TcpExt_OfoPruned untyped
+node_netstat_TcpExt_OfoPruned 0
+# HELP node_netstat_TcpExt_OutOfWindowIcmps Protocol TcpExt statistic OutOfWindowIcmps.
+# TYPE node_netstat_TcpExt_OutOfWindowIcmps untyped
+node_netstat_TcpExt_OutOfWindowIcmps 0
+# HELP node_netstat_TcpExt_PAWSActive Protocol TcpExt statistic PAWSActive.
+# TYPE node_netstat_TcpExt_PAWSActive untyped
+node_netstat_TcpExt_PAWSActive 0
+# HELP node_netstat_TcpExt_PAWSEstab Protocol TcpExt statistic PAWSEstab.
+# TYPE node_netstat_TcpExt_PAWSEstab untyped
+node_netstat_TcpExt_PAWSEstab 0
+# HELP node_netstat_TcpExt_PAWSPassive Protocol TcpExt statistic PAWSPassive.
+# TYPE node_netstat_TcpExt_PAWSPassive untyped
+node_netstat_TcpExt_PAWSPassive 0
+# HELP node_netstat_TcpExt_PruneCalled Protocol TcpExt statistic PruneCalled.
+# TYPE node_netstat_TcpExt_PruneCalled untyped
+node_netstat_TcpExt_PruneCalled 0
+# HELP node_netstat_TcpExt_RcvPruned Protocol TcpExt statistic RcvPruned.
+# TYPE node_netstat_TcpExt_RcvPruned untyped
+node_netstat_TcpExt_RcvPruned 0
+# HELP node_netstat_TcpExt_SyncookiesFailed Protocol TcpExt statistic SyncookiesFailed.
+# TYPE node_netstat_TcpExt_SyncookiesFailed untyped
+node_netstat_TcpExt_SyncookiesFailed 3
+# HELP node_netstat_TcpExt_SyncookiesRecv Protocol TcpExt statistic SyncookiesRecv.
+# TYPE node_netstat_TcpExt_SyncookiesRecv untyped
+node_netstat_TcpExt_SyncookiesRecv 0
+# HELP node_netstat_TcpExt_SyncookiesSent Protocol TcpExt statistic SyncookiesSent.
+# TYPE node_netstat_TcpExt_SyncookiesSent untyped
+node_netstat_TcpExt_SyncookiesSent 0
+# HELP node_netstat_TcpExt_TCPAbortFailed Protocol TcpExt statistic TCPAbortFailed.
+# TYPE node_netstat_TcpExt_TCPAbortFailed untyped
+node_netstat_TcpExt_TCPAbortFailed 0
+# HELP node_netstat_TcpExt_TCPAbortOnClose Protocol TcpExt statistic TCPAbortOnClose.
+# TYPE node_netstat_TcpExt_TCPAbortOnClose untyped
+node_netstat_TcpExt_TCPAbortOnClose 1
+# HELP node_netstat_TcpExt_TCPAbortOnData Protocol TcpExt statistic TCPAbortOnData.
+# TYPE node_netstat_TcpExt_TCPAbortOnData untyped
+node_netstat_TcpExt_TCPAbortOnData 1
+# HELP node_netstat_TcpExt_TCPAbortOnLinger Protocol TcpExt statistic TCPAbortOnLinger.
+# TYPE node_netstat_TcpExt_TCPAbortOnLinger untyped
+node_netstat_TcpExt_TCPAbortOnLinger 0
+# HELP node_netstat_TcpExt_TCPAbortOnMemory Protocol TcpExt statistic TCPAbortOnMemory.
+# TYPE node_netstat_TcpExt_TCPAbortOnMemory untyped
+node_netstat_TcpExt_TCPAbortOnMemory 0
+# HELP node_netstat_TcpExt_TCPAbortOnTimeout Protocol TcpExt statistic TCPAbortOnTimeout.
+# TYPE node_netstat_TcpExt_TCPAbortOnTimeout untyped
+node_netstat_TcpExt_TCPAbortOnTimeout 108
+# HELP node_netstat_TcpExt_TCPAutoCorking Protocol TcpExt statistic TCPAutoCorking.
+# TYPE node_netstat_TcpExt_TCPAutoCorking untyped
+node_netstat_TcpExt_TCPAutoCorking 4672
+# HELP node_netstat_TcpExt_TCPBacklogDrop Protocol TcpExt statistic TCPBacklogDrop.
+# TYPE node_netstat_TcpExt_TCPBacklogDrop untyped
+node_netstat_TcpExt_TCPBacklogDrop 0
+# HELP node_netstat_TcpExt_TCPChallengeACK Protocol TcpExt statistic TCPChallengeACK.
+# TYPE node_netstat_TcpExt_TCPChallengeACK untyped
+node_netstat_TcpExt_TCPChallengeACK 0
+# HELP node_netstat_TcpExt_TCPDSACKIgnoredNoUndo Protocol TcpExt statistic TCPDSACKIgnoredNoUndo.
+# TYPE node_netstat_TcpExt_TCPDSACKIgnoredNoUndo untyped
+node_netstat_TcpExt_TCPDSACKIgnoredNoUndo 12
+# HELP node_netstat_TcpExt_TCPDSACKIgnoredOld Protocol TcpExt statistic TCPDSACKIgnoredOld.
+# TYPE node_netstat_TcpExt_TCPDSACKIgnoredOld untyped
+node_netstat_TcpExt_TCPDSACKIgnoredOld 0
+# HELP node_netstat_TcpExt_TCPDSACKOfoRecv Protocol TcpExt statistic TCPDSACKOfoRecv.
+# TYPE node_netstat_TcpExt_TCPDSACKOfoRecv untyped
+node_netstat_TcpExt_TCPDSACKOfoRecv 0
+# HELP node_netstat_TcpExt_TCPDSACKOfoSent Protocol TcpExt statistic TCPDSACKOfoSent.
+# TYPE node_netstat_TcpExt_TCPDSACKOfoSent untyped
+node_netstat_TcpExt_TCPDSACKOfoSent 0
+# HELP node_netstat_TcpExt_TCPDSACKOldSent Protocol TcpExt statistic TCPDSACKOldSent.
+# TYPE node_netstat_TcpExt_TCPDSACKOldSent untyped
+node_netstat_TcpExt_TCPDSACKOldSent 19
+# HELP node_netstat_TcpExt_TCPDSACKRecv Protocol TcpExt statistic TCPDSACKRecv.
+# TYPE node_netstat_TcpExt_TCPDSACKRecv untyped
+node_netstat_TcpExt_TCPDSACKRecv 12
+# HELP node_netstat_TcpExt_TCPDSACKUndo Protocol TcpExt statistic TCPDSACKUndo.
+# TYPE node_netstat_TcpExt_TCPDSACKUndo untyped
+node_netstat_TcpExt_TCPDSACKUndo 0
+# HELP node_netstat_TcpExt_TCPDeferAcceptDrop Protocol TcpExt statistic TCPDeferAcceptDrop.
+# TYPE node_netstat_TcpExt_TCPDeferAcceptDrop untyped
+node_netstat_TcpExt_TCPDeferAcceptDrop 0
+# HELP node_netstat_TcpExt_TCPDirectCopyFromBacklog Protocol TcpExt statistic TCPDirectCopyFromBacklog.
+# TYPE node_netstat_TcpExt_TCPDirectCopyFromBacklog untyped
+node_netstat_TcpExt_TCPDirectCopyFromBacklog 0
+# HELP node_netstat_TcpExt_TCPDirectCopyFromPrequeue Protocol TcpExt statistic TCPDirectCopyFromPrequeue.
+# TYPE node_netstat_TcpExt_TCPDirectCopyFromPrequeue untyped
+node_netstat_TcpExt_TCPDirectCopyFromPrequeue 15
+# HELP node_netstat_TcpExt_TCPFACKReorder Protocol TcpExt statistic TCPFACKReorder.
+# TYPE node_netstat_TcpExt_TCPFACKReorder untyped
+node_netstat_TcpExt_TCPFACKReorder 0
+# HELP node_netstat_TcpExt_TCPFastOpenActive Protocol TcpExt statistic TCPFastOpenActive.
+# TYPE node_netstat_TcpExt_TCPFastOpenActive untyped
+node_netstat_TcpExt_TCPFastOpenActive 0
+# HELP node_netstat_TcpExt_TCPFastOpenActiveFail Protocol TcpExt statistic TCPFastOpenActiveFail.
+# TYPE node_netstat_TcpExt_TCPFastOpenActiveFail untyped
+node_netstat_TcpExt_TCPFastOpenActiveFail 0
+# HELP node_netstat_TcpExt_TCPFastOpenCookieReqd Protocol TcpExt statistic TCPFastOpenCookieReqd.
+# TYPE node_netstat_TcpExt_TCPFastOpenCookieReqd untyped
+node_netstat_TcpExt_TCPFastOpenCookieReqd 0
+# HELP node_netstat_TcpExt_TCPFastOpenListenOverflow Protocol TcpExt statistic TCPFastOpenListenOverflow.
+# TYPE node_netstat_TcpExt_TCPFastOpenListenOverflow untyped
+node_netstat_TcpExt_TCPFastOpenListenOverflow 0
+# HELP node_netstat_TcpExt_TCPFastOpenPassive Protocol TcpExt statistic TCPFastOpenPassive.
+# TYPE node_netstat_TcpExt_TCPFastOpenPassive untyped
+node_netstat_TcpExt_TCPFastOpenPassive 0
+# HELP node_netstat_TcpExt_TCPFastOpenPassiveFail Protocol TcpExt statistic TCPFastOpenPassiveFail.
+# TYPE node_netstat_TcpExt_TCPFastOpenPassiveFail untyped
+node_netstat_TcpExt_TCPFastOpenPassiveFail 0
+# HELP node_netstat_TcpExt_TCPFastRetrans Protocol TcpExt statistic TCPFastRetrans.
+# TYPE node_netstat_TcpExt_TCPFastRetrans untyped
+node_netstat_TcpExt_TCPFastRetrans 0
+# HELP node_netstat_TcpExt_TCPForwardRetrans Protocol TcpExt statistic TCPForwardRetrans.
+# TYPE node_netstat_TcpExt_TCPForwardRetrans untyped
+node_netstat_TcpExt_TCPForwardRetrans 0
+# HELP node_netstat_TcpExt_TCPFromZeroWindowAdv Protocol TcpExt statistic TCPFromZeroWindowAdv.
+# TYPE node_netstat_TcpExt_TCPFromZeroWindowAdv untyped
+node_netstat_TcpExt_TCPFromZeroWindowAdv 0
+# HELP node_netstat_TcpExt_TCPFullUndo Protocol TcpExt statistic TCPFullUndo.
+# TYPE node_netstat_TcpExt_TCPFullUndo untyped
+node_netstat_TcpExt_TCPFullUndo 0
+# HELP node_netstat_TcpExt_TCPHPAcks Protocol TcpExt statistic TCPHPAcks.
+# TYPE node_netstat_TcpExt_TCPHPAcks untyped
+node_netstat_TcpExt_TCPHPAcks 80289
+# HELP node_netstat_TcpExt_TCPHPHits Protocol TcpExt statistic TCPHPHits.
+# TYPE node_netstat_TcpExt_TCPHPHits untyped
+node_netstat_TcpExt_TCPHPHits 232284
+# HELP node_netstat_TcpExt_TCPHPHitsToUser Protocol TcpExt statistic TCPHPHitsToUser.
+# TYPE node_netstat_TcpExt_TCPHPHitsToUser untyped
+node_netstat_TcpExt_TCPHPHitsToUser 0
+# HELP node_netstat_TcpExt_TCPLossFailures Protocol TcpExt statistic TCPLossFailures.
+# TYPE node_netstat_TcpExt_TCPLossFailures untyped
+node_netstat_TcpExt_TCPLossFailures 0
+# HELP node_netstat_TcpExt_TCPLossProbeRecovery Protocol TcpExt statistic TCPLossProbeRecovery.
+# TYPE node_netstat_TcpExt_TCPLossProbeRecovery untyped
+node_netstat_TcpExt_TCPLossProbeRecovery 11
+# HELP node_netstat_TcpExt_TCPLossProbes Protocol TcpExt statistic TCPLossProbes.
+# TYPE node_netstat_TcpExt_TCPLossProbes untyped
+node_netstat_TcpExt_TCPLossProbes 19
+# HELP node_netstat_TcpExt_TCPLossUndo Protocol TcpExt statistic TCPLossUndo.
+# TYPE node_netstat_TcpExt_TCPLossUndo untyped
+node_netstat_TcpExt_TCPLossUndo 0
+# HELP node_netstat_TcpExt_TCPLostRetransmit Protocol TcpExt statistic TCPLostRetransmit.
+# TYPE node_netstat_TcpExt_TCPLostRetransmit untyped
+node_netstat_TcpExt_TCPLostRetransmit 0
+# HELP node_netstat_TcpExt_TCPMD5NotFound Protocol TcpExt statistic TCPMD5NotFound.
+# TYPE node_netstat_TcpExt_TCPMD5NotFound untyped
+node_netstat_TcpExt_TCPMD5NotFound 0
+# HELP node_netstat_TcpExt_TCPMD5Unexpected Protocol TcpExt statistic TCPMD5Unexpected.
+# TYPE node_netstat_TcpExt_TCPMD5Unexpected untyped
+node_netstat_TcpExt_TCPMD5Unexpected 0
+# HELP node_netstat_TcpExt_TCPMemoryPressures Protocol TcpExt statistic TCPMemoryPressures.
+# TYPE node_netstat_TcpExt_TCPMemoryPressures untyped
+node_netstat_TcpExt_TCPMemoryPressures 0
+# HELP node_netstat_TcpExt_TCPMinTTLDrop Protocol TcpExt statistic TCPMinTTLDrop.
+# TYPE node_netstat_TcpExt_TCPMinTTLDrop untyped
+node_netstat_TcpExt_TCPMinTTLDrop 0
+# HELP node_netstat_TcpExt_TCPOFODrop Protocol TcpExt statistic TCPOFODrop.
+# TYPE node_netstat_TcpExt_TCPOFODrop untyped
+node_netstat_TcpExt_TCPOFODrop 0
+# HELP node_netstat_TcpExt_TCPOFOMerge Protocol TcpExt statistic TCPOFOMerge.
+# TYPE node_netstat_TcpExt_TCPOFOMerge untyped
+node_netstat_TcpExt_TCPOFOMerge 0
+# HELP node_netstat_TcpExt_TCPOFOQueue Protocol TcpExt statistic TCPOFOQueue.
+# TYPE node_netstat_TcpExt_TCPOFOQueue untyped
+node_netstat_TcpExt_TCPOFOQueue 0
+# HELP node_netstat_TcpExt_TCPOrigDataSent Protocol TcpExt statistic TCPOrigDataSent.
+# TYPE node_netstat_TcpExt_TCPOrigDataSent untyped
+node_netstat_TcpExt_TCPOrigDataSent 289862
+# HELP node_netstat_TcpExt_TCPPartialUndo Protocol TcpExt statistic TCPPartialUndo.
+# TYPE node_netstat_TcpExt_TCPPartialUndo untyped
+node_netstat_TcpExt_TCPPartialUndo 0
+# HELP node_netstat_TcpExt_TCPPrequeueDropped Protocol TcpExt statistic TCPPrequeueDropped.
+# TYPE node_netstat_TcpExt_TCPPrequeueDropped untyped
+node_netstat_TcpExt_TCPPrequeueDropped 0
+# HELP node_netstat_TcpExt_TCPPrequeued Protocol TcpExt statistic TCPPrequeued.
+# TYPE node_netstat_TcpExt_TCPPrequeued untyped
+node_netstat_TcpExt_TCPPrequeued 10
+# HELP node_netstat_TcpExt_TCPPureAcks Protocol TcpExt statistic TCPPureAcks.
+# TYPE node_netstat_TcpExt_TCPPureAcks untyped
+node_netstat_TcpExt_TCPPureAcks 41502
+# HELP node_netstat_TcpExt_TCPRcvCoalesce Protocol TcpExt statistic TCPRcvCoalesce.
+# TYPE node_netstat_TcpExt_TCPRcvCoalesce untyped
+node_netstat_TcpExt_TCPRcvCoalesce 29369
+# HELP node_netstat_TcpExt_TCPRcvCollapsed Protocol TcpExt statistic TCPRcvCollapsed.
+# TYPE node_netstat_TcpExt_TCPRcvCollapsed untyped
+node_netstat_TcpExt_TCPRcvCollapsed 0
+# HELP node_netstat_TcpExt_TCPRenoFailures Protocol TcpExt statistic TCPRenoFailures.
+# TYPE node_netstat_TcpExt_TCPRenoFailures untyped
+node_netstat_TcpExt_TCPRenoFailures 0
+# HELP node_netstat_TcpExt_TCPRenoRecovery Protocol TcpExt statistic TCPRenoRecovery.
+# TYPE node_netstat_TcpExt_TCPRenoRecovery untyped
+node_netstat_TcpExt_TCPRenoRecovery 0
+# HELP node_netstat_TcpExt_TCPRenoRecoveryFail Protocol TcpExt statistic TCPRenoRecoveryFail.
+# TYPE node_netstat_TcpExt_TCPRenoRecoveryFail untyped
+node_netstat_TcpExt_TCPRenoRecoveryFail 0
+# HELP node_netstat_TcpExt_TCPRenoReorder Protocol TcpExt statistic TCPRenoReorder.
+# TYPE node_netstat_TcpExt_TCPRenoReorder untyped
+node_netstat_TcpExt_TCPRenoReorder 0
+# HELP node_netstat_TcpExt_TCPReqQFullDoCookies Protocol TcpExt statistic TCPReqQFullDoCookies.
+# TYPE node_netstat_TcpExt_TCPReqQFullDoCookies untyped
+node_netstat_TcpExt_TCPReqQFullDoCookies 0
+# HELP node_netstat_TcpExt_TCPReqQFullDrop Protocol TcpExt statistic TCPReqQFullDrop.
+# TYPE node_netstat_TcpExt_TCPReqQFullDrop untyped
+node_netstat_TcpExt_TCPReqQFullDrop 0
+# HELP node_netstat_TcpExt_TCPRetransFail Protocol TcpExt statistic TCPRetransFail.
+# TYPE node_netstat_TcpExt_TCPRetransFail untyped
+node_netstat_TcpExt_TCPRetransFail 722
+# HELP node_netstat_TcpExt_TCPSACKDiscard Protocol TcpExt statistic TCPSACKDiscard.
+# TYPE node_netstat_TcpExt_TCPSACKDiscard untyped
+node_netstat_TcpExt_TCPSACKDiscard 0
+# HELP node_netstat_TcpExt_TCPSACKReneging Protocol TcpExt statistic TCPSACKReneging.
+# TYPE node_netstat_TcpExt_TCPSACKReneging untyped
+node_netstat_TcpExt_TCPSACKReneging 0
+# HELP node_netstat_TcpExt_TCPSACKReorder Protocol TcpExt statistic TCPSACKReorder.
+# TYPE node_netstat_TcpExt_TCPSACKReorder untyped
+node_netstat_TcpExt_TCPSACKReorder 0
+# HELP node_netstat_TcpExt_TCPSYNChallenge Protocol TcpExt statistic TCPSYNChallenge.
+# TYPE node_netstat_TcpExt_TCPSYNChallenge untyped
+node_netstat_TcpExt_TCPSYNChallenge 0
+# HELP node_netstat_TcpExt_TCPSackFailures Protocol TcpExt statistic TCPSackFailures.
+# TYPE node_netstat_TcpExt_TCPSackFailures untyped
+node_netstat_TcpExt_TCPSackFailures 0
+# HELP node_netstat_TcpExt_TCPSackMerged Protocol TcpExt statistic TCPSackMerged.
+# TYPE node_netstat_TcpExt_TCPSackMerged untyped
+node_netstat_TcpExt_TCPSackMerged 0
+# HELP node_netstat_TcpExt_TCPSackRecovery Protocol TcpExt statistic TCPSackRecovery.
+# TYPE node_netstat_TcpExt_TCPSackRecovery untyped
+node_netstat_TcpExt_TCPSackRecovery 0
+# HELP node_netstat_TcpExt_TCPSackRecoveryFail Protocol TcpExt statistic TCPSackRecoveryFail.
+# TYPE node_netstat_TcpExt_TCPSackRecoveryFail untyped
+node_netstat_TcpExt_TCPSackRecoveryFail 0
+# HELP node_netstat_TcpExt_TCPSackShiftFallback Protocol TcpExt statistic TCPSackShiftFallback.
+# TYPE node_netstat_TcpExt_TCPSackShiftFallback untyped
+node_netstat_TcpExt_TCPSackShiftFallback 4
+# HELP node_netstat_TcpExt_TCPSackShifted Protocol TcpExt statistic TCPSackShifted.
+# TYPE node_netstat_TcpExt_TCPSackShifted untyped
+node_netstat_TcpExt_TCPSackShifted 1
+# HELP node_netstat_TcpExt_TCPSchedulerFailed Protocol TcpExt statistic TCPSchedulerFailed.
+# TYPE node_netstat_TcpExt_TCPSchedulerFailed untyped
+node_netstat_TcpExt_TCPSchedulerFailed 0
+# HELP node_netstat_TcpExt_TCPSlowStartRetrans Protocol TcpExt statistic TCPSlowStartRetrans.
+# TYPE node_netstat_TcpExt_TCPSlowStartRetrans untyped
+node_netstat_TcpExt_TCPSlowStartRetrans 0
+# HELP node_netstat_TcpExt_TCPSpuriousRTOs Protocol TcpExt statistic TCPSpuriousRTOs.
+# TYPE node_netstat_TcpExt_TCPSpuriousRTOs untyped
+node_netstat_TcpExt_TCPSpuriousRTOs 0
+# HELP node_netstat_TcpExt_TCPSpuriousRtxHostQueues Protocol TcpExt statistic TCPSpuriousRtxHostQueues.
+# TYPE node_netstat_TcpExt_TCPSpuriousRtxHostQueues untyped
+node_netstat_TcpExt_TCPSpuriousRtxHostQueues 1
+# HELP node_netstat_TcpExt_TCPSynRetrans Protocol TcpExt statistic TCPSynRetrans.
+# TYPE node_netstat_TcpExt_TCPSynRetrans untyped
+node_netstat_TcpExt_TCPSynRetrans 0
+# HELP node_netstat_TcpExt_TCPTSReorder Protocol TcpExt statistic TCPTSReorder.
+# TYPE node_netstat_TcpExt_TCPTSReorder untyped
+node_netstat_TcpExt_TCPTSReorder 0
+# HELP node_netstat_TcpExt_TCPTimeWaitOverflow Protocol TcpExt statistic TCPTimeWaitOverflow.
+# TYPE node_netstat_TcpExt_TCPTimeWaitOverflow untyped
+node_netstat_TcpExt_TCPTimeWaitOverflow 0
+# HELP node_netstat_TcpExt_TCPTimeouts Protocol TcpExt statistic TCPTimeouts.
+# TYPE node_netstat_TcpExt_TCPTimeouts untyped
+node_netstat_TcpExt_TCPTimeouts 130
+# HELP node_netstat_TcpExt_TCPToZeroWindowAdv Protocol TcpExt statistic TCPToZeroWindowAdv.
+# TYPE node_netstat_TcpExt_TCPToZeroWindowAdv untyped
+node_netstat_TcpExt_TCPToZeroWindowAdv 0
+# HELP node_netstat_TcpExt_TCPWantZeroWindowAdv Protocol TcpExt statistic TCPWantZeroWindowAdv.
+# TYPE node_netstat_TcpExt_TCPWantZeroWindowAdv untyped
+node_netstat_TcpExt_TCPWantZeroWindowAdv 0
+# HELP node_netstat_TcpExt_TW Protocol TcpExt statistic TW.
+# TYPE node_netstat_TcpExt_TW untyped
+node_netstat_TcpExt_TW 1790
+# HELP node_netstat_TcpExt_TWKilled Protocol TcpExt statistic TWKilled.
+# TYPE node_netstat_TcpExt_TWKilled untyped
+node_netstat_TcpExt_TWKilled 0
+# HELP node_netstat_TcpExt_TWRecycled Protocol TcpExt statistic TWRecycled.
+# TYPE node_netstat_TcpExt_TWRecycled untyped
+node_netstat_TcpExt_TWRecycled 0
+# HELP node_netstat_Tcp_ActiveOpens Protocol Tcp statistic ActiveOpens.
+# TYPE node_netstat_Tcp_ActiveOpens untyped
+node_netstat_Tcp_ActiveOpens 1676
+# HELP node_netstat_Tcp_AttemptFails Protocol Tcp statistic AttemptFails.
+# TYPE node_netstat_Tcp_AttemptFails untyped
+node_netstat_Tcp_AttemptFails 180
+# HELP node_netstat_Tcp_CurrEstab Protocol Tcp statistic CurrEstab.
+# TYPE node_netstat_Tcp_CurrEstab untyped
+node_netstat_Tcp_CurrEstab 52
+# HELP node_netstat_Tcp_EstabResets Protocol Tcp statistic EstabResets.
+# TYPE node_netstat_Tcp_EstabResets untyped
+node_netstat_Tcp_EstabResets 6
+# HELP node_netstat_Tcp_InCsumErrors Protocol Tcp statistic InCsumErrors.
+# TYPE node_netstat_Tcp_InCsumErrors untyped
+node_netstat_Tcp_InCsumErrors 0
+# HELP node_netstat_Tcp_InErrs Protocol Tcp statistic InErrs.
+# TYPE node_netstat_Tcp_InErrs untyped
+node_netstat_Tcp_InErrs 0
+# HELP node_netstat_Tcp_InSegs Protocol Tcp statistic InSegs.
+# TYPE node_netstat_Tcp_InSegs untyped
+node_netstat_Tcp_InSegs 400214
+# HELP node_netstat_Tcp_MaxConn Protocol Tcp statistic MaxConn.
+# TYPE node_netstat_Tcp_MaxConn untyped
+node_netstat_Tcp_MaxConn -1
+# HELP node_netstat_Tcp_OutRsts Protocol Tcp statistic OutRsts.
+# TYPE node_netstat_Tcp_OutRsts untyped
+node_netstat_Tcp_OutRsts 75
+# HELP node_netstat_Tcp_OutSegs Protocol Tcp statistic OutSegs.
+# TYPE node_netstat_Tcp_OutSegs untyped
+node_netstat_Tcp_OutSegs 372122
+# HELP node_netstat_Tcp_PassiveOpens Protocol Tcp statistic PassiveOpens.
+# TYPE node_netstat_Tcp_PassiveOpens untyped
+node_netstat_Tcp_PassiveOpens 4275
+# HELP node_netstat_Tcp_RetransSegs Protocol Tcp statistic RetransSegs.
+# TYPE node_netstat_Tcp_RetransSegs untyped
+node_netstat_Tcp_RetransSegs 12
+# HELP node_netstat_Tcp_RtoAlgorithm Protocol Tcp statistic RtoAlgorithm.
+# TYPE node_netstat_Tcp_RtoAlgorithm untyped
+node_netstat_Tcp_RtoAlgorithm 1
+# HELP node_netstat_Tcp_RtoMax Protocol Tcp statistic RtoMax.
+# TYPE node_netstat_Tcp_RtoMax untyped
+node_netstat_Tcp_RtoMax 120000
+# HELP node_netstat_Tcp_RtoMin Protocol Tcp statistic RtoMin.
+# TYPE node_netstat_Tcp_RtoMin untyped
+node_netstat_Tcp_RtoMin 200
+# HELP node_netstat_UdpLite_InCsumErrors Protocol UdpLite statistic InCsumErrors.
+# TYPE node_netstat_UdpLite_InCsumErrors untyped
+node_netstat_UdpLite_InCsumErrors 0
+# HELP node_netstat_UdpLite_InDatagrams Protocol UdpLite statistic InDatagrams.
+# TYPE node_netstat_UdpLite_InDatagrams untyped
+node_netstat_UdpLite_InDatagrams 0
+# HELP node_netstat_UdpLite_InErrors Protocol UdpLite statistic InErrors.
+# TYPE node_netstat_UdpLite_InErrors untyped
+node_netstat_UdpLite_InErrors 0
+# HELP node_netstat_UdpLite_NoPorts Protocol UdpLite statistic NoPorts.
+# TYPE node_netstat_UdpLite_NoPorts untyped
+node_netstat_UdpLite_NoPorts 0
+# HELP node_netstat_UdpLite_OutDatagrams Protocol UdpLite statistic OutDatagrams.
+# TYPE node_netstat_UdpLite_OutDatagrams untyped
+node_netstat_UdpLite_OutDatagrams 0
+# HELP node_netstat_UdpLite_RcvbufErrors Protocol UdpLite statistic RcvbufErrors.
+# TYPE node_netstat_UdpLite_RcvbufErrors untyped
+node_netstat_UdpLite_RcvbufErrors 0
+# HELP node_netstat_UdpLite_SndbufErrors Protocol UdpLite statistic SndbufErrors.
+# TYPE node_netstat_UdpLite_SndbufErrors untyped
+node_netstat_UdpLite_SndbufErrors 0
+# HELP node_netstat_Udp_InCsumErrors Protocol Udp statistic InCsumErrors.
+# TYPE node_netstat_Udp_InCsumErrors untyped
+node_netstat_Udp_InCsumErrors 0
+# HELP node_netstat_Udp_InDatagrams Protocol Udp statistic InDatagrams.
+# TYPE node_netstat_Udp_InDatagrams untyped
+node_netstat_Udp_InDatagrams 3050
+# HELP node_netstat_Udp_InErrors Protocol Udp statistic InErrors.
+# TYPE node_netstat_Udp_InErrors untyped
+node_netstat_Udp_InErrors 0
+# HELP node_netstat_Udp_NoPorts Protocol Udp statistic NoPorts.
+# TYPE node_netstat_Udp_NoPorts untyped
+node_netstat_Udp_NoPorts 0
+# HELP node_netstat_Udp_OutDatagrams Protocol Udp statistic OutDatagrams.
+# TYPE node_netstat_Udp_OutDatagrams untyped
+node_netstat_Udp_OutDatagrams 2691
+# HELP node_netstat_Udp_RcvbufErrors Protocol Udp statistic RcvbufErrors.
+# TYPE node_netstat_Udp_RcvbufErrors untyped
+node_netstat_Udp_RcvbufErrors 0
+# HELP node_netstat_Udp_SndbufErrors Protocol Udp statistic SndbufErrors.
+# TYPE node_netstat_Udp_SndbufErrors untyped
+node_netstat_Udp_SndbufErrors 0
+# HELP node_network_receive_bytes Network device statistic receive_bytes.
+# TYPE node_network_receive_bytes gauge
+node_network_receive_bytes{device="datapath"} 126
+node_network_receive_bytes{device="docker0"} 350421
+node_network_receive_bytes{device="docker_gwbridge"} 0
+node_network_receive_bytes{device="dummy0"} 0
+node_network_receive_bytes{device="eth0"} 1.8424255e+07
+node_network_receive_bytes{device="lo"} 1.821935365e+09
+node_network_receive_bytes{device="tun0"} 0
+node_network_receive_bytes{device="veth31e02f7"} 648
+node_network_receive_bytes{device="veth6eb595f"} 21782
+node_network_receive_bytes{device="veth9c8979b"} 366575
+node_network_receive_bytes{device="vethwe-bridge"} 126
+node_network_receive_bytes{device="vethwe-datapath"} 42
+node_network_receive_bytes{device="weave"} 84
+# HELP node_network_receive_compressed Network device statistic receive_compressed.
+# TYPE node_network_receive_compressed gauge
+node_network_receive_compressed{device="datapath"} 0
+node_network_receive_compressed{device="docker0"} 0
+node_network_receive_compressed{device="docker_gwbridge"} 0
+node_network_receive_compressed{device="dummy0"} 0
+node_network_receive_compressed{device="eth0"} 0
+node_network_receive_compressed{device="lo"} 0
+node_network_receive_compressed{device="tun0"} 0
+node_network_receive_compressed{device="veth31e02f7"} 0
+node_network_receive_compressed{device="veth6eb595f"} 0
+node_network_receive_compressed{device="veth9c8979b"} 0
+node_network_receive_compressed{device="vethwe-bridge"} 0
+node_network_receive_compressed{device="vethwe-datapath"} 0
+node_network_receive_compressed{device="weave"} 0
+# HELP node_network_receive_drop Network device statistic receive_drop.
+# TYPE node_network_receive_drop gauge
+node_network_receive_drop{device="datapath"} 0
+node_network_receive_drop{device="docker0"} 0
+node_network_receive_drop{device="docker_gwbridge"} 0
+node_network_receive_drop{device="dummy0"} 0
+node_network_receive_drop{device="eth0"} 0
+node_network_receive_drop{device="lo"} 0
+node_network_receive_drop{device="tun0"} 0
+node_network_receive_drop{device="veth31e02f7"} 0
+node_network_receive_drop{device="veth6eb595f"} 0
+node_network_receive_drop{device="veth9c8979b"} 0
+node_network_receive_drop{device="vethwe-bridge"} 0
+node_network_receive_drop{device="vethwe-datapath"} 0
+node_network_receive_drop{device="weave"} 0
+# HELP node_network_receive_errs Network device statistic receive_errs.
+# TYPE node_network_receive_errs gauge
+node_network_receive_errs{device="datapath"} 0
+node_network_receive_errs{device="docker0"} 0
+node_network_receive_errs{device="docker_gwbridge"} 0
+node_network_receive_errs{device="dummy0"} 0
+node_network_receive_errs{device="eth0"} 0
+node_network_receive_errs{device="lo"} 0
+node_network_receive_errs{device="tun0"} 0
+node_network_receive_errs{device="veth31e02f7"} 0
+node_network_receive_errs{device="veth6eb595f"} 0
+node_network_receive_errs{device="veth9c8979b"} 0
+node_network_receive_errs{device="vethwe-bridge"} 0
+node_network_receive_errs{device="vethwe-datapath"} 0
+node_network_receive_errs{device="weave"} 0
+# HELP node_network_receive_fifo Network device statistic receive_fifo.
+# TYPE node_network_receive_fifo gauge
+node_network_receive_fifo{device="datapath"} 0
+node_network_receive_fifo{device="docker0"} 0
+node_network_receive_fifo{device="docker_gwbridge"} 0
+node_network_receive_fifo{device="dummy0"} 0
+node_network_receive_fifo{device="eth0"} 0
+node_network_receive_fifo{device="lo"} 0
+node_network_receive_fifo{device="tun0"} 0
+node_network_receive_fifo{device="veth31e02f7"} 0
+node_network_receive_fifo{device="veth6eb595f"} 0
+node_network_receive_fifo{device="veth9c8979b"} 0
+node_network_receive_fifo{device="vethwe-bridge"} 0
+node_network_receive_fifo{device="vethwe-datapath"} 0
+node_network_receive_fifo{device="weave"} 0
+# HELP node_network_receive_frame Network device statistic receive_frame.
+# TYPE node_network_receive_frame gauge
+node_network_receive_frame{device="datapath"} 0
+node_network_receive_frame{device="docker0"} 0
+node_network_receive_frame{device="docker_gwbridge"} 0
+node_network_receive_frame{device="dummy0"} 0
+node_network_receive_frame{device="eth0"} 0
+node_network_receive_frame{device="lo"} 0
+node_network_receive_frame{device="tun0"} 0
+node_network_receive_frame{device="veth31e02f7"} 0
+node_network_receive_frame{device="veth6eb595f"} 0
+node_network_receive_frame{device="veth9c8979b"} 0
+node_network_receive_frame{device="vethwe-bridge"} 0
+node_network_receive_frame{device="vethwe-datapath"} 0
+node_network_receive_frame{device="weave"} 0
+# HELP node_network_receive_multicast Network device statistic receive_multicast.
+# TYPE node_network_receive_multicast gauge
+node_network_receive_multicast{device="datapath"} 0
+node_network_receive_multicast{device="docker0"} 0
+node_network_receive_multicast{device="docker_gwbridge"} 0
+node_network_receive_multicast{device="dummy0"} 0
+node_network_receive_multicast{device="eth0"} 0
+node_network_receive_multicast{device="lo"} 0
+node_network_receive_multicast{device="tun0"} 0
+node_network_receive_multicast{device="veth31e02f7"} 0
+node_network_receive_multicast{device="veth6eb595f"} 0
+node_network_receive_multicast{device="veth9c8979b"} 0
+node_network_receive_multicast{device="vethwe-bridge"} 0
+node_network_receive_multicast{device="vethwe-datapath"} 0
+node_network_receive_multicast{device="weave"} 0
+# HELP node_network_receive_packets Network device statistic receive_packets.
+# TYPE node_network_receive_packets gauge
+node_network_receive_packets{device="datapath"} 3
+node_network_receive_packets{device="docker0"} 2756
+node_network_receive_packets{device="docker_gwbridge"} 0
+node_network_receive_packets{device="dummy0"} 0
+node_network_receive_packets{device="eth0"} 103636
+node_network_receive_packets{device="lo"} 301812
+node_network_receive_packets{device="tun0"} 0
+node_network_receive_packets{device="veth31e02f7"} 8
+node_network_receive_packets{device="veth6eb595f"} 158
+node_network_receive_packets{device="veth9c8979b"} 2590
+node_network_receive_packets{device="vethwe-bridge"} 3
+node_network_receive_packets{device="vethwe-datapath"} 1
+node_network_receive_packets{device="weave"} 3
+# HELP node_network_transmit_bytes Network device statistic transmit_bytes.
+# TYPE node_network_transmit_bytes gauge
+node_network_transmit_bytes{device="datapath"} 42
+node_network_transmit_bytes{device="docker0"} 4.674819e+06
+node_network_transmit_bytes{device="docker_gwbridge"} 0
+node_network_transmit_bytes{device="dummy0"} 0
+node_network_transmit_bytes{device="eth0"} 1.6752467e+07
+node_network_transmit_bytes{device="lo"} 1.821935365e+09
+node_network_transmit_bytes{device="tun0"} 0
+node_network_transmit_bytes{device="veth31e02f7"} 704
+node_network_transmit_bytes{device="veth6eb595f"} 27625
+node_network_transmit_bytes{device="veth9c8979b"} 4.649362e+06
+node_network_transmit_bytes{device="vethwe-bridge"} 42
+node_network_transmit_bytes{device="vethwe-datapath"} 126
+node_network_transmit_bytes{device="weave"} 42
+# HELP node_network_transmit_compressed Network device statistic transmit_compressed.
+# TYPE node_network_transmit_compressed gauge
+node_network_transmit_compressed{device="datapath"} 0
+node_network_transmit_compressed{device="docker0"} 0
+node_network_transmit_compressed{device="docker_gwbridge"} 0
+node_network_transmit_compressed{device="dummy0"} 0
+node_network_transmit_compressed{device="eth0"} 0
+node_network_transmit_compressed{device="lo"} 0
+node_network_transmit_compressed{device="tun0"} 0
+node_network_transmit_compressed{device="veth31e02f7"} 0
+node_network_transmit_compressed{device="veth6eb595f"} 0
+node_network_transmit_compressed{device="veth9c8979b"} 0
+node_network_transmit_compressed{device="vethwe-bridge"} 0
+node_network_transmit_compressed{device="vethwe-datapath"} 0
+node_network_transmit_compressed{device="weave"} 0
+# HELP node_network_transmit_drop Network device statistic transmit_drop.
+# TYPE node_network_transmit_drop gauge
+node_network_transmit_drop{device="datapath"} 0
+node_network_transmit_drop{device="docker0"} 0
+node_network_transmit_drop{device="docker_gwbridge"} 0
+node_network_transmit_drop{device="dummy0"} 0
+node_network_transmit_drop{device="eth0"} 0
+node_network_transmit_drop{device="lo"} 0
+node_network_transmit_drop{device="tun0"} 0
+node_network_transmit_drop{device="veth31e02f7"} 0
+node_network_transmit_drop{device="veth6eb595f"} 0
+node_network_transmit_drop{device="veth9c8979b"} 0
+node_network_transmit_drop{device="vethwe-bridge"} 0
+node_network_transmit_drop{device="vethwe-datapath"} 0
+node_network_transmit_drop{device="weave"} 0
+# HELP node_network_transmit_errs Network device statistic transmit_errs.
+# TYPE node_network_transmit_errs gauge
+node_network_transmit_errs{device="datapath"} 0
+node_network_transmit_errs{device="docker0"} 0
+node_network_transmit_errs{device="docker_gwbridge"} 0
+node_network_transmit_errs{device="dummy0"} 0
+node_network_transmit_errs{device="eth0"} 0
+node_network_transmit_errs{device="lo"} 0
+node_network_transmit_errs{device="tun0"} 0
+node_network_transmit_errs{device="veth31e02f7"} 0
+node_network_transmit_errs{device="veth6eb595f"} 0
+node_network_transmit_errs{device="veth9c8979b"} 0
+node_network_transmit_errs{device="vethwe-bridge"} 0
+node_network_transmit_errs{device="vethwe-datapath"} 0
+node_network_transmit_errs{device="weave"} 0
+# HELP node_network_transmit_fifo Network device statistic transmit_fifo.
+# TYPE node_network_transmit_fifo gauge
+node_network_transmit_fifo{device="datapath"} 0
+node_network_transmit_fifo{device="docker0"} 0
+node_network_transmit_fifo{device="docker_gwbridge"} 0
+node_network_transmit_fifo{device="dummy0"} 0
+node_network_transmit_fifo{device="eth0"} 0
+node_network_transmit_fifo{device="lo"} 0
+node_network_transmit_fifo{device="tun0"} 0
+node_network_transmit_fifo{device="veth31e02f7"} 0
+node_network_transmit_fifo{device="veth6eb595f"} 0
+node_network_transmit_fifo{device="veth9c8979b"} 0
+node_network_transmit_fifo{device="vethwe-bridge"} 0
+node_network_transmit_fifo{device="vethwe-datapath"} 0
+node_network_transmit_fifo{device="weave"} 0
+# HELP node_network_transmit_frame Network device statistic transmit_frame.
+# TYPE node_network_transmit_frame gauge
+node_network_transmit_frame{device="datapath"} 0
+node_network_transmit_frame{device="docker0"} 0
+node_network_transmit_frame{device="docker_gwbridge"} 0
+node_network_transmit_frame{device="dummy0"} 0
+node_network_transmit_frame{device="eth0"} 0
+node_network_transmit_frame{device="lo"} 0
+node_network_transmit_frame{device="tun0"} 0
+node_network_transmit_frame{device="veth31e02f7"} 0
+node_network_transmit_frame{device="veth6eb595f"} 0
+node_network_transmit_frame{device="veth9c8979b"} 0
+node_network_transmit_frame{device="vethwe-bridge"} 0
+node_network_transmit_frame{device="vethwe-datapath"} 0
+node_network_transmit_frame{device="weave"} 0
+# HELP node_network_transmit_multicast Network device statistic transmit_multicast.
+# TYPE node_network_transmit_multicast gauge
+node_network_transmit_multicast{device="datapath"} 0
+node_network_transmit_multicast{device="docker0"} 0
+node_network_transmit_multicast{device="docker_gwbridge"} 0
+node_network_transmit_multicast{device="dummy0"} 0
+node_network_transmit_multicast{device="eth0"} 0
+node_network_transmit_multicast{device="lo"} 0
+node_network_transmit_multicast{device="tun0"} 0
+node_network_transmit_multicast{device="veth31e02f7"} 0
+node_network_transmit_multicast{device="veth6eb595f"} 0
+node_network_transmit_multicast{device="veth9c8979b"} 0
+node_network_transmit_multicast{device="vethwe-bridge"} 0
+node_network_transmit_multicast{device="vethwe-datapath"} 0
+node_network_transmit_multicast{device="weave"} 0
+# HELP node_network_transmit_packets Network device statistic transmit_packets.
+# TYPE node_network_transmit_packets gauge
+node_network_transmit_packets{device="datapath"} 1
+node_network_transmit_packets{device="docker0"} 2444
+node_network_transmit_packets{device="docker_gwbridge"} 0
+node_network_transmit_packets{device="dummy0"} 0
+node_network_transmit_packets{device="eth0"} 73426
+node_network_transmit_packets{device="lo"} 301812
+node_network_transmit_packets{device="tun0"} 0
+node_network_transmit_packets{device="veth31e02f7"} 10
+node_network_transmit_packets{device="veth6eb595f"} 158
+node_network_transmit_packets{device="veth9c8979b"} 2314
+node_network_transmit_packets{device="vethwe-bridge"} 1
+node_network_transmit_packets{device="vethwe-datapath"} 3
+node_network_transmit_packets{device="weave"} 1
+# HELP node_nf_conntrack_entries Number of currently allocated flow entries for connection tracking.
+# TYPE node_nf_conntrack_entries gauge
+node_nf_conntrack_entries 352
+# HELP node_nf_conntrack_entries_limit Maximum size of connection tracking table.
+# TYPE node_nf_conntrack_entries_limit gauge
+node_nf_conntrack_entries_limit 65536
+# HELP node_procs_blocked Number of processes blocked waiting for I/O to complete.
+# TYPE node_procs_blocked gauge
+node_procs_blocked 0
+# HELP node_procs_running Number of processes in runnable state.
+# TYPE node_procs_running gauge
+node_procs_running 6
+# HELP node_sockstat_FRAG_inuse Number of FRAG sockets in state inuse.
+# TYPE node_sockstat_FRAG_inuse gauge
+node_sockstat_FRAG_inuse 0
+# HELP node_sockstat_FRAG_memory Number of FRAG sockets in state memory.
+# TYPE node_sockstat_FRAG_memory gauge
+node_sockstat_FRAG_memory 0
+# HELP node_sockstat_RAW_inuse Number of RAW sockets in state inuse.
+# TYPE node_sockstat_RAW_inuse gauge
+node_sockstat_RAW_inuse 3
+# HELP node_sockstat_TCP_alloc Number of TCP sockets in state alloc.
+# TYPE node_sockstat_TCP_alloc gauge
+node_sockstat_TCP_alloc 117
+# HELP node_sockstat_TCP_inuse Number of TCP sockets in state inuse.
+# TYPE node_sockstat_TCP_inuse gauge
+node_sockstat_TCP_inuse 67
+# HELP node_sockstat_TCP_mem Number of TCP sockets in state mem.
+# TYPE node_sockstat_TCP_mem gauge
+node_sockstat_TCP_mem 29
+# HELP node_sockstat_TCP_mem_bytes Number of TCP sockets in state mem_bytes.
+# TYPE node_sockstat_TCP_mem_bytes gauge
+node_sockstat_TCP_mem_bytes 118784
+# HELP node_sockstat_TCP_orphan Number of TCP sockets in state orphan.
+# TYPE node_sockstat_TCP_orphan gauge
+node_sockstat_TCP_orphan 0
+# HELP node_sockstat_TCP_tw Number of TCP sockets in state tw.
+# TYPE node_sockstat_TCP_tw gauge
+node_sockstat_TCP_tw 85
+# HELP node_sockstat_UDPLITE_inuse Number of UDPLITE sockets in state inuse.
+# TYPE node_sockstat_UDPLITE_inuse gauge
+node_sockstat_UDPLITE_inuse 0
+# HELP node_sockstat_UDP_inuse Number of UDP sockets in state inuse.
+# TYPE node_sockstat_UDP_inuse gauge
+node_sockstat_UDP_inuse 11
+# HELP node_sockstat_UDP_mem Number of UDP sockets in state mem.
+# TYPE node_sockstat_UDP_mem gauge
+node_sockstat_UDP_mem 2
+# HELP node_sockstat_UDP_mem_bytes Number of UDP sockets in state mem_bytes.
+# TYPE node_sockstat_UDP_mem_bytes gauge
+node_sockstat_UDP_mem_bytes 8192
+# HELP node_sockstat_sockets_used Number of sockets sockets in state used.
+# TYPE node_sockstat_sockets_used gauge
+node_sockstat_sockets_used 323
+# HELP node_supervisord_exit_status Process Exit Status
+# TYPE node_supervisord_exit_status gauge
+node_supervisord_exit_status{group="cadvisor",name="cadvisor"} 0
+node_supervisord_exit_status{group="consul_exporter",name="consul_exporter"} 0
+node_supervisord_exit_status{group="gluster_exporter",name="gluster_exporter"} 0
+node_supervisord_exit_status{group="node_exporter",name="node_exporter"} 0
+# HELP node_supervisord_state Process State
+# TYPE node_supervisord_state gauge
+node_supervisord_state{group="cadvisor",name="cadvisor"} 20
+node_supervisord_state{group="consul_exporter",name="consul_exporter"} 20
+node_supervisord_state{group="gluster_exporter",name="gluster_exporter"} 20
+node_supervisord_state{group="node_exporter",name="node_exporter"} 20
+# HELP node_supervisord_up Process Up
+# TYPE node_supervisord_up gauge
+node_supervisord_up{group="cadvisor",name="cadvisor"} 1
+node_supervisord_up{group="consul_exporter",name="consul_exporter"} 1
+node_supervisord_up{group="gluster_exporter",name="gluster_exporter"} 1
+node_supervisord_up{group="node_exporter",name="node_exporter"} 1
+# HELP node_supervisord_uptime Process Uptime
+# TYPE node_supervisord_uptime counter
+node_supervisord_uptime{group="cadvisor",name="cadvisor"} 1246
+node_supervisord_uptime{group="consul_exporter",name="consul_exporter"} 1246
+node_supervisord_uptime{group="gluster_exporter",name="gluster_exporter"} 619
+node_supervisord_uptime{group="node_exporter",name="node_exporter"} 1246
+# HELP node_systemd_system_running Whether the system is operational (see 'systemctl is-system-running')
+# TYPE node_systemd_system_running gauge
+node_systemd_system_running 1
+# HELP node_systemd_unit_state Systemd unit
+# TYPE node_systemd_unit_state gauge
+node_systemd_unit_state{name="-.mount",state="activating"} 0
+node_systemd_unit_state{name="-.mount",state="active"} 1
+node_systemd_unit_state{name="-.mount",state="deactivating"} 0
+node_systemd_unit_state{name="-.mount",state="failed"} 0
+node_systemd_unit_state{name="-.mount",state="inactive"} 0
+node_systemd_unit_state{name="-.slice",state="activating"} 0
+node_systemd_unit_state{name="-.slice",state="active"} 1
+node_systemd_unit_state{name="-.slice",state="deactivating"} 0
+node_systemd_unit_state{name="-.slice",state="failed"} 0
+node_systemd_unit_state{name="-.slice",state="inactive"} 0
+node_systemd_unit_state{name="acpid.path",state="activating"} 0
+node_systemd_unit_state{name="acpid.path",state="active"} 1
+node_systemd_unit_state{name="acpid.path",state="deactivating"} 0
+node_systemd_unit_state{name="acpid.path",state="failed"} 0
+node_systemd_unit_state{name="acpid.path",state="inactive"} 0
+node_systemd_unit_state{name="acpid.service",state="activating"} 0
+node_systemd_unit_state{name="acpid.service",state="active"} 1
+node_systemd_unit_state{name="acpid.service",state="deactivating"} 0
+node_systemd_unit_state{name="acpid.service",state="failed"} 0
+node_systemd_unit_state{name="acpid.service",state="inactive"} 0
+node_systemd_unit_state{name="acpid.socket",state="activating"} 0
+node_systemd_unit_state{name="acpid.socket",state="active"} 1
+node_systemd_unit_state{name="acpid.socket",state="deactivating"} 0
+node_systemd_unit_state{name="acpid.socket",state="failed"} 0
+node_systemd_unit_state{name="acpid.socket",state="inactive"} 0
+node_systemd_unit_state{name="atd.service",state="activating"} 0
+node_systemd_unit_state{name="atd.service",state="active"} 1
+node_systemd_unit_state{name="atd.service",state="deactivating"} 0
+node_systemd_unit_state{name="atd.service",state="failed"} 0
+node_systemd_unit_state{name="atd.service",state="inactive"} 0
+node_systemd_unit_state{name="auditd.service",state="activating"} 0
+node_systemd_unit_state{name="auditd.service",state="active"} 0
+node_systemd_unit_state{name="auditd.service",state="deactivating"} 0
+node_systemd_unit_state{name="auditd.service",state="failed"} 0
+node_systemd_unit_state{name="auditd.service",state="inactive"} 1
+node_systemd_unit_state{name="basic.target",state="activating"} 0
+node_systemd_unit_state{name="basic.target",state="active"} 1
+node_systemd_unit_state{name="basic.target",state="deactivating"} 0
+node_systemd_unit_state{name="basic.target",state="failed"} 0
+node_systemd_unit_state{name="basic.target",state="inactive"} 0
+node_systemd_unit_state{name="bind9.service",state="activating"} 0
+node_systemd_unit_state{name="bind9.service",state="active"} 1
+node_systemd_unit_state{name="bind9.service",state="deactivating"} 0
+node_systemd_unit_state{name="bind9.service",state="failed"} 0
+node_systemd_unit_state{name="bind9.service",state="inactive"} 0
+node_systemd_unit_state{name="cgroupfs-mount.service",state="activating"} 0
+node_systemd_unit_state{name="cgroupfs-mount.service",state="active"} 1
+node_systemd_unit_state{name="cgroupfs-mount.service",state="deactivating"} 0
+node_systemd_unit_state{name="cgroupfs-mount.service",state="failed"} 0
+node_systemd_unit_state{name="cgroupfs-mount.service",state="inactive"} 0
+node_systemd_unit_state{name="clamav-daemon.service",state="activating"} 0
+node_systemd_unit_state{name="clamav-daemon.service",state="active"} 0
+node_systemd_unit_state{name="clamav-daemon.service",state="deactivating"} 0
+node_systemd_unit_state{name="clamav-daemon.service",state="failed"} 0
+node_systemd_unit_state{name="clamav-daemon.service",state="inactive"} 1
+node_systemd_unit_state{name="console-screen.service",state="activating"} 0
+node_systemd_unit_state{name="console-screen.service",state="active"} 0
+node_systemd_unit_state{name="console-screen.service",state="deactivating"} 0
+node_systemd_unit_state{name="console-screen.service",state="failed"} 0
+node_systemd_unit_state{name="console-screen.service",state="inactive"} 1
+node_systemd_unit_state{name="console-setup.service",state="activating"} 0
+node_systemd_unit_state{name="console-setup.service",state="active"} 1
+node_systemd_unit_state{name="console-setup.service",state="deactivating"} 0
+node_systemd_unit_state{name="console-setup.service",state="failed"} 0
+node_systemd_unit_state{name="console-setup.service",state="inactive"} 0
+node_systemd_unit_state{name="consul.service",state="activating"} 0
+node_systemd_unit_state{name="consul.service",state="active"} 1
+node_systemd_unit_state{name="consul.service",state="deactivating"} 0
+node_systemd_unit_state{name="consul.service",state="failed"} 0
+node_systemd_unit_state{name="consul.service",state="inactive"} 0
+node_systemd_unit_state{name="cron.service",state="activating"} 0
+node_systemd_unit_state{name="cron.service",state="active"} 1
+node_systemd_unit_state{name="cron.service",state="deactivating"} 0
+node_systemd_unit_state{name="cron.service",state="failed"} 0
+node_systemd_unit_state{name="cron.service",state="inactive"} 0
+node_systemd_unit_state{name="cryptsetup.target",state="activating"} 0
+node_systemd_unit_state{name="cryptsetup.target",state="active"} 1
+node_systemd_unit_state{name="cryptsetup.target",state="deactivating"} 0
+node_systemd_unit_state{name="cryptsetup.target",state="failed"} 0
+node_systemd_unit_state{name="cryptsetup.target",state="inactive"} 0
+node_systemd_unit_state{name="dbus.service",state="activating"} 0
+node_systemd_unit_state{name="dbus.service",state="active"} 1
+node_systemd_unit_state{name="dbus.service",state="deactivating"} 0
+node_systemd_unit_state{name="dbus.service",state="failed"} 0
+node_systemd_unit_state{name="dbus.service",state="inactive"} 0
+node_systemd_unit_state{name="dbus.socket",state="activating"} 0
+node_systemd_unit_state{name="dbus.socket",state="active"} 1
+node_systemd_unit_state{name="dbus.socket",state="deactivating"} 0
+node_systemd_unit_state{name="dbus.socket",state="failed"} 0
+node_systemd_unit_state{name="dbus.socket",state="inactive"} 0
+node_systemd_unit_state{name="debian-fixup.service",state="activating"} 0
+node_systemd_unit_state{name="debian-fixup.service",state="active"} 0
+node_systemd_unit_state{name="debian-fixup.service",state="deactivating"} 0
+node_systemd_unit_state{name="debian-fixup.service",state="failed"} 0
+node_systemd_unit_state{name="debian-fixup.service",state="inactive"} 1
+node_systemd_unit_state{name="dev-cdrom.device",state="activating"} 0
+node_systemd_unit_state{name="dev-cdrom.device",state="active"} 1
+node_systemd_unit_state{name="dev-cdrom.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-cdrom.device",state="failed"} 0
+node_systemd_unit_state{name="dev-cdrom.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dHL\\x2dDT\\x2dSTDVD\\x2dROM_GDR\\x2dT10N.device",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dHL\\x2dDT\\x2dSTDVD\\x2dROM_GDR\\x2dT10N.device",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dHL\\x2dDT\\x2dSTDVD\\x2dROM_GDR\\x2dT10N.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dHL\\x2dDT\\x2dSTDVD\\x2dROM_GDR\\x2dT10N.device",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dHL\\x2dDT\\x2dSTDVD\\x2dROM_GDR\\x2dT10N.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1.device",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1.device",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1.device",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart1.device",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart1.device",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart1.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart1.device",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart1.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.device",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.device",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.device",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.swap",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.swap",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.swap",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.swap",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2did-ata\\x2dST380815AS_6QZ72TJ1\\x2dpart2.swap",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-064404ca\\x2d570c\\x2d4fbe\\x2daa3b\\x2d739bcf2f3491.device",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-064404ca\\x2d570c\\x2d4fbe\\x2daa3b\\x2d739bcf2f3491.device",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-064404ca\\x2d570c\\x2d4fbe\\x2daa3b\\x2d739bcf2f3491.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-064404ca\\x2d570c\\x2d4fbe\\x2daa3b\\x2d739bcf2f3491.device",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-064404ca\\x2d570c\\x2d4fbe\\x2daa3b\\x2d739bcf2f3491.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.device",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.device",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.device",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.swap",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.swap",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.swap",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.swap",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-186d957b\\x2d4a36\\x2d421d\\x2d8bbb\\x2d876678ca3453.swap",state="inactive"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-4940728c\\x2dcb48\\x2d46c7\\x2dbf9e\\x2db0d436ba9448.device",state="activating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-4940728c\\x2dcb48\\x2d46c7\\x2dbf9e\\x2db0d436ba9448.device",state="active"} 1
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-4940728c\\x2dcb48\\x2d46c7\\x2dbf9e\\x2db0d436ba9448.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-4940728c\\x2dcb48\\x2d46c7\\x2dbf9e\\x2db0d436ba9448.device",state="failed"} 0
+node_systemd_unit_state{name="dev-disk-by\\x2duuid-4940728c\\x2dcb48\\x2d46c7\\x2dbf9e\\x2db0d436ba9448.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-dvd.device",state="activating"} 0
+node_systemd_unit_state{name="dev-dvd.device",state="active"} 1
+node_systemd_unit_state{name="dev-dvd.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-dvd.device",state="failed"} 0
+node_systemd_unit_state{name="dev-dvd.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-hugepages.mount",state="activating"} 0
+node_systemd_unit_state{name="dev-hugepages.mount",state="active"} 1
+node_systemd_unit_state{name="dev-hugepages.mount",state="deactivating"} 0
+node_systemd_unit_state{name="dev-hugepages.mount",state="failed"} 0
+node_systemd_unit_state{name="dev-hugepages.mount",state="inactive"} 0
+node_systemd_unit_state{name="dev-loop0.device",state="activating"} 0
+node_systemd_unit_state{name="dev-loop0.device",state="active"} 1
+node_systemd_unit_state{name="dev-loop0.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-loop0.device",state="failed"} 0
+node_systemd_unit_state{name="dev-loop0.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-mqueue.mount",state="activating"} 0
+node_systemd_unit_state{name="dev-mqueue.mount",state="active"} 1
+node_systemd_unit_state{name="dev-mqueue.mount",state="deactivating"} 0
+node_systemd_unit_state{name="dev-mqueue.mount",state="failed"} 0
+node_systemd_unit_state{name="dev-mqueue.mount",state="inactive"} 0
+node_systemd_unit_state{name="dev-sda.device",state="activating"} 0
+node_systemd_unit_state{name="dev-sda.device",state="active"} 1
+node_systemd_unit_state{name="dev-sda.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-sda.device",state="failed"} 0
+node_systemd_unit_state{name="dev-sda.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-sda1.device",state="activating"} 0
+node_systemd_unit_state{name="dev-sda1.device",state="active"} 1
+node_systemd_unit_state{name="dev-sda1.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-sda1.device",state="failed"} 0
+node_systemd_unit_state{name="dev-sda1.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-sda2.device",state="activating"} 0
+node_systemd_unit_state{name="dev-sda2.device",state="active"} 1
+node_systemd_unit_state{name="dev-sda2.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-sda2.device",state="failed"} 0
+node_systemd_unit_state{name="dev-sda2.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-sda2.swap",state="activating"} 0
+node_systemd_unit_state{name="dev-sda2.swap",state="active"} 1
+node_systemd_unit_state{name="dev-sda2.swap",state="deactivating"} 0
+node_systemd_unit_state{name="dev-sda2.swap",state="failed"} 0
+node_systemd_unit_state{name="dev-sda2.swap",state="inactive"} 0
+node_systemd_unit_state{name="dev-sr0.device",state="activating"} 0
+node_systemd_unit_state{name="dev-sr0.device",state="active"} 1
+node_systemd_unit_state{name="dev-sr0.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-sr0.device",state="failed"} 0
+node_systemd_unit_state{name="dev-sr0.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-ttyS0.device",state="activating"} 0
+node_systemd_unit_state{name="dev-ttyS0.device",state="active"} 1
+node_systemd_unit_state{name="dev-ttyS0.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-ttyS0.device",state="failed"} 0
+node_systemd_unit_state{name="dev-ttyS0.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-ttyS1.device",state="activating"} 0
+node_systemd_unit_state{name="dev-ttyS1.device",state="active"} 1
+node_systemd_unit_state{name="dev-ttyS1.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-ttyS1.device",state="failed"} 0
+node_systemd_unit_state{name="dev-ttyS1.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-ttyS2.device",state="activating"} 0
+node_systemd_unit_state{name="dev-ttyS2.device",state="active"} 1
+node_systemd_unit_state{name="dev-ttyS2.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-ttyS2.device",state="failed"} 0
+node_systemd_unit_state{name="dev-ttyS2.device",state="inactive"} 0
+node_systemd_unit_state{name="dev-ttyS3.device",state="activating"} 0
+node_systemd_unit_state{name="dev-ttyS3.device",state="active"} 1
+node_systemd_unit_state{name="dev-ttyS3.device",state="deactivating"} 0
+node_systemd_unit_state{name="dev-ttyS3.device",state="failed"} 0
+node_systemd_unit_state{name="dev-ttyS3.device",state="inactive"} 0
+node_systemd_unit_state{name="display-manager.service",state="activating"} 0
+node_systemd_unit_state{name="display-manager.service",state="active"} 0
+node_systemd_unit_state{name="display-manager.service",state="deactivating"} 0
+node_systemd_unit_state{name="display-manager.service",state="failed"} 0
+node_systemd_unit_state{name="display-manager.service",state="inactive"} 1
+node_systemd_unit_state{name="docker.service",state="activating"} 0
+node_systemd_unit_state{name="docker.service",state="active"} 1
+node_systemd_unit_state{name="docker.service",state="deactivating"} 0
+node_systemd_unit_state{name="docker.service",state="failed"} 0
+node_systemd_unit_state{name="docker.service",state="inactive"} 0
+node_systemd_unit_state{name="docker.socket",state="activating"} 0
+node_systemd_unit_state{name="docker.socket",state="active"} 1
+node_systemd_unit_state{name="docker.socket",state="deactivating"} 0
+node_systemd_unit_state{name="docker.socket",state="failed"} 0
+node_systemd_unit_state{name="docker.socket",state="inactive"} 0
+node_systemd_unit_state{name="emergency.service",state="activating"} 0
+node_systemd_unit_state{name="emergency.service",state="active"} 0
+node_systemd_unit_state{name="emergency.service",state="deactivating"} 0
+node_systemd_unit_state{name="emergency.service",state="failed"} 0
+node_systemd_unit_state{name="emergency.service",state="inactive"} 1
+node_systemd_unit_state{name="emergency.target",state="activating"} 0
+node_systemd_unit_state{name="emergency.target",state="active"} 0
+node_systemd_unit_state{name="emergency.target",state="deactivating"} 0
+node_systemd_unit_state{name="emergency.target",state="failed"} 0
+node_systemd_unit_state{name="emergency.target",state="inactive"} 1
+node_systemd_unit_state{name="exim4.service",state="activating"} 0
+node_systemd_unit_state{name="exim4.service",state="active"} 1
+node_systemd_unit_state{name="exim4.service",state="deactivating"} 0
+node_systemd_unit_state{name="exim4.service",state="failed"} 0
+node_systemd_unit_state{name="exim4.service",state="inactive"} 0
+node_systemd_unit_state{name="firewalld.service",state="activating"} 0
+node_systemd_unit_state{name="firewalld.service",state="active"} 0
+node_systemd_unit_state{name="firewalld.service",state="deactivating"} 0
+node_systemd_unit_state{name="firewalld.service",state="failed"} 0
+node_systemd_unit_state{name="firewalld.service",state="inactive"} 1
+node_systemd_unit_state{name="getty-static.service",state="activating"} 0
+node_systemd_unit_state{name="getty-static.service",state="active"} 0
+node_systemd_unit_state{name="getty-static.service",state="deactivating"} 0
+node_systemd_unit_state{name="getty-static.service",state="failed"} 0
+node_systemd_unit_state{name="getty-static.service",state="inactive"} 1
+node_systemd_unit_state{name="getty.target",state="activating"} 0
+node_systemd_unit_state{name="getty.target",state="active"} 1
+node_systemd_unit_state{name="getty.target",state="deactivating"} 0
+node_systemd_unit_state{name="getty.target",state="failed"} 0
+node_systemd_unit_state{name="getty.target",state="inactive"} 0
+node_systemd_unit_state{name="getty@tty1.service",state="activating"} 0
+node_systemd_unit_state{name="getty@tty1.service",state="active"} 1
+node_systemd_unit_state{name="getty@tty1.service",state="deactivating"} 0
+node_systemd_unit_state{name="getty@tty1.service",state="failed"} 0
+node_systemd_unit_state{name="getty@tty1.service",state="inactive"} 0
+node_systemd_unit_state{name="glusterfs-server.service",state="activating"} 0
+node_systemd_unit_state{name="glusterfs-server.service",state="active"} 1
+node_systemd_unit_state{name="glusterfs-server.service",state="deactivating"} 0
+node_systemd_unit_state{name="glusterfs-server.service",state="failed"} 0
+node_systemd_unit_state{name="glusterfs-server.service",state="inactive"} 0
+node_systemd_unit_state{name="glustermounts.service",state="activating"} 0
+node_systemd_unit_state{name="glustermounts.service",state="active"} 1
+node_systemd_unit_state{name="glustermounts.service",state="deactivating"} 0
+node_systemd_unit_state{name="glustermounts.service",state="failed"} 0
+node_systemd_unit_state{name="glustermounts.service",state="inactive"} 0
+node_systemd_unit_state{name="graphical.target",state="activating"} 0
+node_systemd_unit_state{name="graphical.target",state="active"} 1
+node_systemd_unit_state{name="graphical.target",state="deactivating"} 0
+node_systemd_unit_state{name="graphical.target",state="failed"} 0
+node_systemd_unit_state{name="graphical.target",state="inactive"} 0
+node_systemd_unit_state{name="greylist.service",state="activating"} 0
+node_systemd_unit_state{name="greylist.service",state="active"} 0
+node_systemd_unit_state{name="greylist.service",state="deactivating"} 0
+node_systemd_unit_state{name="greylist.service",state="failed"} 0
+node_systemd_unit_state{name="greylist.service",state="inactive"} 1
+node_systemd_unit_state{name="httpd.service",state="activating"} 0
+node_systemd_unit_state{name="httpd.service",state="active"} 0
+node_systemd_unit_state{name="httpd.service",state="deactivating"} 0
+node_systemd_unit_state{name="httpd.service",state="failed"} 0
+node_systemd_unit_state{name="httpd.service",state="inactive"} 1
+node_systemd_unit_state{name="ifup@eth0.service",state="activating"} 0
+node_systemd_unit_state{name="ifup@eth0.service",state="active"} 1
+node_systemd_unit_state{name="ifup@eth0.service",state="deactivating"} 0
+node_systemd_unit_state{name="ifup@eth0.service",state="failed"} 0
+node_systemd_unit_state{name="ifup@eth0.service",state="inactive"} 0
+node_systemd_unit_state{name="kbd.service",state="activating"} 0
+node_systemd_unit_state{name="kbd.service",state="active"} 1
+node_systemd_unit_state{name="kbd.service",state="deactivating"} 0
+node_systemd_unit_state{name="kbd.service",state="failed"} 0
+node_systemd_unit_state{name="kbd.service",state="inactive"} 0
+node_systemd_unit_state{name="keyboard-setup.service",state="activating"} 0
+node_systemd_unit_state{name="keyboard-setup.service",state="active"} 1
+node_systemd_unit_state{name="keyboard-setup.service",state="deactivating"} 0
+node_systemd_unit_state{name="keyboard-setup.service",state="failed"} 0
+node_systemd_unit_state{name="keyboard-setup.service",state="inactive"} 0
+node_systemd_unit_state{name="keymap.service",state="activating"} 0
+node_systemd_unit_state{name="keymap.service",state="active"} 0
+node_systemd_unit_state{name="keymap.service",state="deactivating"} 0
+node_systemd_unit_state{name="keymap.service",state="failed"} 0
+node_systemd_unit_state{name="keymap.service",state="inactive"} 1
+node_systemd_unit_state{name="kmod-static-nodes.service",state="activating"} 0
+node_systemd_unit_state{name="kmod-static-nodes.service",state="active"} 1
+node_systemd_unit_state{name="kmod-static-nodes.service",state="deactivating"} 0
+node_systemd_unit_state{name="kmod-static-nodes.service",state="failed"} 0
+node_systemd_unit_state{name="kmod-static-nodes.service",state="inactive"} 0
+node_systemd_unit_state{name="lm-sensors.service",state="activating"} 0
+node_systemd_unit_state{name="lm-sensors.service",state="active"} 1
+node_systemd_unit_state{name="lm-sensors.service",state="deactivating"} 0
+node_systemd_unit_state{name="lm-sensors.service",state="failed"} 0
+node_systemd_unit_state{name="lm-sensors.service",state="inactive"} 0
+node_systemd_unit_state{name="local-fs-pre.target",state="activating"} 0
+node_systemd_unit_state{name="local-fs-pre.target",state="active"} 1
+node_systemd_unit_state{name="local-fs-pre.target",state="deactivating"} 0
+node_systemd_unit_state{name="local-fs-pre.target",state="failed"} 0
+node_systemd_unit_state{name="local-fs-pre.target",state="inactive"} 0
+node_systemd_unit_state{name="local-fs.target",state="activating"} 0
+node_systemd_unit_state{name="local-fs.target",state="active"} 1
+node_systemd_unit_state{name="local-fs.target",state="deactivating"} 0
+node_systemd_unit_state{name="local-fs.target",state="failed"} 0
+node_systemd_unit_state{name="local-fs.target",state="inactive"} 0
+node_systemd_unit_state{name="mnt-cluster.mount",state="activating"} 0
+node_systemd_unit_state{name="mnt-cluster.mount",state="active"} 1
+node_systemd_unit_state{name="mnt-cluster.mount",state="deactivating"} 0
+node_systemd_unit_state{name="mnt-cluster.mount",state="failed"} 0
+node_systemd_unit_state{name="mnt-cluster.mount",state="inactive"} 0
+node_systemd_unit_state{name="mnt-gluster.mount",state="activating"} 0
+node_systemd_unit_state{name="mnt-gluster.mount",state="active"} 1
+node_systemd_unit_state{name="mnt-gluster.mount",state="deactivating"} 0
+node_systemd_unit_state{name="mnt-gluster.mount",state="failed"} 0
+node_systemd_unit_state{name="mnt-gluster.mount",state="inactive"} 0
+node_systemd_unit_state{name="mnt-leoticket.mount",state="activating"} 0
+node_systemd_unit_state{name="mnt-leoticket.mount",state="active"} 1
+node_systemd_unit_state{name="mnt-leoticket.mount",state="deactivating"} 0
+node_systemd_unit_state{name="mnt-leoticket.mount",state="failed"} 0
+node_systemd_unit_state{name="mnt-leoticket.mount",state="inactive"} 0
+node_systemd_unit_state{name="mountkernfs.service",state="activating"} 0
+node_systemd_unit_state{name="mountkernfs.service",state="active"} 0
+node_systemd_unit_state{name="mountkernfs.service",state="deactivating"} 0
+node_systemd_unit_state{name="mountkernfs.service",state="failed"} 0
+node_systemd_unit_state{name="mountkernfs.service",state="inactive"} 1
+node_systemd_unit_state{name="multi-user.target",state="activating"} 0
+node_systemd_unit_state{name="multi-user.target",state="active"} 1
+node_systemd_unit_state{name="multi-user.target",state="deactivating"} 0
+node_systemd_unit_state{name="multi-user.target",state="failed"} 0
+node_systemd_unit_state{name="multi-user.target",state="inactive"} 0
+node_systemd_unit_state{name="mysql.service",state="activating"} 0
+node_systemd_unit_state{name="mysql.service",state="active"} 0
+node_systemd_unit_state{name="mysql.service",state="deactivating"} 0
+node_systemd_unit_state{name="mysql.service",state="failed"} 0
+node_systemd_unit_state{name="mysql.service",state="inactive"} 1
+node_systemd_unit_state{name="mysqld.service",state="activating"} 0
+node_systemd_unit_state{name="mysqld.service",state="active"} 0
+node_systemd_unit_state{name="mysqld.service",state="deactivating"} 0
+node_systemd_unit_state{name="mysqld.service",state="failed"} 0
+node_systemd_unit_state{name="mysqld.service",state="inactive"} 1
+node_systemd_unit_state{name="named.service",state="activating"} 0
+node_systemd_unit_state{name="named.service",state="active"} 0
+node_systemd_unit_state{name="named.service",state="deactivating"} 0
+node_systemd_unit_state{name="named.service",state="failed"} 0
+node_systemd_unit_state{name="named.service",state="inactive"} 1
+node_systemd_unit_state{name="netdata.service",state="activating"} 0
+node_systemd_unit_state{name="netdata.service",state="active"} 1
+node_systemd_unit_state{name="netdata.service",state="deactivating"} 0
+node_systemd_unit_state{name="netdata.service",state="failed"} 0
+node_systemd_unit_state{name="netdata.service",state="inactive"} 0
+node_systemd_unit_state{name="network-online.target",state="activating"} 0
+node_systemd_unit_state{name="network-online.target",state="active"} 1
+node_systemd_unit_state{name="network-online.target",state="deactivating"} 0
+node_systemd_unit_state{name="network-online.target",state="failed"} 0
+node_systemd_unit_state{name="network-online.target",state="inactive"} 0
+node_systemd_unit_state{name="network-pre.target",state="activating"} 0
+node_systemd_unit_state{name="network-pre.target",state="active"} 0
+node_systemd_unit_state{name="network-pre.target",state="deactivating"} 0
+node_systemd_unit_state{name="network-pre.target",state="failed"} 0
+node_systemd_unit_state{name="network-pre.target",state="inactive"} 1
+node_systemd_unit_state{name="network.target",state="activating"} 0
+node_systemd_unit_state{name="network.target",state="active"} 1
+node_systemd_unit_state{name="network.target",state="deactivating"} 0
+node_systemd_unit_state{name="network.target",state="failed"} 0
+node_systemd_unit_state{name="network.target",state="inactive"} 0
+node_systemd_unit_state{name="networking.service",state="activating"} 0
+node_systemd_unit_state{name="networking.service",state="active"} 1
+node_systemd_unit_state{name="networking.service",state="deactivating"} 0
+node_systemd_unit_state{name="networking.service",state="failed"} 0
+node_systemd_unit_state{name="networking.service",state="inactive"} 0
+node_systemd_unit_state{name="nfs-common.service",state="activating"} 0
+node_systemd_unit_state{name="nfs-common.service",state="active"} 1
+node_systemd_unit_state{name="nfs-common.service",state="deactivating"} 0
+node_systemd_unit_state{name="nfs-common.service",state="failed"} 0
+node_systemd_unit_state{name="nfs-common.service",state="inactive"} 0
+node_systemd_unit_state{name="nfs-server.service",state="activating"} 0
+node_systemd_unit_state{name="nfs-server.service",state="active"} 0
+node_systemd_unit_state{name="nfs-server.service",state="deactivating"} 0
+node_systemd_unit_state{name="nfs-server.service",state="failed"} 0
+node_systemd_unit_state{name="nfs-server.service",state="inactive"} 1
+node_systemd_unit_state{name="nginx.service",state="activating"} 0
+node_systemd_unit_state{name="nginx.service",state="active"} 1
+node_systemd_unit_state{name="nginx.service",state="deactivating"} 0
+node_systemd_unit_state{name="nginx.service",state="failed"} 0
+node_systemd_unit_state{name="nginx.service",state="inactive"} 0
+node_systemd_unit_state{name="nss-lookup.target",state="activating"} 0
+node_systemd_unit_state{name="nss-lookup.target",state="active"} 1
+node_systemd_unit_state{name="nss-lookup.target",state="deactivating"} 0
+node_systemd_unit_state{name="nss-lookup.target",state="failed"} 0
+node_systemd_unit_state{name="nss-lookup.target",state="inactive"} 0
+node_systemd_unit_state{name="nss-user-lookup.target",state="activating"} 0
+node_systemd_unit_state{name="nss-user-lookup.target",state="active"} 0
+node_systemd_unit_state{name="nss-user-lookup.target",state="deactivating"} 0
+node_systemd_unit_state{name="nss-user-lookup.target",state="failed"} 0
+node_systemd_unit_state{name="nss-user-lookup.target",state="inactive"} 1
+node_systemd_unit_state{name="openvpn.service",state="activating"} 0
+node_systemd_unit_state{name="openvpn.service",state="active"} 1
+node_systemd_unit_state{name="openvpn.service",state="deactivating"} 0
+node_systemd_unit_state{name="openvpn.service",state="failed"} 0
+node_systemd_unit_state{name="openvpn.service",state="inactive"} 0
+node_systemd_unit_state{name="openvpn@cluster.service",state="activating"} 0
+node_systemd_unit_state{name="openvpn@cluster.service",state="active"} 1
+node_systemd_unit_state{name="openvpn@cluster.service",state="deactivating"} 0
+node_systemd_unit_state{name="openvpn@cluster.service",state="failed"} 0
+node_systemd_unit_state{name="openvpn@cluster.service",state="inactive"} 0
+node_systemd_unit_state{name="paths.target",state="activating"} 0
+node_systemd_unit_state{name="paths.target",state="active"} 1
+node_systemd_unit_state{name="paths.target",state="deactivating"} 0
+node_systemd_unit_state{name="paths.target",state="failed"} 0
+node_systemd_unit_state{name="paths.target",state="inactive"} 0
+node_systemd_unit_state{name="plymouth-quit-wait.service",state="activating"} 0
+node_systemd_unit_state{name="plymouth-quit-wait.service",state="active"} 0
+node_systemd_unit_state{name="plymouth-quit-wait.service",state="deactivating"} 0
+node_systemd_unit_state{name="plymouth-quit-wait.service",state="failed"} 0
+node_systemd_unit_state{name="plymouth-quit-wait.service",state="inactive"} 1
+node_systemd_unit_state{name="plymouth-quit.service",state="activating"} 0
+node_systemd_unit_state{name="plymouth-quit.service",state="active"} 0
+node_systemd_unit_state{name="plymouth-quit.service",state="deactivating"} 0
+node_systemd_unit_state{name="plymouth-quit.service",state="failed"} 0
+node_systemd_unit_state{name="plymouth-quit.service",state="inactive"} 1
+node_systemd_unit_state{name="plymouth-read-write.service",state="activating"} 0
+node_systemd_unit_state{name="plymouth-read-write.service",state="active"} 0
+node_systemd_unit_state{name="plymouth-read-write.service",state="deactivating"} 0
+node_systemd_unit_state{name="plymouth-read-write.service",state="failed"} 0
+node_systemd_unit_state{name="plymouth-read-write.service",state="inactive"} 1
+node_systemd_unit_state{name="plymouth-start.service",state="activating"} 0
+node_systemd_unit_state{name="plymouth-start.service",state="active"} 0
+node_systemd_unit_state{name="plymouth-start.service",state="deactivating"} 0
+node_systemd_unit_state{name="plymouth-start.service",state="failed"} 0
+node_systemd_unit_state{name="plymouth-start.service",state="inactive"} 1
+node_systemd_unit_state{name="postfix.service",state="activating"} 0
+node_systemd_unit_state{name="postfix.service",state="active"} 0
+node_systemd_unit_state{name="postfix.service",state="deactivating"} 0
+node_systemd_unit_state{name="postfix.service",state="failed"} 0
+node_systemd_unit_state{name="postfix.service",state="inactive"} 1
+node_systemd_unit_state{name="postgresql.service",state="activating"} 0
+node_systemd_unit_state{name="postgresql.service",state="active"} 0
+node_systemd_unit_state{name="postgresql.service",state="deactivating"} 0
+node_systemd_unit_state{name="postgresql.service",state="failed"} 0
+node_systemd_unit_state{name="postgresql.service",state="inactive"} 1
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.automount",state="activating"} 0
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.automount",state="active"} 1
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.automount",state="deactivating"} 0
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.automount",state="failed"} 0
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.automount",state="inactive"} 0
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.mount",state="activating"} 0
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.mount",state="active"} 0
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.mount",state="deactivating"} 0
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.mount",state="failed"} 0
+node_systemd_unit_state{name="proc-sys-fs-binfmt_misc.mount",state="inactive"} 1
+node_systemd_unit_state{name="rc-local.service",state="activating"} 0
+node_systemd_unit_state{name="rc-local.service",state="active"} 1
+node_systemd_unit_state{name="rc-local.service",state="deactivating"} 0
+node_systemd_unit_state{name="rc-local.service",state="failed"} 0
+node_systemd_unit_state{name="rc-local.service",state="inactive"} 0
+node_systemd_unit_state{name="remote-fs-pre.target",state="activating"} 0
+node_systemd_unit_state{name="remote-fs-pre.target",state="active"} 1
+node_systemd_unit_state{name="remote-fs-pre.target",state="deactivating"} 0
+node_systemd_unit_state{name="remote-fs-pre.target",state="failed"} 0
+node_systemd_unit_state{name="remote-fs-pre.target",state="inactive"} 0
+node_systemd_unit_state{name="remote-fs.target",state="activating"} 0
+node_systemd_unit_state{name="remote-fs.target",state="active"} 1
+node_systemd_unit_state{name="remote-fs.target",state="deactivating"} 0
+node_systemd_unit_state{name="remote-fs.target",state="failed"} 0
+node_systemd_unit_state{name="remote-fs.target",state="inactive"} 0
+node_systemd_unit_state{name="rescue.service",state="activating"} 0
+node_systemd_unit_state{name="rescue.service",state="active"} 0
+node_systemd_unit_state{name="rescue.service",state="deactivating"} 0
+node_systemd_unit_state{name="rescue.service",state="failed"} 0
+node_systemd_unit_state{name="rescue.service",state="inactive"} 1
+node_systemd_unit_state{name="rescue.target",state="activating"} 0
+node_systemd_unit_state{name="rescue.target",state="active"} 0
+node_systemd_unit_state{name="rescue.target",state="deactivating"} 0
+node_systemd_unit_state{name="rescue.target",state="failed"} 0
+node_systemd_unit_state{name="rescue.target",state="inactive"} 1
+node_systemd_unit_state{name="rpcbind.service",state="activating"} 0
+node_systemd_unit_state{name="rpcbind.service",state="active"} 1
+node_systemd_unit_state{name="rpcbind.service",state="deactivating"} 0
+node_systemd_unit_state{name="rpcbind.service",state="failed"} 0
+node_systemd_unit_state{name="rpcbind.service",state="inactive"} 0
+node_systemd_unit_state{name="rpcbind.target",state="activating"} 0
+node_systemd_unit_state{name="rpcbind.target",state="active"} 1
+node_systemd_unit_state{name="rpcbind.target",state="deactivating"} 0
+node_systemd_unit_state{name="rpcbind.target",state="failed"} 0
+node_systemd_unit_state{name="rpcbind.target",state="inactive"} 0
+node_systemd_unit_state{name="rsyslog.service",state="activating"} 0
+node_systemd_unit_state{name="rsyslog.service",state="active"} 1
+node_systemd_unit_state{name="rsyslog.service",state="deactivating"} 0
+node_systemd_unit_state{name="rsyslog.service",state="failed"} 0
+node_systemd_unit_state{name="rsyslog.service",state="inactive"} 0
+node_systemd_unit_state{name="run-docker-netns-3f75477ff1ff.mount",state="activating"} 0
+node_systemd_unit_state{name="run-docker-netns-3f75477ff1ff.mount",state="active"} 1
+node_systemd_unit_state{name="run-docker-netns-3f75477ff1ff.mount",state="deactivating"} 0
+node_systemd_unit_state{name="run-docker-netns-3f75477ff1ff.mount",state="failed"} 0
+node_systemd_unit_state{name="run-docker-netns-3f75477ff1ff.mount",state="inactive"} 0
+node_systemd_unit_state{name="run-docker-netns-8e1766d04cca.mount",state="activating"} 0
+node_systemd_unit_state{name="run-docker-netns-8e1766d04cca.mount",state="active"} 1
+node_systemd_unit_state{name="run-docker-netns-8e1766d04cca.mount",state="deactivating"} 0
+node_systemd_unit_state{name="run-docker-netns-8e1766d04cca.mount",state="failed"} 0
+node_systemd_unit_state{name="run-docker-netns-8e1766d04cca.mount",state="inactive"} 0
+node_systemd_unit_state{name="run-docker-netns-a5c8b748e8c5.mount",state="activating"} 0
+node_systemd_unit_state{name="run-docker-netns-a5c8b748e8c5.mount",state="active"} 1
+node_systemd_unit_state{name="run-docker-netns-a5c8b748e8c5.mount",state="deactivating"} 0
+node_systemd_unit_state{name="run-docker-netns-a5c8b748e8c5.mount",state="failed"} 0
+node_systemd_unit_state{name="run-docker-netns-a5c8b748e8c5.mount",state="inactive"} 0
+node_systemd_unit_state{name="run-docker-netns-default.mount",state="activating"} 0
+node_systemd_unit_state{name="run-docker-netns-default.mount",state="active"} 1
+node_systemd_unit_state{name="run-docker-netns-default.mount",state="deactivating"} 0
+node_systemd_unit_state{name="run-docker-netns-default.mount",state="failed"} 0
+node_systemd_unit_state{name="run-docker-netns-default.mount",state="inactive"} 0
+node_systemd_unit_state{name="run-rpc_pipefs.mount",state="activating"} 0
+node_systemd_unit_state{name="run-rpc_pipefs.mount",state="active"} 1
+node_systemd_unit_state{name="run-rpc_pipefs.mount",state="deactivating"} 0
+node_systemd_unit_state{name="run-rpc_pipefs.mount",state="failed"} 0
+node_systemd_unit_state{name="run-rpc_pipefs.mount",state="inactive"} 0
+node_systemd_unit_state{name="shutdown.target",state="activating"} 0
+node_systemd_unit_state{name="shutdown.target",state="active"} 0
+node_systemd_unit_state{name="shutdown.target",state="deactivating"} 0
+node_systemd_unit_state{name="shutdown.target",state="failed"} 0
+node_systemd_unit_state{name="shutdown.target",state="inactive"} 1
+node_systemd_unit_state{name="slices.target",state="activating"} 0
+node_systemd_unit_state{name="slices.target",state="active"} 1
+node_systemd_unit_state{name="slices.target",state="deactivating"} 0
+node_systemd_unit_state{name="slices.target",state="failed"} 0
+node_systemd_unit_state{name="slices.target",state="inactive"} 0
+node_systemd_unit_state{name="smartd.service",state="activating"} 0
+node_systemd_unit_state{name="smartd.service",state="active"} 1
+node_systemd_unit_state{name="smartd.service",state="deactivating"} 0
+node_systemd_unit_state{name="smartd.service",state="failed"} 0
+node_systemd_unit_state{name="smartd.service",state="inactive"} 0
+node_systemd_unit_state{name="sockets.target",state="activating"} 0
+node_systemd_unit_state{name="sockets.target",state="active"} 1
+node_systemd_unit_state{name="sockets.target",state="deactivating"} 0
+node_systemd_unit_state{name="sockets.target",state="failed"} 0
+node_systemd_unit_state{name="sockets.target",state="inactive"} 0
+node_systemd_unit_state{name="sound.target",state="activating"} 0
+node_systemd_unit_state{name="sound.target",state="active"} 1
+node_systemd_unit_state{name="sound.target",state="deactivating"} 0
+node_systemd_unit_state{name="sound.target",state="failed"} 0
+node_systemd_unit_state{name="sound.target",state="inactive"} 0
+node_systemd_unit_state{name="spamassassin.service",state="activating"} 0
+node_systemd_unit_state{name="spamassassin.service",state="active"} 0
+node_systemd_unit_state{name="spamassassin.service",state="deactivating"} 0
+node_systemd_unit_state{name="spamassassin.service",state="failed"} 0
+node_systemd_unit_state{name="spamassassin.service",state="inactive"} 1
+node_systemd_unit_state{name="squid.service",state="activating"} 0
+node_systemd_unit_state{name="squid.service",state="active"} 0
+node_systemd_unit_state{name="squid.service",state="deactivating"} 0
+node_systemd_unit_state{name="squid.service",state="failed"} 0
+node_systemd_unit_state{name="squid.service",state="inactive"} 1
+node_systemd_unit_state{name="ssh.service",state="activating"} 0
+node_systemd_unit_state{name="ssh.service",state="active"} 1
+node_systemd_unit_state{name="ssh.service",state="deactivating"} 0
+node_systemd_unit_state{name="ssh.service",state="failed"} 0
+node_systemd_unit_state{name="ssh.service",state="inactive"} 0
+node_systemd_unit_state{name="supervisor.service",state="activating"} 0
+node_systemd_unit_state{name="supervisor.service",state="active"} 1
+node_systemd_unit_state{name="supervisor.service",state="deactivating"} 0
+node_systemd_unit_state{name="supervisor.service",state="failed"} 0
+node_systemd_unit_state{name="supervisor.service",state="inactive"} 0
+node_systemd_unit_state{name="swap.target",state="activating"} 0
+node_systemd_unit_state{name="swap.target",state="active"} 1
+node_systemd_unit_state{name="swap.target",state="deactivating"} 0
+node_systemd_unit_state{name="swap.target",state="failed"} 0
+node_systemd_unit_state{name="swap.target",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:03.3-tty-ttyS1.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:03.3-tty-ttyS1.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:03.3-tty-ttyS1.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:03.3-tty-ttyS1.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:03.3-tty-ttyS1.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:19.0-net-eth0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:19.0-net-eth0.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:19.0-net-eth0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:19.0-net-eth0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:19.0-net-eth0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1b.0-sound-card0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1b.0-sound-card0.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1b.0-sound-card0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1b.0-sound-card0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1b.0-sound-card0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda1.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda-sda2.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata1-host0-target0:0:0-0:0:0:0-block-sda.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sr0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sr0.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sr0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sr0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-pci0000:00-0000:00:1f.2-ata2-host1-target1:0:0-1:0:0:0-block-sr0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS2.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS2.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS2.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS2.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS2.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS3.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS3.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS3.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS3.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-platform-serial8250-tty-ttyS3.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-pnp0-00:02-tty-ttyS0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-pnp0-00:02-tty-ttyS0.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-pnp0-00:02-tty-ttyS0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-pnp0-00:02-tty-ttyS0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-pnp0-00:02-tty-ttyS0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-block-loop0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-block-loop0.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-block-loop0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-block-loop0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-block-loop0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-datapath.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-datapath.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-datapath.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-datapath.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-datapath.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-docker0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-docker0.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-docker0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-docker0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-docker0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-docker_gwbridge.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-docker_gwbridge.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-docker_gwbridge.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-docker_gwbridge.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-docker_gwbridge.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-dummy0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-dummy0.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-dummy0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-dummy0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-dummy0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-tun0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-tun0.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-tun0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-tun0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-tun0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth31e02f7.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth31e02f7.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-veth31e02f7.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth31e02f7.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth31e02f7.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth6eb595f.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth6eb595f.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-veth6eb595f.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth6eb595f.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth6eb595f.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth9c8979b.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth9c8979b.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-veth9c8979b.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth9c8979b.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-veth9c8979b.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2dbridge.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2dbridge.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2dbridge.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2dbridge.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2dbridge.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2ddatapath.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2ddatapath.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2ddatapath.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2ddatapath.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-vethwe\\x2ddatapath.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-weave.device",state="activating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-weave.device",state="active"} 1
+node_systemd_unit_state{name="sys-devices-virtual-net-weave.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-weave.device",state="failed"} 0
+node_systemd_unit_state{name="sys-devices-virtual-net-weave.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-fs-fuse-connections.mount",state="activating"} 0
+node_systemd_unit_state{name="sys-fs-fuse-connections.mount",state="active"} 1
+node_systemd_unit_state{name="sys-fs-fuse-connections.mount",state="deactivating"} 0
+node_systemd_unit_state{name="sys-fs-fuse-connections.mount",state="failed"} 0
+node_systemd_unit_state{name="sys-fs-fuse-connections.mount",state="inactive"} 0
+node_systemd_unit_state{name="sys-kernel-config.mount",state="activating"} 0
+node_systemd_unit_state{name="sys-kernel-config.mount",state="active"} 0
+node_systemd_unit_state{name="sys-kernel-config.mount",state="deactivating"} 0
+node_systemd_unit_state{name="sys-kernel-config.mount",state="failed"} 0
+node_systemd_unit_state{name="sys-kernel-config.mount",state="inactive"} 1
+node_systemd_unit_state{name="sys-kernel-debug.mount",state="activating"} 0
+node_systemd_unit_state{name="sys-kernel-debug.mount",state="active"} 1
+node_systemd_unit_state{name="sys-kernel-debug.mount",state="deactivating"} 0
+node_systemd_unit_state{name="sys-kernel-debug.mount",state="failed"} 0
+node_systemd_unit_state{name="sys-kernel-debug.mount",state="inactive"} 0
+node_systemd_unit_state{name="sys-module-fuse.device",state="activating"} 0
+node_systemd_unit_state{name="sys-module-fuse.device",state="active"} 1
+node_systemd_unit_state{name="sys-module-fuse.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-module-fuse.device",state="failed"} 0
+node_systemd_unit_state{name="sys-module-fuse.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-datapath.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-datapath.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-datapath.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-datapath.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-datapath.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker0.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker_gwbridge.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker_gwbridge.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker_gwbridge.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker_gwbridge.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-docker_gwbridge.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-dummy0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-dummy0.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-dummy0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-dummy0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-dummy0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-eth0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-eth0.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-eth0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-eth0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-eth0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-tun0.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-tun0.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-tun0.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-tun0.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-tun0.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth31e02f7.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth31e02f7.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth31e02f7.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth31e02f7.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth31e02f7.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth6eb595f.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth6eb595f.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth6eb595f.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth6eb595f.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth6eb595f.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth9c8979b.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth9c8979b.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth9c8979b.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth9c8979b.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-veth9c8979b.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2dbridge.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2dbridge.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2dbridge.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2dbridge.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2dbridge.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2ddatapath.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2ddatapath.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2ddatapath.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2ddatapath.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-vethwe\\x2ddatapath.device",state="inactive"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-weave.device",state="activating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-weave.device",state="active"} 1
+node_systemd_unit_state{name="sys-subsystem-net-devices-weave.device",state="deactivating"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-weave.device",state="failed"} 0
+node_systemd_unit_state{name="sys-subsystem-net-devices-weave.device",state="inactive"} 0
+node_systemd_unit_state{name="sysinit.target",state="activating"} 0
+node_systemd_unit_state{name="sysinit.target",state="active"} 1
+node_systemd_unit_state{name="sysinit.target",state="deactivating"} 0
+node_systemd_unit_state{name="sysinit.target",state="failed"} 0
+node_systemd_unit_state{name="sysinit.target",state="inactive"} 0
+node_systemd_unit_state{name="syslog.socket",state="activating"} 0
+node_systemd_unit_state{name="syslog.socket",state="active"} 1
+node_systemd_unit_state{name="syslog.socket",state="deactivating"} 0
+node_systemd_unit_state{name="syslog.socket",state="failed"} 0
+node_systemd_unit_state{name="syslog.socket",state="inactive"} 0
+node_systemd_unit_state{name="system-getty.slice",state="activating"} 0
+node_systemd_unit_state{name="system-getty.slice",state="active"} 1
+node_systemd_unit_state{name="system-getty.slice",state="deactivating"} 0
+node_systemd_unit_state{name="system-getty.slice",state="failed"} 0
+node_systemd_unit_state{name="system-getty.slice",state="inactive"} 0
+node_systemd_unit_state{name="system-ifup.slice",state="activating"} 0
+node_systemd_unit_state{name="system-ifup.slice",state="active"} 1
+node_systemd_unit_state{name="system-ifup.slice",state="deactivating"} 0
+node_systemd_unit_state{name="system-ifup.slice",state="failed"} 0
+node_systemd_unit_state{name="system-ifup.slice",state="inactive"} 0
+node_systemd_unit_state{name="system-openvpn.slice",state="activating"} 0
+node_systemd_unit_state{name="system-openvpn.slice",state="active"} 1
+node_systemd_unit_state{name="system-openvpn.slice",state="deactivating"} 0
+node_systemd_unit_state{name="system-openvpn.slice",state="failed"} 0
+node_systemd_unit_state{name="system-openvpn.slice",state="inactive"} 0
+node_systemd_unit_state{name="system.slice",state="activating"} 0
+node_systemd_unit_state{name="system.slice",state="active"} 1
+node_systemd_unit_state{name="system.slice",state="deactivating"} 0
+node_systemd_unit_state{name="system.slice",state="failed"} 0
+node_systemd_unit_state{name="system.slice",state="inactive"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.path",state="activating"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.path",state="active"} 1
+node_systemd_unit_state{name="systemd-ask-password-console.path",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.path",state="failed"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.path",state="inactive"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.service",state="active"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-ask-password-console.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-ask-password-plymouth.path",state="activating"} 0
+node_systemd_unit_state{name="systemd-ask-password-plymouth.path",state="active"} 0
+node_systemd_unit_state{name="systemd-ask-password-plymouth.path",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-ask-password-plymouth.path",state="failed"} 0
+node_systemd_unit_state{name="systemd-ask-password-plymouth.path",state="inactive"} 1
+node_systemd_unit_state{name="systemd-ask-password-plymouth.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-ask-password-plymouth.service",state="active"} 0
+node_systemd_unit_state{name="systemd-ask-password-plymouth.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-ask-password-plymouth.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-ask-password-plymouth.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-ask-password-wall.path",state="activating"} 0
+node_systemd_unit_state{name="systemd-ask-password-wall.path",state="active"} 1
+node_systemd_unit_state{name="systemd-ask-password-wall.path",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-ask-password-wall.path",state="failed"} 0
+node_systemd_unit_state{name="systemd-ask-password-wall.path",state="inactive"} 0
+node_systemd_unit_state{name="systemd-ask-password-wall.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-ask-password-wall.service",state="active"} 0
+node_systemd_unit_state{name="systemd-ask-password-wall.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-ask-password-wall.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-ask-password-wall.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-binfmt.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-binfmt.service",state="active"} 0
+node_systemd_unit_state{name="systemd-binfmt.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-binfmt.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-binfmt.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-fsck-root.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-fsck-root.service",state="active"} 0
+node_systemd_unit_state{name="systemd-fsck-root.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-fsck-root.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-fsck-root.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-initctl.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-initctl.service",state="active"} 0
+node_systemd_unit_state{name="systemd-initctl.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-initctl.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-initctl.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-initctl.socket",state="activating"} 0
+node_systemd_unit_state{name="systemd-initctl.socket",state="active"} 1
+node_systemd_unit_state{name="systemd-initctl.socket",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-initctl.socket",state="failed"} 0
+node_systemd_unit_state{name="systemd-initctl.socket",state="inactive"} 0
+node_systemd_unit_state{name="systemd-journal-flush.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-journal-flush.service",state="active"} 0
+node_systemd_unit_state{name="systemd-journal-flush.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-journal-flush.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-journal-flush.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-journald-dev-log.socket",state="activating"} 0
+node_systemd_unit_state{name="systemd-journald-dev-log.socket",state="active"} 1
+node_systemd_unit_state{name="systemd-journald-dev-log.socket",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-journald-dev-log.socket",state="failed"} 0
+node_systemd_unit_state{name="systemd-journald-dev-log.socket",state="inactive"} 0
+node_systemd_unit_state{name="systemd-journald.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-journald.service",state="active"} 1
+node_systemd_unit_state{name="systemd-journald.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-journald.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-journald.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-journald.socket",state="activating"} 0
+node_systemd_unit_state{name="systemd-journald.socket",state="active"} 1
+node_systemd_unit_state{name="systemd-journald.socket",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-journald.socket",state="failed"} 0
+node_systemd_unit_state{name="systemd-journald.socket",state="inactive"} 0
+node_systemd_unit_state{name="systemd-logind.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-logind.service",state="active"} 1
+node_systemd_unit_state{name="systemd-logind.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-logind.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-logind.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-modules-load.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-modules-load.service",state="active"} 1
+node_systemd_unit_state{name="systemd-modules-load.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-modules-load.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-modules-load.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-random-seed.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-random-seed.service",state="active"} 1
+node_systemd_unit_state{name="systemd-random-seed.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-random-seed.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-random-seed.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-readahead-collect.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-readahead-collect.service",state="active"} 0
+node_systemd_unit_state{name="systemd-readahead-collect.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-readahead-collect.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-readahead-collect.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-readahead-done.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-readahead-done.service",state="active"} 0
+node_systemd_unit_state{name="systemd-readahead-done.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-readahead-done.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-readahead-done.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-readahead-done.timer",state="activating"} 0
+node_systemd_unit_state{name="systemd-readahead-done.timer",state="active"} 0
+node_systemd_unit_state{name="systemd-readahead-done.timer",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-readahead-done.timer",state="failed"} 0
+node_systemd_unit_state{name="systemd-readahead-done.timer",state="inactive"} 1
+node_systemd_unit_state{name="systemd-readahead-replay.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-readahead-replay.service",state="active"} 0
+node_systemd_unit_state{name="systemd-readahead-replay.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-readahead-replay.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-readahead-replay.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-remount-fs.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-remount-fs.service",state="active"} 1
+node_systemd_unit_state{name="systemd-remount-fs.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-remount-fs.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-remount-fs.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-setup-dgram-qlen.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-setup-dgram-qlen.service",state="active"} 1
+node_systemd_unit_state{name="systemd-setup-dgram-qlen.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-setup-dgram-qlen.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-setup-dgram-qlen.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-shutdownd.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-shutdownd.service",state="active"} 0
+node_systemd_unit_state{name="systemd-shutdownd.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-shutdownd.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-shutdownd.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-shutdownd.socket",state="activating"} 0
+node_systemd_unit_state{name="systemd-shutdownd.socket",state="active"} 1
+node_systemd_unit_state{name="systemd-shutdownd.socket",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-shutdownd.socket",state="failed"} 0
+node_systemd_unit_state{name="systemd-shutdownd.socket",state="inactive"} 0
+node_systemd_unit_state{name="systemd-sysctl.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-sysctl.service",state="active"} 1
+node_systemd_unit_state{name="systemd-sysctl.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-sysctl.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-sysctl.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-sysusers.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-sysusers.service",state="active"} 0
+node_systemd_unit_state{name="systemd-sysusers.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-sysusers.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-sysusers.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-tmpfiles-clean.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-clean.service",state="active"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-clean.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-clean.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-clean.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-tmpfiles-clean.timer",state="activating"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-clean.timer",state="active"} 1
+node_systemd_unit_state{name="systemd-tmpfiles-clean.timer",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-clean.timer",state="failed"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-clean.timer",state="inactive"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-setup-dev.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-setup-dev.service",state="active"} 1
+node_systemd_unit_state{name="systemd-tmpfiles-setup-dev.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-setup-dev.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-setup-dev.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-setup.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-setup.service",state="active"} 1
+node_systemd_unit_state{name="systemd-tmpfiles-setup.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-setup.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-tmpfiles-setup.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-udev-hwdb-update.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-udev-hwdb-update.service",state="active"} 0
+node_systemd_unit_state{name="systemd-udev-hwdb-update.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-udev-hwdb-update.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-udev-hwdb-update.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-udev-settle.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-udev-settle.service",state="active"} 0
+node_systemd_unit_state{name="systemd-udev-settle.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-udev-settle.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-udev-settle.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-udev-trigger.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-udev-trigger.service",state="active"} 1
+node_systemd_unit_state{name="systemd-udev-trigger.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-udev-trigger.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-udev-trigger.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-udevd-control.socket",state="activating"} 0
+node_systemd_unit_state{name="systemd-udevd-control.socket",state="active"} 1
+node_systemd_unit_state{name="systemd-udevd-control.socket",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-udevd-control.socket",state="failed"} 0
+node_systemd_unit_state{name="systemd-udevd-control.socket",state="inactive"} 0
+node_systemd_unit_state{name="systemd-udevd-kernel.socket",state="activating"} 0
+node_systemd_unit_state{name="systemd-udevd-kernel.socket",state="active"} 1
+node_systemd_unit_state{name="systemd-udevd-kernel.socket",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-udevd-kernel.socket",state="failed"} 0
+node_systemd_unit_state{name="systemd-udevd-kernel.socket",state="inactive"} 0
+node_systemd_unit_state{name="systemd-udevd.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-udevd.service",state="active"} 1
+node_systemd_unit_state{name="systemd-udevd.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-udevd.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-udevd.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-update-utmp-runlevel.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-update-utmp-runlevel.service",state="active"} 0
+node_systemd_unit_state{name="systemd-update-utmp-runlevel.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-update-utmp-runlevel.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-update-utmp-runlevel.service",state="inactive"} 1
+node_systemd_unit_state{name="systemd-update-utmp.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-update-utmp.service",state="active"} 1
+node_systemd_unit_state{name="systemd-update-utmp.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-update-utmp.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-update-utmp.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-user-sessions.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-user-sessions.service",state="active"} 1
+node_systemd_unit_state{name="systemd-user-sessions.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-user-sessions.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-user-sessions.service",state="inactive"} 0
+node_systemd_unit_state{name="systemd-vconsole-setup.service",state="activating"} 0
+node_systemd_unit_state{name="systemd-vconsole-setup.service",state="active"} 0
+node_systemd_unit_state{name="systemd-vconsole-setup.service",state="deactivating"} 0
+node_systemd_unit_state{name="systemd-vconsole-setup.service",state="failed"} 0
+node_systemd_unit_state{name="systemd-vconsole-setup.service",state="inactive"} 1
+node_systemd_unit_state{name="time-sync.target",state="activating"} 0
+node_systemd_unit_state{name="time-sync.target",state="active"} 0
+node_systemd_unit_state{name="time-sync.target",state="deactivating"} 0
+node_systemd_unit_state{name="time-sync.target",state="failed"} 0
+node_systemd_unit_state{name="time-sync.target",state="inactive"} 1
+node_systemd_unit_state{name="timers.target",state="activating"} 0
+node_systemd_unit_state{name="timers.target",state="active"} 1
+node_systemd_unit_state{name="timers.target",state="deactivating"} 0
+node_systemd_unit_state{name="timers.target",state="failed"} 0
+node_systemd_unit_state{name="timers.target",state="inactive"} 0
+node_systemd_unit_state{name="udev-finish.service",state="activating"} 0
+node_systemd_unit_state{name="udev-finish.service",state="active"} 1
+node_systemd_unit_state{name="udev-finish.service",state="deactivating"} 0
+node_systemd_unit_state{name="udev-finish.service",state="failed"} 0
+node_systemd_unit_state{name="udev-finish.service",state="inactive"} 0
+node_systemd_unit_state{name="umount.target",state="activating"} 0
+node_systemd_unit_state{name="umount.target",state="active"} 0
+node_systemd_unit_state{name="umount.target",state="deactivating"} 0
+node_systemd_unit_state{name="umount.target",state="failed"} 0
+node_systemd_unit_state{name="umount.target",state="inactive"} 1
+node_systemd_unit_state{name="user.slice",state="activating"} 0
+node_systemd_unit_state{name="user.slice",state="active"} 1
+node_systemd_unit_state{name="user.slice",state="deactivating"} 0
+node_systemd_unit_state{name="user.slice",state="failed"} 0
+node_systemd_unit_state{name="user.slice",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-0d32a58210a1696c64ed9ea2af7f27cbd26340c4a4403e64906de72e506b5f1e.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-0d32a58210a1696c64ed9ea2af7f27cbd26340c4a4403e64906de72e506b5f1e.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-0d32a58210a1696c64ed9ea2af7f27cbd26340c4a4403e64906de72e506b5f1e.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-0d32a58210a1696c64ed9ea2af7f27cbd26340c4a4403e64906de72e506b5f1e.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-0d32a58210a1696c64ed9ea2af7f27cbd26340c4a4403e64906de72e506b5f1e.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-6b1dfd263c2dd3b46a6b210338dd7a1b901dc2c39ee2d7c90e6c4f033af14b58.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-6b1dfd263c2dd3b46a6b210338dd7a1b901dc2c39ee2d7c90e6c4f033af14b58.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-6b1dfd263c2dd3b46a6b210338dd7a1b901dc2c39ee2d7c90e6c4f033af14b58.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-6b1dfd263c2dd3b46a6b210338dd7a1b901dc2c39ee2d7c90e6c4f033af14b58.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-6b1dfd263c2dd3b46a6b210338dd7a1b901dc2c39ee2d7c90e6c4f033af14b58.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-75d5541b94ed7f098ee351755e96ced3f5b4db27d35cc733b502d2653ceecbbc.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-75d5541b94ed7f098ee351755e96ced3f5b4db27d35cc733b502d2653ceecbbc.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-75d5541b94ed7f098ee351755e96ced3f5b4db27d35cc733b502d2653ceecbbc.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-75d5541b94ed7f098ee351755e96ced3f5b4db27d35cc733b502d2653ceecbbc.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-75d5541b94ed7f098ee351755e96ced3f5b4db27d35cc733b502d2653ceecbbc.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-a4fc754fed2fb326fe7a19358d89df0e104c6d68b4dfb293ee84f33e99dec75a.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-a4fc754fed2fb326fe7a19358d89df0e104c6d68b4dfb293ee84f33e99dec75a.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-a4fc754fed2fb326fe7a19358d89df0e104c6d68b4dfb293ee84f33e99dec75a.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-a4fc754fed2fb326fe7a19358d89df0e104c6d68b4dfb293ee84f33e99dec75a.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-a4fc754fed2fb326fe7a19358d89df0e104c6d68b4dfb293ee84f33e99dec75a.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-b48c4ac479ee7c08ba78cbc208e27f745cc9086c488743ad7bc6ee177c23795e.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-b48c4ac479ee7c08ba78cbc208e27f745cc9086c488743ad7bc6ee177c23795e.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-b48c4ac479ee7c08ba78cbc208e27f745cc9086c488743ad7bc6ee177c23795e.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-b48c4ac479ee7c08ba78cbc208e27f745cc9086c488743ad7bc6ee177c23795e.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-b48c4ac479ee7c08ba78cbc208e27f745cc9086c488743ad7bc6ee177c23795e.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-bec61333a1929157d7447c147e695ecfdac925a73ebe697a49d5feddf563b28f.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-bec61333a1929157d7447c147e695ecfdac925a73ebe697a49d5feddf563b28f.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-bec61333a1929157d7447c147e695ecfdac925a73ebe697a49d5feddf563b28f.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-bec61333a1929157d7447c147e695ecfdac925a73ebe697a49d5feddf563b28f.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs-mnt-bec61333a1929157d7447c147e695ecfdac925a73ebe697a49d5feddf563b28f.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-aufs.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-aufs.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-2445cd836a092d28a0070294173ae70f676a213641878b67d6f495674fe42b76-shm.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-2445cd836a092d28a0070294173ae70f676a213641878b67d6f495674fe42b76-shm.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-containers-2445cd836a092d28a0070294173ae70f676a213641878b67d6f495674fe42b76-shm.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-2445cd836a092d28a0070294173ae70f676a213641878b67d6f495674fe42b76-shm.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-2445cd836a092d28a0070294173ae70f676a213641878b67d6f495674fe42b76-shm.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-445c01144ebe166fdb0a83d88a197e6e0aebd519baf26e0dae72628088da1b4f-shm.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-445c01144ebe166fdb0a83d88a197e6e0aebd519baf26e0dae72628088da1b4f-shm.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-containers-445c01144ebe166fdb0a83d88a197e6e0aebd519baf26e0dae72628088da1b4f-shm.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-445c01144ebe166fdb0a83d88a197e6e0aebd519baf26e0dae72628088da1b4f-shm.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-445c01144ebe166fdb0a83d88a197e6e0aebd519baf26e0dae72628088da1b4f-shm.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-93e129e03602e57fc810f4860b4823588882796f09333502fe16c0ded1be832a-shm.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-93e129e03602e57fc810f4860b4823588882796f09333502fe16c0ded1be832a-shm.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-containers-93e129e03602e57fc810f4860b4823588882796f09333502fe16c0ded1be832a-shm.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-93e129e03602e57fc810f4860b4823588882796f09333502fe16c0ded1be832a-shm.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-93e129e03602e57fc810f4860b4823588882796f09333502fe16c0ded1be832a-shm.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-9aa0090f0da60a6613d6dc62d63bec12e892915e4ac86f627247b0eb8f54f656-shm.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-9aa0090f0da60a6613d6dc62d63bec12e892915e4ac86f627247b0eb8f54f656-shm.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-containers-9aa0090f0da60a6613d6dc62d63bec12e892915e4ac86f627247b0eb8f54f656-shm.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-9aa0090f0da60a6613d6dc62d63bec12e892915e4ac86f627247b0eb8f54f656-shm.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-9aa0090f0da60a6613d6dc62d63bec12e892915e4ac86f627247b0eb8f54f656-shm.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-b67d86c173c122470437770a8c36b004383bf69a12381a70f1114e77802f077b-shm.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-b67d86c173c122470437770a8c36b004383bf69a12381a70f1114e77802f077b-shm.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-containers-b67d86c173c122470437770a8c36b004383bf69a12381a70f1114e77802f077b-shm.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-b67d86c173c122470437770a8c36b004383bf69a12381a70f1114e77802f077b-shm.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-b67d86c173c122470437770a8c36b004383bf69a12381a70f1114e77802f077b-shm.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-f5c3edbdf03c367edca10c2ffbc4bb72160275b8a9e5a062b4596a39af2e1968-shm.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-f5c3edbdf03c367edca10c2ffbc4bb72160275b8a9e5a062b4596a39af2e1968-shm.mount",state="active"} 1
+node_systemd_unit_state{name="var-lib-docker-containers-f5c3edbdf03c367edca10c2ffbc4bb72160275b8a9e5a062b4596a39af2e1968-shm.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-f5c3edbdf03c367edca10c2ffbc4bb72160275b8a9e5a062b4596a39af2e1968-shm.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lib-docker-containers-f5c3edbdf03c367edca10c2ffbc4bb72160275b8a9e5a062b4596a39af2e1968-shm.mount",state="inactive"} 0
+node_systemd_unit_state{name="var-lock.mount",state="activating"} 0
+node_systemd_unit_state{name="var-lock.mount",state="active"} 0
+node_systemd_unit_state{name="var-lock.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-lock.mount",state="failed"} 0
+node_systemd_unit_state{name="var-lock.mount",state="inactive"} 1
+node_systemd_unit_state{name="var-run.mount",state="activating"} 0
+node_systemd_unit_state{name="var-run.mount",state="active"} 0
+node_systemd_unit_state{name="var-run.mount",state="deactivating"} 0
+node_systemd_unit_state{name="var-run.mount",state="failed"} 0
+node_systemd_unit_state{name="var-run.mount",state="inactive"} 1
+node_systemd_unit_state{name="weaveexpose.service",state="activating"} 0
+node_systemd_unit_state{name="weaveexpose.service",state="active"} 1
+node_systemd_unit_state{name="weaveexpose.service",state="deactivating"} 0
+node_systemd_unit_state{name="weaveexpose.service",state="failed"} 0
+node_systemd_unit_state{name="weaveexpose.service",state="inactive"} 0
+# HELP node_time System time in seconds since epoch (1970).
+# TYPE node_time counter
+node_time 1.486048228e+09
+# HELP node_uname_info Labeled system information as provided by the uname system call.
+# TYPE node_uname_info gauge
+node_uname_info{domainname="(none)",machine="x86_64",nodename="wolke1",release="3.16.0-4-amd64",sysname="Linux",version="#1 SMP Debian 3.16.39-1 (2016-12-30)"} 1
+# HELP node_vmstat_allocstall /proc/vmstat information field allocstall.
+# TYPE node_vmstat_allocstall untyped
+node_vmstat_allocstall 55
+# HELP node_vmstat_compact_fail /proc/vmstat information field compact_fail.
+# TYPE node_vmstat_compact_fail untyped
+node_vmstat_compact_fail 0
+# HELP node_vmstat_compact_free_scanned /proc/vmstat information field compact_free_scanned.
+# TYPE node_vmstat_compact_free_scanned untyped
+node_vmstat_compact_free_scanned 0
+# HELP node_vmstat_compact_isolated /proc/vmstat information field compact_isolated.
+# TYPE node_vmstat_compact_isolated untyped
+node_vmstat_compact_isolated 0
+# HELP node_vmstat_compact_migrate_scanned /proc/vmstat information field compact_migrate_scanned.
+# TYPE node_vmstat_compact_migrate_scanned untyped
+node_vmstat_compact_migrate_scanned 0
+# HELP node_vmstat_compact_stall /proc/vmstat information field compact_stall.
+# TYPE node_vmstat_compact_stall untyped
+node_vmstat_compact_stall 0
+# HELP node_vmstat_compact_success /proc/vmstat information field compact_success.
+# TYPE node_vmstat_compact_success untyped
+node_vmstat_compact_success 0
+# HELP node_vmstat_drop_pagecache /proc/vmstat information field drop_pagecache.
+# TYPE node_vmstat_drop_pagecache untyped
+node_vmstat_drop_pagecache 0
+# HELP node_vmstat_drop_slab /proc/vmstat information field drop_slab.
+# TYPE node_vmstat_drop_slab untyped
+node_vmstat_drop_slab 0
+# HELP node_vmstat_htlb_buddy_alloc_fail /proc/vmstat information field htlb_buddy_alloc_fail.
+# TYPE node_vmstat_htlb_buddy_alloc_fail untyped
+node_vmstat_htlb_buddy_alloc_fail 0
+# HELP node_vmstat_htlb_buddy_alloc_success /proc/vmstat information field htlb_buddy_alloc_success.
+# TYPE node_vmstat_htlb_buddy_alloc_success untyped
+node_vmstat_htlb_buddy_alloc_success 0
+# HELP node_vmstat_kswapd_high_wmark_hit_quickly /proc/vmstat information field kswapd_high_wmark_hit_quickly.
+# TYPE node_vmstat_kswapd_high_wmark_hit_quickly untyped
+node_vmstat_kswapd_high_wmark_hit_quickly 61
+# HELP node_vmstat_kswapd_inodesteal /proc/vmstat information field kswapd_inodesteal.
+# TYPE node_vmstat_kswapd_inodesteal untyped
+node_vmstat_kswapd_inodesteal 37
+# HELP node_vmstat_kswapd_low_wmark_hit_quickly /proc/vmstat information field kswapd_low_wmark_hit_quickly.
+# TYPE node_vmstat_kswapd_low_wmark_hit_quickly untyped
+node_vmstat_kswapd_low_wmark_hit_quickly 18
+# HELP node_vmstat_nr_active_anon /proc/vmstat information field nr_active_anon.
+# TYPE node_vmstat_nr_active_anon untyped
+node_vmstat_nr_active_anon 77748
+# HELP node_vmstat_nr_active_file /proc/vmstat information field nr_active_file.
+# TYPE node_vmstat_nr_active_file untyped
+node_vmstat_nr_active_file 113037
+# HELP node_vmstat_nr_alloc_batch /proc/vmstat information field nr_alloc_batch.
+# TYPE node_vmstat_nr_alloc_batch untyped
+node_vmstat_nr_alloc_batch 1521
+# HELP node_vmstat_nr_anon_pages /proc/vmstat information field nr_anon_pages.
+# TYPE node_vmstat_nr_anon_pages untyped
+node_vmstat_nr_anon_pages 102877
+# HELP node_vmstat_nr_anon_transparent_hugepages /proc/vmstat information field nr_anon_transparent_hugepages.
+# TYPE node_vmstat_nr_anon_transparent_hugepages untyped
+node_vmstat_nr_anon_transparent_hugepages 0
+# HELP node_vmstat_nr_bounce /proc/vmstat information field nr_bounce.
+# TYPE node_vmstat_nr_bounce untyped
+node_vmstat_nr_bounce 0
+# HELP node_vmstat_nr_dirtied /proc/vmstat information field nr_dirtied.
+# TYPE node_vmstat_nr_dirtied untyped
+node_vmstat_nr_dirtied 603408
+# HELP node_vmstat_nr_dirty /proc/vmstat information field nr_dirty.
+# TYPE node_vmstat_nr_dirty untyped
+node_vmstat_nr_dirty 34
+# HELP node_vmstat_nr_dirty_background_threshold /proc/vmstat information field nr_dirty_background_threshold.
+# TYPE node_vmstat_nr_dirty_background_threshold untyped
+node_vmstat_nr_dirty_background_threshold 35521
+# HELP node_vmstat_nr_dirty_threshold /proc/vmstat information field nr_dirty_threshold.
+# TYPE node_vmstat_nr_dirty_threshold untyped
+node_vmstat_nr_dirty_threshold 71042
+# HELP node_vmstat_nr_file_pages /proc/vmstat information field nr_file_pages.
+# TYPE node_vmstat_nr_file_pages untyped
+node_vmstat_nr_file_pages 352789
+# HELP node_vmstat_nr_free_cma /proc/vmstat information field nr_free_cma.
+# TYPE node_vmstat_nr_free_cma untyped
+node_vmstat_nr_free_cma 0
+# HELP node_vmstat_nr_free_pages /proc/vmstat information field nr_free_pages.
+# TYPE node_vmstat_nr_free_pages untyped
+node_vmstat_nr_free_pages 22931
+# HELP node_vmstat_nr_inactive_anon /proc/vmstat information field nr_inactive_anon.
+# TYPE node_vmstat_nr_inactive_anon untyped
+node_vmstat_nr_inactive_anon 26781
+# HELP node_vmstat_nr_inactive_file /proc/vmstat information field nr_inactive_file.
+# TYPE node_vmstat_nr_inactive_file untyped
+node_vmstat_nr_inactive_file 238102
+# HELP node_vmstat_nr_isolated_anon /proc/vmstat information field nr_isolated_anon.
+# TYPE node_vmstat_nr_isolated_anon untyped
+node_vmstat_nr_isolated_anon 0
+# HELP node_vmstat_nr_isolated_file /proc/vmstat information field nr_isolated_file.
+# TYPE node_vmstat_nr_isolated_file untyped
+node_vmstat_nr_isolated_file 0
+# HELP node_vmstat_nr_kernel_stack /proc/vmstat information field nr_kernel_stack.
+# TYPE node_vmstat_nr_kernel_stack untyped
+node_vmstat_nr_kernel_stack 439
+# HELP node_vmstat_nr_mapped /proc/vmstat information field nr_mapped.
+# TYPE node_vmstat_nr_mapped untyped
+node_vmstat_nr_mapped 37324
+# HELP node_vmstat_nr_mlock /proc/vmstat information field nr_mlock.
+# TYPE node_vmstat_nr_mlock untyped
+node_vmstat_nr_mlock 0
+# HELP node_vmstat_nr_page_table_pages /proc/vmstat information field nr_page_table_pages.
+# TYPE node_vmstat_nr_page_table_pages untyped
+node_vmstat_nr_page_table_pages 1894
+# HELP node_vmstat_nr_shmem /proc/vmstat information field nr_shmem.
+# TYPE node_vmstat_nr_shmem untyped
+node_vmstat_nr_shmem 1652
+# HELP node_vmstat_nr_slab_reclaimable /proc/vmstat information field nr_slab_reclaimable.
+# TYPE node_vmstat_nr_slab_reclaimable untyped
+node_vmstat_nr_slab_reclaimable 12746
+# HELP node_vmstat_nr_slab_unreclaimable /proc/vmstat information field nr_slab_unreclaimable.
+# TYPE node_vmstat_nr_slab_unreclaimable untyped
+node_vmstat_nr_slab_unreclaimable 5174
+# HELP node_vmstat_nr_unevictable /proc/vmstat information field nr_unevictable.
+# TYPE node_vmstat_nr_unevictable untyped
+node_vmstat_nr_unevictable 0
+# HELP node_vmstat_nr_unstable /proc/vmstat information field nr_unstable.
+# TYPE node_vmstat_nr_unstable untyped
+node_vmstat_nr_unstable 0
+# HELP node_vmstat_nr_vmscan_immediate_reclaim /proc/vmstat information field nr_vmscan_immediate_reclaim.
+# TYPE node_vmstat_nr_vmscan_immediate_reclaim untyped
+node_vmstat_nr_vmscan_immediate_reclaim 0
+# HELP node_vmstat_nr_vmscan_write /proc/vmstat information field nr_vmscan_write.
+# TYPE node_vmstat_nr_vmscan_write untyped
+node_vmstat_nr_vmscan_write 0
+# HELP node_vmstat_nr_writeback /proc/vmstat information field nr_writeback.
+# TYPE node_vmstat_nr_writeback untyped
+node_vmstat_nr_writeback 0
+# HELP node_vmstat_nr_writeback_temp /proc/vmstat information field nr_writeback_temp.
+# TYPE node_vmstat_nr_writeback_temp untyped
+node_vmstat_nr_writeback_temp 0
+# HELP node_vmstat_nr_written /proc/vmstat information field nr_written.
+# TYPE node_vmstat_nr_written untyped
+node_vmstat_nr_written 685360
+# HELP node_vmstat_numa_foreign /proc/vmstat information field numa_foreign.
+# TYPE node_vmstat_numa_foreign untyped
+node_vmstat_numa_foreign 0
+# HELP node_vmstat_numa_hint_faults /proc/vmstat information field numa_hint_faults.
+# TYPE node_vmstat_numa_hint_faults untyped
+node_vmstat_numa_hint_faults 0
+# HELP node_vmstat_numa_hint_faults_local /proc/vmstat information field numa_hint_faults_local.
+# TYPE node_vmstat_numa_hint_faults_local untyped
+node_vmstat_numa_hint_faults_local 0
+# HELP node_vmstat_numa_hit /proc/vmstat information field numa_hit.
+# TYPE node_vmstat_numa_hit untyped
+node_vmstat_numa_hit 4.165042e+06
+# HELP node_vmstat_numa_huge_pte_updates /proc/vmstat information field numa_huge_pte_updates.
+# TYPE node_vmstat_numa_huge_pte_updates untyped
+node_vmstat_numa_huge_pte_updates 0
+# HELP node_vmstat_numa_interleave /proc/vmstat information field numa_interleave.
+# TYPE node_vmstat_numa_interleave untyped
+node_vmstat_numa_interleave 12851
+# HELP node_vmstat_numa_local /proc/vmstat information field numa_local.
+# TYPE node_vmstat_numa_local untyped
+node_vmstat_numa_local 4.165042e+06
+# HELP node_vmstat_numa_miss /proc/vmstat information field numa_miss.
+# TYPE node_vmstat_numa_miss untyped
+node_vmstat_numa_miss 0
+# HELP node_vmstat_numa_other /proc/vmstat information field numa_other.
+# TYPE node_vmstat_numa_other untyped
+node_vmstat_numa_other 0
+# HELP node_vmstat_numa_pages_migrated /proc/vmstat information field numa_pages_migrated.
+# TYPE node_vmstat_numa_pages_migrated untyped
+node_vmstat_numa_pages_migrated 0
+# HELP node_vmstat_numa_pte_updates /proc/vmstat information field numa_pte_updates.
+# TYPE node_vmstat_numa_pte_updates untyped
+node_vmstat_numa_pte_updates 0
+# HELP node_vmstat_pageoutrun /proc/vmstat information field pageoutrun.
+# TYPE node_vmstat_pageoutrun untyped
+node_vmstat_pageoutrun 110
+# HELP node_vmstat_pgactivate /proc/vmstat information field pgactivate.
+# TYPE node_vmstat_pgactivate untyped
+node_vmstat_pgactivate 184246
+# HELP node_vmstat_pgalloc_dma /proc/vmstat information field pgalloc_dma.
+# TYPE node_vmstat_pgalloc_dma untyped
+node_vmstat_pgalloc_dma 10673
+# HELP node_vmstat_pgalloc_dma32 /proc/vmstat information field pgalloc_dma32.
+# TYPE node_vmstat_pgalloc_dma32 untyped
+node_vmstat_pgalloc_dma32 4.382583e+06
+# HELP node_vmstat_pgalloc_movable /proc/vmstat information field pgalloc_movable.
+# TYPE node_vmstat_pgalloc_movable untyped
+node_vmstat_pgalloc_movable 0
+# HELP node_vmstat_pgalloc_normal /proc/vmstat information field pgalloc_normal.
+# TYPE node_vmstat_pgalloc_normal untyped
+node_vmstat_pgalloc_normal 0
+# HELP node_vmstat_pgdeactivate /proc/vmstat information field pgdeactivate.
+# TYPE node_vmstat_pgdeactivate untyped
+node_vmstat_pgdeactivate 25376
+# HELP node_vmstat_pgfault /proc/vmstat information field pgfault.
+# TYPE node_vmstat_pgfault untyped
+node_vmstat_pgfault 3.608913e+06
+# HELP node_vmstat_pgfree /proc/vmstat information field pgfree.
+# TYPE node_vmstat_pgfree untyped
+node_vmstat_pgfree 4.416515e+06
+# HELP node_vmstat_pginodesteal /proc/vmstat information field pginodesteal.
+# TYPE node_vmstat_pginodesteal untyped
+node_vmstat_pginodesteal 0
+# HELP node_vmstat_pgmajfault /proc/vmstat information field pgmajfault.
+# TYPE node_vmstat_pgmajfault untyped
+node_vmstat_pgmajfault 3007
+# HELP node_vmstat_pgmigrate_fail /proc/vmstat information field pgmigrate_fail.
+# TYPE node_vmstat_pgmigrate_fail untyped
+node_vmstat_pgmigrate_fail 0
+# HELP node_vmstat_pgmigrate_success /proc/vmstat information field pgmigrate_success.
+# TYPE node_vmstat_pgmigrate_success untyped
+node_vmstat_pgmigrate_success 0
+# HELP node_vmstat_pgpgin /proc/vmstat information field pgpgin.
+# TYPE node_vmstat_pgpgin untyped
+node_vmstat_pgpgin 524486
+# HELP node_vmstat_pgpgout /proc/vmstat information field pgpgout.
+# TYPE node_vmstat_pgpgout untyped
+node_vmstat_pgpgout 2.444988e+06
+# HELP node_vmstat_pgrefill_dma /proc/vmstat information field pgrefill_dma.
+# TYPE node_vmstat_pgrefill_dma untyped
+node_vmstat_pgrefill_dma 288
+# HELP node_vmstat_pgrefill_dma32 /proc/vmstat information field pgrefill_dma32.
+# TYPE node_vmstat_pgrefill_dma32 untyped
+node_vmstat_pgrefill_dma32 25088
+# HELP node_vmstat_pgrefill_movable /proc/vmstat information field pgrefill_movable.
+# TYPE node_vmstat_pgrefill_movable untyped
+node_vmstat_pgrefill_movable 0
+# HELP node_vmstat_pgrefill_normal /proc/vmstat information field pgrefill_normal.
+# TYPE node_vmstat_pgrefill_normal untyped
+node_vmstat_pgrefill_normal 0
+# HELP node_vmstat_pgrotated /proc/vmstat information field pgrotated.
+# TYPE node_vmstat_pgrotated untyped
+node_vmstat_pgrotated 3
+# HELP node_vmstat_pgscan_direct_dma /proc/vmstat information field pgscan_direct_dma.
+# TYPE node_vmstat_pgscan_direct_dma untyped
+node_vmstat_pgscan_direct_dma 0
+# HELP node_vmstat_pgscan_direct_dma32 /proc/vmstat information field pgscan_direct_dma32.
+# TYPE node_vmstat_pgscan_direct_dma32 untyped
+node_vmstat_pgscan_direct_dma32 3438
+# HELP node_vmstat_pgscan_direct_movable /proc/vmstat information field pgscan_direct_movable.
+# TYPE node_vmstat_pgscan_direct_movable untyped
+node_vmstat_pgscan_direct_movable 0
+# HELP node_vmstat_pgscan_direct_normal /proc/vmstat information field pgscan_direct_normal.
+# TYPE node_vmstat_pgscan_direct_normal untyped
+node_vmstat_pgscan_direct_normal 0
+# HELP node_vmstat_pgscan_direct_throttle /proc/vmstat information field pgscan_direct_throttle.
+# TYPE node_vmstat_pgscan_direct_throttle untyped
+node_vmstat_pgscan_direct_throttle 0
+# HELP node_vmstat_pgscan_kswapd_dma /proc/vmstat information field pgscan_kswapd_dma.
+# TYPE node_vmstat_pgscan_kswapd_dma untyped
+node_vmstat_pgscan_kswapd_dma 862
+# HELP node_vmstat_pgscan_kswapd_dma32 /proc/vmstat information field pgscan_kswapd_dma32.
+# TYPE node_vmstat_pgscan_kswapd_dma32 untyped
+node_vmstat_pgscan_kswapd_dma32 352397
+# HELP node_vmstat_pgscan_kswapd_movable /proc/vmstat information field pgscan_kswapd_movable.
+# TYPE node_vmstat_pgscan_kswapd_movable untyped
+node_vmstat_pgscan_kswapd_movable 0
+# HELP node_vmstat_pgscan_kswapd_normal /proc/vmstat information field pgscan_kswapd_normal.
+# TYPE node_vmstat_pgscan_kswapd_normal untyped
+node_vmstat_pgscan_kswapd_normal 0
+# HELP node_vmstat_pgsteal_direct_dma /proc/vmstat information field pgsteal_direct_dma.
+# TYPE node_vmstat_pgsteal_direct_dma untyped
+node_vmstat_pgsteal_direct_dma 0
+# HELP node_vmstat_pgsteal_direct_dma32 /proc/vmstat information field pgsteal_direct_dma32.
+# TYPE node_vmstat_pgsteal_direct_dma32 untyped
+node_vmstat_pgsteal_direct_dma32 3438
+# HELP node_vmstat_pgsteal_direct_movable /proc/vmstat information field pgsteal_direct_movable.
+# TYPE node_vmstat_pgsteal_direct_movable untyped
+node_vmstat_pgsteal_direct_movable 0
+# HELP node_vmstat_pgsteal_direct_normal /proc/vmstat information field pgsteal_direct_normal.
+# TYPE node_vmstat_pgsteal_direct_normal untyped
+node_vmstat_pgsteal_direct_normal 0
+# HELP node_vmstat_pgsteal_kswapd_dma /proc/vmstat information field pgsteal_kswapd_dma.
+# TYPE node_vmstat_pgsteal_kswapd_dma untyped
+node_vmstat_pgsteal_kswapd_dma 676
+# HELP node_vmstat_pgsteal_kswapd_dma32 /proc/vmstat information field pgsteal_kswapd_dma32.
+# TYPE node_vmstat_pgsteal_kswapd_dma32 untyped
+node_vmstat_pgsteal_kswapd_dma32 322069
+# HELP node_vmstat_pgsteal_kswapd_movable /proc/vmstat information field pgsteal_kswapd_movable.
+# TYPE node_vmstat_pgsteal_kswapd_movable untyped
+node_vmstat_pgsteal_kswapd_movable 0
+# HELP node_vmstat_pgsteal_kswapd_normal /proc/vmstat information field pgsteal_kswapd_normal.
+# TYPE node_vmstat_pgsteal_kswapd_normal untyped
+node_vmstat_pgsteal_kswapd_normal 0
+# HELP node_vmstat_pswpin /proc/vmstat information field pswpin.
+# TYPE node_vmstat_pswpin untyped
+node_vmstat_pswpin 0
+# HELP node_vmstat_pswpout /proc/vmstat information field pswpout.
+# TYPE node_vmstat_pswpout untyped
+node_vmstat_pswpout 0
+# HELP node_vmstat_slabs_scanned /proc/vmstat information field slabs_scanned.
+# TYPE node_vmstat_slabs_scanned untyped
+node_vmstat_slabs_scanned 42752
+# HELP node_vmstat_thp_collapse_alloc /proc/vmstat information field thp_collapse_alloc.
+# TYPE node_vmstat_thp_collapse_alloc untyped
+node_vmstat_thp_collapse_alloc 0
+# HELP node_vmstat_thp_collapse_alloc_failed /proc/vmstat information field thp_collapse_alloc_failed.
+# TYPE node_vmstat_thp_collapse_alloc_failed untyped
+node_vmstat_thp_collapse_alloc_failed 0
+# HELP node_vmstat_thp_fault_alloc /proc/vmstat information field thp_fault_alloc.
+# TYPE node_vmstat_thp_fault_alloc untyped
+node_vmstat_thp_fault_alloc 0
+# HELP node_vmstat_thp_fault_fallback /proc/vmstat information field thp_fault_fallback.
+# TYPE node_vmstat_thp_fault_fallback untyped
+node_vmstat_thp_fault_fallback 0
+# HELP node_vmstat_thp_split /proc/vmstat information field thp_split.
+# TYPE node_vmstat_thp_split untyped
+node_vmstat_thp_split 0
+# HELP node_vmstat_thp_zero_page_alloc /proc/vmstat information field thp_zero_page_alloc.
+# TYPE node_vmstat_thp_zero_page_alloc untyped
+node_vmstat_thp_zero_page_alloc 0
+# HELP node_vmstat_thp_zero_page_alloc_failed /proc/vmstat information field thp_zero_page_alloc_failed.
+# TYPE node_vmstat_thp_zero_page_alloc_failed untyped
+node_vmstat_thp_zero_page_alloc_failed 0
+# HELP node_vmstat_unevictable_pgs_cleared /proc/vmstat information field unevictable_pgs_cleared.
+# TYPE node_vmstat_unevictable_pgs_cleared untyped
+node_vmstat_unevictable_pgs_cleared 0
+# HELP node_vmstat_unevictable_pgs_culled /proc/vmstat information field unevictable_pgs_culled.
+# TYPE node_vmstat_unevictable_pgs_culled untyped
+node_vmstat_unevictable_pgs_culled 0
+# HELP node_vmstat_unevictable_pgs_mlocked /proc/vmstat information field unevictable_pgs_mlocked.
+# TYPE node_vmstat_unevictable_pgs_mlocked untyped
+node_vmstat_unevictable_pgs_mlocked 0
+# HELP node_vmstat_unevictable_pgs_munlocked /proc/vmstat information field unevictable_pgs_munlocked.
+# TYPE node_vmstat_unevictable_pgs_munlocked untyped
+node_vmstat_unevictable_pgs_munlocked 0
+# HELP node_vmstat_unevictable_pgs_rescued /proc/vmstat information field unevictable_pgs_rescued.
+# TYPE node_vmstat_unevictable_pgs_rescued untyped
+node_vmstat_unevictable_pgs_rescued 0
+# HELP node_vmstat_unevictable_pgs_scanned /proc/vmstat information field unevictable_pgs_scanned.
+# TYPE node_vmstat_unevictable_pgs_scanned untyped
+node_vmstat_unevictable_pgs_scanned 0
+# HELP node_vmstat_unevictable_pgs_stranded /proc/vmstat information field unevictable_pgs_stranded.
+# TYPE node_vmstat_unevictable_pgs_stranded untyped
+node_vmstat_unevictable_pgs_stranded 0
+# HELP node_vmstat_workingset_activate /proc/vmstat information field workingset_activate.
+# TYPE node_vmstat_workingset_activate untyped
+node_vmstat_workingset_activate 1327
+# HELP node_vmstat_workingset_nodereclaim /proc/vmstat information field workingset_nodereclaim.
+# TYPE node_vmstat_workingset_nodereclaim untyped
+node_vmstat_workingset_nodereclaim 0
+# HELP node_vmstat_workingset_refault /proc/vmstat information field workingset_refault.
+# TYPE node_vmstat_workingset_refault untyped
+node_vmstat_workingset_refault 1448
+# HELP node_vmstat_zone_reclaim_failed /proc/vmstat information field zone_reclaim_failed.
+# TYPE node_vmstat_zone_reclaim_failed untyped
+node_vmstat_zone_reclaim_failed 0
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 3.62
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1024
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 8
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 1.8092032e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.48604698192e+09
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 2.1311488e+08

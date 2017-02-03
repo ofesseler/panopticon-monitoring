@@ -26,10 +26,10 @@ RUN adduser -D -u 1000 -g 'www' www && \
     mkdir /www && \
     chown -R www:www /var/lib/nginx && \
     chown -R www:www /www
-ADD docker-assets/nginx.conf /etc/nginx/nginx.conf
+ADD docker-assets/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Prometheus config
-ADD docker-assets/prometheus.yml /etc/prometheus/prometheus.yml
+#ADD docker-assets/prometheus.yml /etc/prometheus/prometheus.yml
 
 
 # Supervisord config
@@ -38,9 +38,7 @@ RUN mkdir -p /var/log/panopticon-dev/
 ADD docker-assets/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Test-metrics files
-ADD docker-assets/cadvisor.metrics /www/cadvisor/metrics
-ADD docker-assets/node_exporter.metrics /www/node_exporter/metrics
-
+#ADD docker-assets/metrics/* /www/
 
 EXPOSE 9090 8080
 

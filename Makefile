@@ -13,7 +13,13 @@ build: gotest
 
 docker: gotest build
 	docker build -t panopticon:latest .
-	docker run --rm --privileged=true -p 8888:8888 -i --name panopticon-test panopticon 
+	docker run -i \
+	--rm --privileged=true \
+	-p 8888:8888 -p 8080:8080 -p 9090:9090 \
+	-v $(shell pwd)/docker-assets/prometheus:/etc/prometheus/ \
+	-v $(shell pwd)/docker-assets/metrics:/www/ \
+	--name panopticon-test \
+	panopticon
 
 gotest: fmt
 	$(GO) test -v $(pkgs)
