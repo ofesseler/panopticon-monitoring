@@ -15,6 +15,8 @@ const (
 	ConsulUp         = "consul_up"
 	GlusterUp        = "gluster_up"
 	NodeSupervisorUp = "node_supervisor_up"
+	fatalMetrics     = []string{ConsulUp, GlusterUp}
+	warningMetrics   = []string{Up, NodeSupervisorUp}
 )
 
 func FetchHealthSummary(promHost string) (HealthSummary, error) {

@@ -1,22 +1,23 @@
 package main
 
 import (
-	"flag"
-	"net/http"
-
-	api "github.com/ofesseler/panopticon/promapi"
-
 	"encoding/json"
+	"flag"
+	"fmt"
+	"net/http"
+	"strings"
+
 	log "github.com/Sirupsen/logrus"
+	api "github.com/ofesseler/panopticon/promapi"
 )
 
 var (
 	promHost      = flag.String("prom-host", "localhost:9090", "Enter hostname of prometheus")
 	listenAddress = flag.String("listen-address", ":8888", "Enter port number to listen on")
+	health        = NewHealth("wolke")
 )
 
 func main() {
-
 	flag.Parse()
 
 	log.Infof("Start panopticon. Listening on: %v", *listenAddress)
@@ -27,7 +28,7 @@ func main() {
 	http.HandleFunc("/api/v1/consul/up", consulUp)
 	http.HandleFunc("/api/v1/gluster/up", glusterUp)
 	http.HandleFunc("/api/v1/health", healthSummary)
-
+	http.HandleFunc("/api/v1/state/", state)
 	log.Fatal(http.ListenAndServe(*listenAddress, nil))
 }
 
@@ -73,4 +74,56 @@ func healthSummary(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(healthSummary)
+}
+
+func state(w http.ResponseWriter, r *http.Request) {
+	var (
+		state    State
+		endpoint string
+	)
+	urlPacks := strings.Split(r.URL.Path, "/")
+	endpoint = urlPacks[len(urlPacks)-1]
+	state.Last = health.FSM.Current()
+
+	switch endpoint {
+	case CURRENT:
+		state.Request = CURRENT
+		state.Success = true
+	case WARNING:
+		state.Request = WARNING
+		err := health.FSM.Event(WARNING)
+		state.Success = true
+		if err != nil {
+			log.Error(err)
+			state.Message = err.Error()
+			state.Success = false
+		}
+
+	case FATAL:
+		state.Request = FATAL
+		err := health.FSM.Event(FATAL)
+		state.Success = true
+		if err != nil {
+			log.Error(err)
+			state.Message = err.Error()
+			state.Success = false
+		}
+	case RESOLV:
+		state.Request = RESOLV
+		err := health.FSM.Event(RESOLV)
+		state.Success = true
+		if err != nil {
+			log.Error(err)
+			state.Message = err.Error()
+			state.Success = false
+		}
+	default:
+		state.Success = false
+		state.Request = fmt.Sprintf("%s %s", r.Method, r.RequestURI)
+		state.Message = fmt.Sprintf("Requsted method %s not implemented", endpoint)
+	}
+
+	state.Current = health.FSM.Current()
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(state)
 }
