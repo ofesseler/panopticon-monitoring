@@ -15,6 +15,9 @@ const (
 	ConsulUp         = "consul_up"
 	GlusterUp        = "gluster_up"
 	NodeSupervisorUp = "node_supervisor_up"
+)
+
+var (
 	fatalMetrics     = []string{ConsulUp, GlusterUp}
 	warningMetrics   = []string{Up, NodeSupervisorUp}
 )

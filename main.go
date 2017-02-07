@@ -88,6 +88,7 @@ func state(w http.ResponseWriter, r *http.Request) {
 	switch endpoint {
 	case CURRENT:
 		state.Request = CURRENT
+		api.FetchHealthSummary(*promHost)
 		state.Success = true
 	case WARNING:
 		state.Request = WARNING
