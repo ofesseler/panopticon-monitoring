@@ -4,7 +4,11 @@ MAINTAINER Oliver Fesseler <ofesseler@gmail.com>
 ENV PROM_VER="1.4.1"
 ENV PROM_URL="https://github.com/prometheus/prometheus/releases/download"
 
-RUN apk add --update wget git tar nginx supervisor
+RUN apk add --update wget git tar nginx supervisor go
+
+RUN mkdir /go
+ENV GOPATH /go
+RUN go get github.com/looplab/fsm
 
 # Download Prometheus from github
 RUN wget -q -O /tmp/prometheus.tar.gz \
