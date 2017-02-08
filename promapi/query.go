@@ -33,7 +33,7 @@ type ConsulHealth struct {
 
 func CheckConsulHealth(promhost string) {
 	var health ConsulHealth
-	up, err := CheckUp(*promhost, ConsulUp)
+	up, err := CheckUp(promhost, ConsulUp)
 	if err != nil {
 		log.Error(err)
 	}
