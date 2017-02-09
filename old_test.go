@@ -7,9 +7,11 @@ import (
 	api "github.com/ofesseler/panopticon/promapi"
 	"reflect"
 	"testing"
+	log "github.com/Sirupsen/logrus"
 )
 
 func TestGetUniqueLinks(t *testing.T) {
+	log.SetLevel(log.FatalLevel)
 	links := []api.Link{
 		{Source: "w1", Target: "w2", Value: 2},
 		{Source: "w2", Target: "w3", Value: 2},
