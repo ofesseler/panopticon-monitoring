@@ -34,8 +34,8 @@ func main() {
 }
 
 func up(w http.ResponseWriter, r *http.Request) {
-
-	upHealthStatus, err := api.CheckUp(*promHost, api.Up)
+	var httpFetch api.Fetcher = api.PrometheusFetcher{}
+	upHealthStatus, err := api.FetchServiceUp(httpFetch, *promHost, api.Up)
 	if err != nil {
 		log.Error(err)
 	}
@@ -45,8 +45,8 @@ func up(w http.ResponseWriter, r *http.Request) {
 }
 
 func consulUp(w http.ResponseWriter, r *http.Request) {
-
-	consulUpHealthStatus, err := api.CheckUp(*promHost, api.ConsulUp)
+	var httpFetch api.Fetcher = api.PrometheusFetcher{}
+	consulUpHealthStatus, err := api.FetchServiceUp(httpFetch, api.ConsulUp, *promHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -56,12 +56,18 @@ func consulUp(w http.ResponseWriter, r *http.Request) {
 }
 
 func consulHealth(w http.ResponseWriter, r *http.Request) {
-	api.CheckConsulHealth(*promHost)
+	var f api.Fetcher = api.PrometheusFetcher{}
+	h, err := api.FetchConsulHealth(f, *promHost)
+	if err != nil {
+		log.Error(err)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(h)
 }
 
 func glusterUp(w http.ResponseWriter, r *http.Request) {
-
-	glusterUpHealthStatus, err := api.CheckUp(*promHost, api.GlusterUp)
+	var httpFetch api.Fetcher = api.PrometheusFetcher{}
+	glusterUpHealthStatus, err := api.FetchServiceUp(httpFetch, *promHost, api.GlusterUp)
 	if err != nil {
 		log.Error(err)
 	}

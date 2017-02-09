@@ -27,34 +27,75 @@ var (
 )
 
 type ConsulHealth struct {
-	Health           int // 0,1,2
+	Health           int    // 0,1,2
 	ConsulUp         bool
 	ConsulRaftPeers  bool
 	ConsulSerf       bool
 	consulRaftLeader bool
 }
 
-func CheckConsulHealth(promhost string) (ConsulHealth, error) {
+func FetchConsulHealth(f Fetcher, promhost string) (ConsulHealth, error) {
 	var health ConsulHealth
-	up, err := CheckUp(promhost, ConsulUp)
+	health.Health = 2
+	up, err := FetchServiceUp(f, ConsulUp, promhost)
 	if err != nil {
 		log.Error(err)
 	}
+
 	health.ConsulUp = up.Status
 
-	raftPeersStatus, err := promQuery(ConsulRaftPeers, promhost)
+	raftPeers, err := FetchRaftPeers(f, promhost)
+	peerLen := len(raftPeers)
+	peerCount := 0
+	for _,peer := range raftPeers {
+		if peer.Value != int64(peerLen) {
+			peerCount++
+		}
+	}
+	if peerLen == peerCount {
+		health.ConsulRaftPeers = true
+	}
 
-	for _, v := range raftPeersStatus.Data.Result {
-		peers, err := strconv.ParseInt(v.Value[1].(string), 10, 64)
+	return health, nil
+}
+
+type PromQRCount struct {
+	Name string
+	Job string
+	Instance string
+	Value int64
+}
+
+type ServiceHealth struct {
+	Name string // service name
+	Instance string //instance name
+	Healthy int // 0 (green),1 (orange),2 (red)
+}
+
+func FetchRaftPeers(f Fetcher, promHost string) ([]PromQRCount, error) {
+
+	var raftStatusList []PromQRCount
+
+	raftPeerResponse, err := f.PromQuery(ConsulRaftPeers, promHost)
+	if err != nil {
+		log.Error(err)
+		return []PromQRCount{}, err
+	}
+	for _, result := range raftPeerResponse.Data.Result {
+		peers, err := strconv.ParseInt(result.Value[1].(string), 10, 32)
 		if err != nil {
 			log.Error(err)
+			//raftStatus[i].Value = 0
 		}
-		if peers != 4 {
-			log.Errorf("Peers should be 4 and is: %v", peers)
-		}
-
+		raftStatusList = append(raftStatusList, PromQRCount{
+			Instance: result.Metric.Instance,
+			Job: result.Metric.Job,
+			Name: result.Metric.Name,
+			Value: int64(peers),
+		})
 	}
-	return health, nil
+
+	return raftStatusList, nil
 }
 
 func FetchHealthSummary(promHost string) (HealthSummary, error) {
@@ -62,7 +103,8 @@ func FetchHealthSummary(promHost string) (HealthSummary, error) {
 	upList := []string{Up, ConsulUp, GlusterUp, NodeSupervisorUp}
 	count := 0
 	for _, v := range upList {
-		check, err := CheckUp(promHost, v)
+		var f Fetcher = PrometheusFetcher{}
+		check, err := FetchServiceUp(f, v, promHost)
 		if err != nil {
 			log.Error(err)
 			return healthSummary, err
@@ -78,7 +120,7 @@ func FetchHealthSummary(promHost string) (HealthSummary, error) {
 	return healthSummary, nil
 }
 
-func mapResponseToHealthStatus(resp StatusCheckReceived) (HealthStatus, error) {
+func mapBoolValueToHeatshStatus(resp StatusCheckReceived) (HealthStatus, error) {
 	var (
 		healthyNodes []Health
 		failureNodes []Health
@@ -111,15 +153,14 @@ func mapResponseToHealthStatus(resp StatusCheckReceived) (HealthStatus, error) {
 	return healthStatus, nil
 }
 
-func CheckUp(promHost, check string) (HealthStatus, error) {
+func FetchServiceUp(f Fetcher, check, promHost string) (HealthStatus, error) {
 	var healthStatus HealthStatus
-
-	resp, err := promQuery(check, promHost)
+	resp, err := f.PromQuery(check, promHost)
 	if err != nil && checkPromResponse(resp) {
 		return healthStatus, err
 	}
 
-	healthStatus, err = mapResponseToHealthStatus(resp)
+	healthStatus, err = mapBoolValueToHeatshStatus(resp)
 	if err != nil {
 		log.Error(err)
 		return healthStatus, err
@@ -128,9 +169,15 @@ func CheckUp(promHost, check string) (HealthStatus, error) {
 	return healthStatus, nil
 }
 
-func promQuery(query, promHost string) (StatusCheckReceived, error) {
-	var errorStatus error
+type Fetcher interface {
+	PromQuery(query string, host string) (StatusCheckReceived, error)
+}
 
+type PrometheusFetcher struct {
+}
+
+func (PrometheusFetcher) PromQuery(query, promHost string) (StatusCheckReceived, error) {
+	var errorStatus error
 	apiURL := fmt.Sprintf("http://%v/api/v1/query", promHost)
 	urlValues := url.Values{}
 	urlValues.Set("query", query)
