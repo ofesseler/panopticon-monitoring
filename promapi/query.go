@@ -11,27 +11,30 @@ import (
 )
 
 const (
-	Up               = "up"
-	ConsulUp         = "consul_up"
-	ConsulRaftPeers  = "consul_raft_peers"
-	GlusterUp        = "gluster_up"
-	NodeSupervisorUp = "node_supervisor_up"
+	Up                     = "up"
+	ConsulUp               = "consul_up"
+	ConsulRaftPeers        = "consul_raft_peers"
+	GlusterUp              = "gluster_up"
+	NodeSupervisorUp       = "node_supervisor_up"
+	ConsulHealthNodeStatus = "consul_health_node_status"
+	ConsulRaftLeader       = "consul_raft_leader"
+	ConsulSerfLanMembers   = "consul_serf_lan_members"
 )
 
 var (
-	fatalMetrics     = []string{ConsulUp, GlusterUp}
-	warningMetrics   = []string{Up, NodeSupervisorUp}
+	fatalMetrics   = []string{ConsulUp, GlusterUp}
+	warningMetrics = []string{Up, NodeSupervisorUp}
 )
 
 type ConsulHealth struct {
-	Health int // 0,1,2
-	ConsulUp bool
-	ConsulRaftPeers bool
-	ConsulSerf bool
+	Health           int // 0,1,2
+	ConsulUp         bool
+	ConsulRaftPeers  bool
+	ConsulSerf       bool
 	consulRaftLeader bool
 }
 
-func CheckConsulHealth(promhost string) {
+func CheckConsulHealth(promhost string) (ConsulHealth, error) {
 	var health ConsulHealth
 	up, err := CheckUp(promhost, ConsulUp)
 	if err != nil {
@@ -41,18 +44,17 @@ func CheckConsulHealth(promhost string) {
 
 	raftPeersStatus, err := promQuery(ConsulRaftPeers, promhost)
 
-
-	for _, v := range raftPeersStatus.Data.Result{
-		peers, err := strconv.ParseInt(v.Value[1].(string),10,64)
+	for _, v := range raftPeersStatus.Data.Result {
+		peers, err := strconv.ParseInt(v.Value[1].(string), 10, 64)
 		if err != nil {
 			log.Error(err)
 		}
 		if peers != 4 {
 			log.Errorf("Peers should be 4 and is: %v", peers)
 		}
-		
-	}
 
+	}
+	return health, nil
 }
 
 func FetchHealthSummary(promHost string) (HealthSummary, error) {
@@ -178,4 +180,3 @@ func checkPromResponse(resp StatusCheckReceived) bool {
 	}
 	return true
 }
-

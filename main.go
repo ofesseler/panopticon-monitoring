@@ -26,6 +26,7 @@ func main() {
 
 	http.HandleFunc("/api/v1/up", up)
 	http.HandleFunc("/api/v1/consul/up", consulUp)
+	http.HandleFunc("/api/v1/consul/health", consulHealth)
 	http.HandleFunc("/api/v1/gluster/up", glusterUp)
 	http.HandleFunc("/api/v1/health", healthSummary)
 	http.HandleFunc("/api/v1/state/", state)
@@ -52,6 +53,10 @@ func consulUp(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(consulUpHealthStatus)
+}
+
+func consulHealth(w http.ResponseWriter, r *http.Request) {
+	api.CheckConsulHealth(*promHost)
 }
 
 func glusterUp(w http.ResponseWriter, r *http.Request) {
