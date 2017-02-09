@@ -5,18 +5,22 @@ type StatusCheckReceived struct {
 	Status string `json:"status"`
 	Data   struct {
 		ResultType string `json:"resultType"`
-		Result     []struct {
-			Metric struct {
-				Name     string `json:"__name__"`
-				Check    string `json:"check"`
-				Instance string `json:"instance"`
-				Job      string `json:"job"`
-				Node     string `json:"node"`
-			} `json:"metric"`
-			Value []interface{} `json:"value"`
-		} `json:"result"`
+		Result     []Result `json:"result"`
 	} `json:"data"`
 }
+
+type Result struct {
+	Metric struct {
+		       Name     string `json:"__name__"`
+		       Check    string `json:"check"`
+		       Instance string `json:"instance"`
+		       Job      string `json:"job"`
+		       Node     string `json:"node"`
+	       } `json:"metric"`
+	Value []interface{} `json:"value"`
+}
+
+
 
 // ErrorStatus struct represents json error response
 type ErrorStatus struct {
