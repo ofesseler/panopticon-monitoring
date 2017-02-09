@@ -35,7 +35,7 @@ scrape_configs:
 
 - job_name: 'consul-stub-err'
   scrape_interval: 5s
-  metrics_path: /consul_errq
+  metrics_path: /consul_err
   static_configs:
     - targets: ['localhost:8080']
 
