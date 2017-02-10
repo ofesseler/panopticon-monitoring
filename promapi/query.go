@@ -33,11 +33,10 @@ func ProcessGlusterHealthSummary(f Fetcher, promhost string) (GlusterHealth, err
 	glusterTest := true
 
 	// GlusterUP test
-	//up, err := FetchServiceUp(f, GlusterUp, promhost)
 	up, err := FetchPromGauge(f, promhost, GlusterUp)
 	if err != nil {
 		log.Error(err)
-		gh.GlusterUp = false
+		glusterTest = false
 	}
 	for _, peer := range up {
 		if peer.Value != 1 {
