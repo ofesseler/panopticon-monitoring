@@ -39,7 +39,7 @@ gluster_node_size_total_bytes{hostname="wolke4.leomedia.local",path="/mnt/gluste
 gluster_node_size_total_bytes{hostname="wolke4.leomedia.local",path="/mnt/gluster/gv_leoticket",volume="gv_leoticket"} 2.050791424e+10
 # HELP gluster_peers_connected Is peer connected to gluster cluster.
 # TYPE gluster_peers_connected gauge
-gluster_peers_connected 3
+gluster_peers_connected 1
 # HELP gluster_up Was the last query of Gluster successful.
 # TYPE gluster_up gauge
 gluster_up 1

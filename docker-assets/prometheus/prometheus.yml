@@ -15,37 +15,43 @@ scrape_configs:
   static_configs:
     - targets: ['localhost:9090']
 
-- job_name: 'node_exporter-stub'
+- job_name: 'node_exporter'
   scrape_interval: 5s
   metrics_path: /node
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'cadvisor-stub'
+- job_name: 'cadvisor'
   scrape_interval: 5s
   metrics_path: /cadvisor
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'consul-stub'
+- job_name: 'consul'
   scrape_interval: 5s
   metrics_path: /consul
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'consul-stub-err'
+- job_name: 'consul-err'
   scrape_interval: 5s
   metrics_path: /consul_err
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'gluster-stub'
+- job_name: 'gluster_node1'
   scrape_interval: 5s
-  metrics_path: /gluster
+  metrics_path: /gluster_node1
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'weave-stub'
+- job_name: 'gluster_node2'
+  scrape_interval: 5s
+  metrics_path: /gluster_node2
+  static_configs:
+    - targets: ['localhost:8080']
+
+- job_name: 'weave'
   scrape_interval: 5s
   metrics_path: /weave
   static_configs:
