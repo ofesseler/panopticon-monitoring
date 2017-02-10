@@ -83,27 +83,6 @@ func TestFetchServiceUp(t *testing.T) {
 	}
 }
 
-//
-//func TestFetchConsulHealth_ok(t *testing.T) {
-//	var test = []testPair {
-//		{f: ConsulTest{Total:3, Failed:0, SuccessValue:"3", FailValue: "0"}, expInt: 0},
-//		{f: ConsulTest{Total:3, Failed:1, SuccessValue:"3", FailValue: "0"}, expInt: 2},
-//		{f: ConsulTest{Total:3, Failed:2, SuccessValue:"3", FailValue: "0"}, expInt: 2},
-//	}
-//
-//	for _, p := range test {
-//		h, err := FetchConsulHealth(p.f, "FetchConsulHealth")
-//		if err != nil  {
-//			t.Error(err)
-//		}
-//
-//		if h.Health != p.expInt {
-//			t.Errorf("Expected Health value of %v and got %v", p.expInt, h.Health)
-//		}
-//	}
-//
-//}
-
 func TestFetchPromGauge(t *testing.T) {
 	// expInt: in this case is for no. of results
 	var test = []testPair{
@@ -126,5 +105,33 @@ func TestFetchPromGauge(t *testing.T) {
 				t.Errorf("Expected peer count was %v and got %v", p.expInt64, v.Value)
 			}
 		}
+	}
+}
+
+
+func TestProcessGlusterHealthSummary(t *testing.T) {
+	var test = []testPair{
+		{f: ConsulTest{Total:2, Failed:0, SuccessValue:"1", FailValue:"0"}, expInt64 :1},
+	}
+
+	for _, p := range test {
+		s, err := ProcessGlusterHealthSummary(p.f, "ProcessGlusterHealthSummary")
+		if err != nil {
+			t.Error(err)
+		}
+		if !s.GlusterUp {
+			t.Error("GlusterUp failed")
+		}
+		if !s.GlusterPeersConnected {
+			t.Error("Peer connection failed")
+		}
+		// TODO
+		/*
+		if !s.GlusterSuccessfullyMounted {
+			t.Error("Mount failed")
+		}
+		if !s.GlusterMountWriteable {
+			t.Error("Gluster write on mount failed")
+		}*/
 	}
 }

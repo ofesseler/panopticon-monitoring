@@ -11,11 +11,12 @@ import (
 )
 
 const (
-	ClusterNodeCount       = 4
+	ClusterNodeCount       = 2
 	Up                     = "up"
 	ConsulUp               = "consul_up"
 	ConsulRaftPeers        = "consul_raft_peers"
 	GlusterUp              = "gluster_up"
+	GlusterPeersConnected  = "gluster_peers_connected"
 	NodeSupervisorUp       = "node_supervisor_up"
 	ConsulHealthNodeStatus = "consul_health_node_status"
 	ConsulRaftLeader       = "consul_raft_leader"
@@ -27,6 +28,61 @@ var (
 	warningMetrics = []string{Up, NodeSupervisorUp}
 )
 
+func ProcessGlusterHealthSummary(f Fetcher, promhost string) (GlusterHealth, error) {
+	gh := GlusterHealth{Health:2}
+	glusterTest := true
+
+	// GlusterUP test
+	//up, err := FetchServiceUp(f, GlusterUp, promhost)
+	up, err := FetchPromGauge(f, promhost, GlusterUp)
+	if err != nil {
+		log.Error(err)
+		gh.GlusterUp = false
+	}
+	for _, peer := range up {
+		if peer.Value != 1 {
+			glusterTest = false
+		}
+	}
+	gh.GlusterUp = glusterTest
+
+
+	// Peers connected test
+	peersConnectedList, err := FetchPromGauge(f, promhost, GlusterPeersConnected)
+	if err != nil {
+		log.Error(err)
+	}
+	// reset glusterTest
+	glusterTest = true
+	peersLen := len(peersConnectedList)
+	if peersLen != ClusterNodeCount {
+		glusterTest = false
+		log.Errorf("Not all Cluster nodes are reachable expected %v and reached %v", ClusterNodeCount, peersLen)
+	}
+
+	for _, peer := range peersConnectedList {
+		if int64(peersLen-1) != peer.Value {
+			log.Errorf("cluster_peers_connected value %v and scaped peers( %v ) don't match", peer.Value, peersLen-1)
+			glusterTest = false
+		}
+	}
+	if glusterTest {
+		gh.GlusterPeersConnected = true
+	}
+
+	// TODO
+	//gh.GlusterMountWriteable = true
+	//gh.GlusterSuccessfullyMounted = true
+
+	//if gh.GlusterUp && gh.GlusterPeersConnected && gh.GlusterSuccessfullyMounted && gh.GlusterMountWriteable {
+	//	gh.Health = 0
+	//}
+
+	if gh.GlusterUp && gh.GlusterPeersConnected {
+		gh.Health = 0
+	}
+	return gh, nil
+}
 
 func ProcessConsulHealthSummary(f Fetcher, promhost string) (ConsulHealth, error) {
 	// check Consul reachable and running
@@ -228,7 +284,8 @@ type Fetcher interface {
 	PromQuery(query string, host string) (StatusCheckReceived, error)
 }
 
-type PrometheusFetcher struct{}
+type PrometheusFetcher struct{
+}
 
 func (PrometheusFetcher) PromQuery(query, promHost string) (StatusCheckReceived, error) {
 	var errorStatus error

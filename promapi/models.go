@@ -76,3 +76,11 @@ type ConsulHealth struct {
 	ConsulRaftLeader       bool
 	ConsulHealthNodeStatus bool
 }
+// GlusterHealth representates the health state of glusterfs in the  cluster
+type GlusterHealth struct {
+	Health int // 0,1,2
+	GlusterUp bool
+	GlusterPeersConnected bool
+	GlusterSuccessfullyMounted bool
+	GlusterMountWriteable bool
+}
