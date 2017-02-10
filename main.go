@@ -35,7 +35,7 @@ func main() {
 
 func up(w http.ResponseWriter, r *http.Request) {
 	var httpFetch api.Fetcher = api.PrometheusFetcher{}
-	upHealthStatus, err := api.FetchServiceUp(httpFetch, api.Up, *promHost )
+	upHealthStatus, err := api.FetchServiceUp(httpFetch, api.Up, *promHost)
 	if err != nil {
 		log.Error(err)
 	}

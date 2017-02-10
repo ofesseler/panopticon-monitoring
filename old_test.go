@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	log "github.com/Sirupsen/logrus"
 	api "github.com/ofesseler/panopticon/promapi"
 	"reflect"
 	"testing"
-	log "github.com/Sirupsen/logrus"
 )
 
 func TestGetUniqueLinks(t *testing.T) {
