@@ -21,12 +21,89 @@ const (
 	ConsulHealthNodeStatus = "consul_health_node_status"
 	ConsulRaftLeader       = "consul_raft_leader"
 	ConsulSerfLanMembers   = "consul_serf_lan_members"
+	WeaveConnections       = "weave_connections"
 )
 
 var (
 	fatalMetrics   = []string{ConsulUp, GlusterUp}
 	warningMetrics = []string{Up, NodeSupervisorUp}
 )
+
+type WeaveHealth struct {
+	Health int // 0,1,2
+	Established int64 // number of establised connections should be node count -1
+	Connecting int64
+	Failed int64
+	Pending int64
+	Retrying int64
+}
+
+type PromQRWeave struct {
+	PromQR
+	State string
+}
+
+func FetchWeaveConnectionGauges(f Fetcher, promHost string, metric string) ([]PromQRWeave, error) {
+
+	var resultMetricList []PromQRWeave
+
+	promResponse, err := f.PromQuery(metric, promHost)
+	if err != nil {
+		log.Error(err)
+		return []PromQRWeave{}, err
+	}
+	for _, result := range promResponse.Data.Result {
+		peers, err := strconv.ParseInt(result.Value[1].(string), 10, 32)
+		if err != nil {
+			log.Error(err)
+			//raftStatus[i].Value = 0
+		}
+		pw := PromQRWeave{ State: result.Metric.State }
+		pw.Instance = result.Metric.Instance
+		pw.Node =  result.Metric.Node
+		pw.Job =   result.Metric.Job
+		pw.Name =  result.Metric.Name
+		pw.Value = int64(peers)
+		resultMetricList = append(resultMetricList, pw)
+	}
+
+	return resultMetricList, nil
+}
+
+func ProcessWeaveHealthSummary(f Fetcher, promhost string) (WeaveHealth, error) {
+	wh := WeaveHealth{Health:2}
+	weaveTest := true
+
+	// weave connections
+	connList, err := FetchWeaveConnectionGauges(f, promhost, WeaveConnections)
+	if err != nil {
+		log.Error(err)
+		weaveTest = false
+	}
+
+	for _, con := range connList {
+		switch con.State {
+		case "connecting":
+			wh.Connecting += con.Value
+		case "established":
+			wh.Established += con.Value
+		case "pending":
+			wh.Pending += con.Value
+		case "failed":
+			wh.Failed += con.Value
+		case "retrying":
+			wh.Retrying += con.Value
+		}
+	}
+
+	if wh.Pending > 0 || wh.Retrying > 0 || wh.Failed > 0 {
+		weaveTest = false
+	}
+	if weaveTest {
+		wh.Health = 0
+	}
+	return wh, nil
+}
 
 func ProcessGlusterHealthSummary(f Fetcher, promhost string) (GlusterHealth, error) {
 	gh := GlusterHealth{Health:2}
@@ -200,6 +277,7 @@ func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error)
 			Job:   result.Metric.Job,
 			Name:  result.Metric.Name,
 			Value: int64(peers),
+			Instance: result.Metric.Instance,
 		})
 	}
 

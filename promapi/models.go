@@ -16,6 +16,7 @@ type Result struct {
 		Instance string `json:"instance"`
 		Job      string `json:"job"`
 		Node     string `json:"node"`
+		State    string `json:"state"`
 	} `json:"metric"`
 	Value []interface{} `json:"value"`
 }
@@ -65,6 +66,7 @@ type PromQR struct {
 	Job   string
 	Node  string
 	Value int64
+	Instance string
 }
 
 // Consulhealth representates the health state of consul in the  cluster
