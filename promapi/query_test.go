@@ -104,7 +104,7 @@ func TestFetchServiceUp(t *testing.T) {
 //
 //}
 
-func TestFetchRaftPeers(t *testing.T) {
+func TestFetchPromGauge(t *testing.T) {
 	// expInt: in this case is for no. of results
 	var test = []testPair{
 		{f: ConsulTest{Total: 3, Failed: 0, SuccessValue: "3", FailValue: "0"}, expInt64: 3, expInt: 3},
@@ -113,7 +113,7 @@ func TestFetchRaftPeers(t *testing.T) {
 	}
 
 	for _, p := range test {
-		h, err := FetchRaftPeers(p.f, "RaftPeers")
+		h, err := FetchPromGauge(p.f, "PromGauge", "up")
 		if err != nil {
 			t.Error(err)
 		}
