@@ -11,6 +11,7 @@ import (
 )
 
 const (
+	ClusterNodeCount       = 4
 	Up                     = "up"
 	ConsulUp               = "consul_up"
 	ConsulRaftPeers        = "consul_raft_peers"
@@ -27,14 +28,16 @@ var (
 )
 
 type ConsulHealth struct {
-	Health           int    // 0,1,2
-	ConsulUp         bool
-	ConsulRaftPeers  bool
-	ConsulSerf       bool
-	consulRaftLeader bool
+	Health                 int // 0,1,2
+	ConsulUp               bool
+	ConsulRaftPeers        bool
+	ConsulSerfMembers      bool
+	ConsulRaftLeader       bool
+	ConsulHealthNodeStatus bool
 }
 
-func FetchConsulHealth(f Fetcher, promhost string) (ConsulHealth, error) {
+func ProcessConsulHealthSummary(f Fetcher, promhost string) (ConsulHealth, error) {
+	// check Consul reachable and running
 	var health ConsulHealth
 	health.Health = 2
 	up, err := FetchServiceUp(f, ConsulUp, promhost)
@@ -44,58 +47,116 @@ func FetchConsulHealth(f Fetcher, promhost string) (ConsulHealth, error) {
 
 	health.ConsulUp = up.Status
 
-	raftPeers, err := FetchRaftPeers(f, promhost)
+	// get and check consul_raft_peers
+	raftPeers, err := FetchPromGauge(f, promhost, ConsulRaftPeers)
 	peerLen := len(raftPeers)
 	peerCount := 0
-	for _,peer := range raftPeers {
+	var peers int64 = -1
+	for _, peer := range raftPeers {
 		if peer.Value != int64(peerLen) {
 			peerCount++
+			if peers == -1 {
+				peers = peer.Value
+			}
+			if peers != peer.Value {
+				log.Errorf("RaftPeers is %v and expected %v raft peers", peers, ClusterNodeCount)
+				break
+			}
 		}
 	}
-	if peerLen == peerCount {
+	if peerLen == peerCount && peerLen != 0 && ClusterNodeCount == peers {
 		health.ConsulRaftPeers = true
+	}
+
+	// get and check consul_serf_lan_members
+	serfMembers, err := FetchPromGauge(f, promhost, ConsulSerfLanMembers)
+	if err != nil {
+		log.Error(err)
+	}
+	serfLen := len(serfMembers)
+	serfCount := 0
+	var members int64 = -1
+	for _, member := range raftPeers {
+		if member.Value != int64(peerLen) {
+			serfCount++
+		}
+		if members == -1 {
+			members = member.Value
+		}
+		if members != member.Value {
+			log.Errorf("SerfLanMembers is %v and expected %v members", members, ClusterNodeCount)
+			break
+		}
+	}
+	if serfLen == serfCount && serfLen != 0 && ClusterNodeCount == members {
+		health.ConsulSerfMembers = true
+	}
+
+	// get and check consul_health_node_status
+	healthNodeStatus, err := FetchPromGauge(f, promhost, ConsulHealthNodeStatus)
+	if err != nil {
+		log.Error(err)
+	}
+	var nodeStatusCount int = 0
+	for _, node := range healthNodeStatus {
+		if node.Value == 1 {
+			nodeStatusCount++
+		} else {
+			log.Infof("SerfLanMembers is not healthy: %v", node)
+		}
+	}
+	if nodeStatusCount == len(healthNodeStatus) {
+		health.ConsulHealthNodeStatus = true
+	}
+
+	// Is there a leader?
+	raftLeaderResult, err := FetchPromGauge(f, promhost, ConsulRaftLeader)
+	if err != nil {
+		log.Error(err)
+	}
+	var instancesWithLeader int = 0
+	for _, node := range raftLeaderResult {
+		if node.Value == 1 {
+			instancesWithLeader++
+		} else {
+			log.Infof("SerfLanMembers is not healthy: %v", node)
+		}
+	}
+	if instancesWithLeader == len(raftLeaderResult) {
+		health.ConsulRaftLeader = true
+	}
+
+	if health.ConsulUp && health.ConsulRaftPeers && health.ConsulSerfMembers && health.ConsulHealthNodeStatus && health.ConsulRaftLeader {
+		health.Health = 0
 	}
 
 	return health, nil
 }
 
-type PromQRCount struct {
-	Name string
-	Job string
-	Instance string
-	Value int64
-}
+func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error) {
 
-type ServiceHealth struct {
-	Name string // service name
-	Instance string //instance name
-	Healthy int // 0 (green),1 (orange),2 (red)
-}
+	var resultMetricList []PromQR
 
-func FetchRaftPeers(f Fetcher, promHost string) ([]PromQRCount, error) {
-
-	var raftStatusList []PromQRCount
-
-	raftPeerResponse, err := f.PromQuery(ConsulRaftPeers, promHost)
+	promResponse, err := f.PromQuery(metric, promHost)
 	if err != nil {
 		log.Error(err)
-		return []PromQRCount{}, err
+		return []PromQR{}, err
 	}
-	for _, result := range raftPeerResponse.Data.Result {
+	for _, result := range promResponse.Data.Result {
 		peers, err := strconv.ParseInt(result.Value[1].(string), 10, 32)
 		if err != nil {
 			log.Error(err)
 			//raftStatus[i].Value = 0
 		}
-		raftStatusList = append(raftStatusList, PromQRCount{
-			Instance: result.Metric.Instance,
-			Job: result.Metric.Job,
-			Name: result.Metric.Name,
+		resultMetricList = append(resultMetricList, PromQR{
+			Node:  result.Metric.Node,
+			Job:   result.Metric.Job,
+			Name:  result.Metric.Name,
 			Value: int64(peers),
 		})
 	}
 
-	return raftStatusList, nil
+	return resultMetricList, nil
 }
 
 func FetchHealthSummary(promHost string) (HealthSummary, error) {
@@ -107,7 +168,7 @@ func FetchHealthSummary(promHost string) (HealthSummary, error) {
 		check, err := FetchServiceUp(f, v, promHost)
 		if err != nil {
 			log.Error(err)
-			return healthSummary, err
+			return HealthSummary{}, err
 		}
 		if !check.Status {
 			healthSummary.Failed = append(healthSummary.Failed, v)
@@ -120,7 +181,7 @@ func FetchHealthSummary(promHost string) (HealthSummary, error) {
 	return healthSummary, nil
 }
 
-func mapBoolValueToHeatshStatus(resp StatusCheckReceived) (HealthStatus, error) {
+func mapBoolValueToHeathStatus(resp StatusCheckReceived) (HealthStatus, error) {
 	var (
 		healthyNodes []Health
 		failureNodes []Health
@@ -137,12 +198,14 @@ func mapBoolValueToHeatshStatus(resp StatusCheckReceived) (HealthStatus, error) 
 				Instance: v.Metric.Instance,
 				Query:    v.Metric.Name,
 				Ok:       status,
+				Job:      v.Metric.Job,
 			})
 		} else {
 			failureNodes = append(failureNodes, Health{
 				Instance: v.Metric.Instance,
 				Query:    v.Metric.Name,
 				Ok:       status,
+				Job:      v.Metric.Job,
 			})
 		}
 
@@ -156,14 +219,14 @@ func mapBoolValueToHeatshStatus(resp StatusCheckReceived) (HealthStatus, error) 
 func FetchServiceUp(f Fetcher, check, promHost string) (HealthStatus, error) {
 	var healthStatus HealthStatus
 	resp, err := f.PromQuery(check, promHost)
-	if err != nil && checkPromResponse(resp) {
-		return healthStatus, err
+	if err != nil || !checkPromResponse(resp) {
+		return HealthStatus{}, err
 	}
 
-	healthStatus, err = mapBoolValueToHeatshStatus(resp)
+	healthStatus, err = mapBoolValueToHeathStatus(resp)
 	if err != nil {
 		log.Error(err)
-		return healthStatus, err
+		return HealthStatus{}, err
 	}
 
 	return healthStatus, nil
@@ -173,8 +236,7 @@ type Fetcher interface {
 	PromQuery(query string, host string) (StatusCheckReceived, error)
 }
 
-type PrometheusFetcher struct {
-}
+type PrometheusFetcher struct{}
 
 func (PrometheusFetcher) PromQuery(query, promHost string) (StatusCheckReceived, error) {
 	var errorStatus error
@@ -183,15 +245,23 @@ func (PrometheusFetcher) PromQuery(query, promHost string) (StatusCheckReceived,
 	urlValues.Set("query", query)
 	concatedURL := apiURL + "?" + urlValues.Encode()
 	checkURL, err := url.Parse(concatedURL)
-	checkerr(err)
+	if err != nil {
+		log.Error(err)
+		return StatusCheckReceived{}, err
+	}
 	request, err := http.NewRequest("GET", checkURL.String(), nil)
-	checkerr(err)
+	if err != nil {
+		log.Error(err)
+		return StatusCheckReceived{}, err
+	}
 	client := &http.Client{
 		Timeout: 3 * time.Second,
 	}
 	resp, err := client.Do(request)
-
-	checkerr(err)
+	if err != nil {
+		log.Error(err)
+		return StatusCheckReceived{}, err
+	}
 	defer resp.Body.Close()
 	body, _ := decodeResponse(resp)
 
@@ -203,17 +273,10 @@ func decodeResponse(response *http.Response) (StatusCheckReceived, ErrorStatus) 
 	decoder := json.NewDecoder(response.Body)
 	var body StatusCheckReceived
 	err := decoder.Decode(&body)
-	checkerr(err)
-	if body.Status != "success" {
-		log.Fatal("Prometheus responded with error:", body.Status)
+	if body.Status != "success" && err != nil {
+		log.Error("Prometheus responded with error:", body.Status)
 	}
 	return body, errorStatus
-}
-
-func checkerr(err error) {
-	if err != nil {
-		log.WithFields(log.Fields{"checkerr": "err"}).Error(err)
-	}
 }
 
 func checkPromResponse(resp StatusCheckReceived) bool {

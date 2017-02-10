@@ -1,17 +1,16 @@
 package promapi
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 type testPair struct {
-	f       Fetcher
-	expInt  int
-	expInt64  int64
-	expBool bool
+	f        Fetcher
+	expInt   int
+	expInt64 int64
+	expBool  bool
 }
-
 
 type statusOK struct {
 	status string
@@ -46,14 +45,14 @@ type ConsulTest struct {
 
 func (f ConsulTest) PromQuery(query, promHost string) (StatusCheckReceived, error) {
 	scr := StatusCheckReceived{
-		Status:"success",
+		Status: "success",
 	}
 	scr.Data.ResultType = "vector"
 	result := make([]Result, f.Total)
 
 	for i := 0; i < f.Total; i++ {
 		var values []interface{} = make([]interface{}, 2)
-		if i < f.Total -f.Failed {
+		if i < f.Total-f.Failed {
 			values[1] = f.SuccessValue
 		} else {
 			values[1] = f.FailValue
@@ -61,17 +60,17 @@ func (f ConsulTest) PromQuery(query, promHost string) (StatusCheckReceived, erro
 		result[i].Value = values
 		result[i].Metric.Name = fmt.Sprintf("name_%v", i)
 		result[i].Metric.Instance = fmt.Sprintf("http://%v", promHost)
-		result[i].Metric.Job =  fmt.Sprintf("job_%v", i)
+		result[i].Metric.Job = fmt.Sprintf("job_%v", i)
 	}
 	scr.Data.Result = result
 	return scr, nil
 }
 
 func TestFetchServiceUp(t *testing.T) {
-	var test []testPair = []testPair {
-		{f: ConsulTest{Total:3, Failed:0, SuccessValue:"1", FailValue: "0"}, expBool: true},
-		{f: ConsulTest{Total:3, Failed:1, SuccessValue:"1", FailValue: "0"}, expBool: false},
-		{f: ConsulTest{Total:3, Failed:2, SuccessValue:"1", FailValue: "0"}, expBool: false},
+	var test []testPair = []testPair{
+		{f: ConsulTest{Total: 3, Failed: 0, SuccessValue: "1", FailValue: "0"}, expBool: true},
+		{f: ConsulTest{Total: 3, Failed: 1, SuccessValue: "1", FailValue: "0"}, expBool: false},
+		{f: ConsulTest{Total: 3, Failed: 2, SuccessValue: "1", FailValue: "0"}, expBool: false},
 	}
 	for _, p := range test {
 		healthStatus, err := FetchServiceUp(p.f, ConsulUp, "FetchServiceUp")
@@ -105,18 +104,17 @@ func TestFetchServiceUp(t *testing.T) {
 //
 //}
 
-
 func TestFetchRaftPeers(t *testing.T) {
 	// expInt: in this case is for no. of results
-	var test = []testPair {
-		{f: ConsulTest{Total:3, Failed:0, SuccessValue:"3", FailValue: "0"}, expInt64: 3, expInt:3},
-		{f: ConsulTest{Total:3, Failed:1, SuccessValue:"2", FailValue: "2"}, expInt64: 2, expInt:3},
-		{f: ConsulTest{Total:3, Failed:2, SuccessValue:"1", FailValue: "1"}, expInt64: 1, expInt:3},
+	var test = []testPair{
+		{f: ConsulTest{Total: 3, Failed: 0, SuccessValue: "3", FailValue: "0"}, expInt64: 3, expInt: 3},
+		{f: ConsulTest{Total: 3, Failed: 1, SuccessValue: "2", FailValue: "2"}, expInt64: 2, expInt: 3},
+		{f: ConsulTest{Total: 3, Failed: 2, SuccessValue: "1", FailValue: "1"}, expInt64: 1, expInt: 3},
 	}
 
 	for _, p := range test {
 		h, err := FetchRaftPeers(p.f, "RaftPeers")
-		if err != nil  {
+		if err != nil {
 			t.Error(err)
 		}
 
@@ -130,5 +128,3 @@ func TestFetchRaftPeers(t *testing.T) {
 		}
 	}
 }
-
-

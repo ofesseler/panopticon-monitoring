@@ -57,7 +57,7 @@ func consulUp(w http.ResponseWriter, r *http.Request) {
 
 func consulHealth(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	h, err := api.FetchConsulHealth(f, *promHost)
+	h, err := api.ProcessConsulHealthSummary(f, *promHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -99,8 +99,12 @@ func state(w http.ResponseWriter, r *http.Request) {
 	switch endpoint {
 	case CURRENT:
 		state.Request = CURRENT
-		api.FetchHealthSummary(*promHost)
-		state.Success = true
+		summary, err := api.FetchHealthSummary(*promHost)
+		if err != nil {
+			state.Success = false
+			state.Message = err.Error()
+		}
+		state.Success = summary.Status
 	case WARNING:
 		state.Request = WARNING
 		err := health.FSM.Event(WARNING)

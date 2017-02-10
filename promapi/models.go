@@ -4,23 +4,21 @@ package promapi
 type StatusCheckReceived struct {
 	Status string `json:"status"`
 	Data   struct {
-		ResultType string `json:"resultType"`
+		ResultType string   `json:"resultType"`
 		Result     []Result `json:"result"`
 	} `json:"data"`
 }
 
 type Result struct {
 	Metric struct {
-		       Name     string `json:"__name__"`
-		       Check    string `json:"check"`
-		       Instance string `json:"instance"`
-		       Job      string `json:"job"`
-		       Node     string `json:"node"`
-	       } `json:"metric"`
+		Name     string `json:"__name__"`
+		Check    string `json:"check"`
+		Instance string `json:"instance"`
+		Job      string `json:"job"`
+		Node     string `json:"node"`
+	} `json:"metric"`
 	Value []interface{} `json:"value"`
 }
-
-
 
 // ErrorStatus struct represents json error response
 type ErrorStatus struct {
@@ -50,12 +48,6 @@ type Link struct {
 	Value  int    `json:"value"`
 }
 
-// Status sturct represents json
-type Status struct {
-	Nodes []Node `json:"nodes"`
-	Links []Link `json:"links"`
-}
-
 type HealthStatus struct {
 	Status       bool     `json:"status"` // Status 0,1,2 maps to health status green (0), orange(1), red (2)
 	HealthyNodes []Health `json:"healthyNodes"`
@@ -66,4 +58,11 @@ type HealthSummary struct {
 	Status   bool
 	Services []string
 	Failed   []string
+}
+
+type PromQR struct {
+	Name  string
+	Job   string
+	Node  string
+	Value int64
 }
