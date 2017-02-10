@@ -66,3 +66,13 @@ type PromQR struct {
 	Node  string
 	Value int64
 }
+
+// Consulhealth representates the health state of consul in the  cluster
+type ConsulHealth struct {
+	Health                 int // 0,1,2
+	ConsulUp               bool
+	ConsulRaftPeers        bool
+	ConsulSerfMembers      bool
+	ConsulRaftLeader       bool
+	ConsulHealthNodeStatus bool
+}

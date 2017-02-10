@@ -27,14 +27,6 @@ var (
 	warningMetrics = []string{Up, NodeSupervisorUp}
 )
 
-type ConsulHealth struct {
-	Health                 int // 0,1,2
-	ConsulUp               bool
-	ConsulRaftPeers        bool
-	ConsulSerfMembers      bool
-	ConsulRaftLeader       bool
-	ConsulHealthNodeStatus bool
-}
 
 func ProcessConsulHealthSummary(f Fetcher, promhost string) (ConsulHealth, error) {
 	// check Consul reachable and running
