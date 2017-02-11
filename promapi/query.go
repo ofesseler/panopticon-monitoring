@@ -29,20 +29,6 @@ var (
 	warningMetrics = []string{Up, NodeSupervisorUp}
 )
 
-type WeaveHealth struct {
-	Health      int   // 0,1,2
-	Established int64 // number of establised connections should be node count -1
-	Connecting  int64
-	Failed      int64
-	Pending     int64
-	Retrying    int64
-}
-
-type PromQRWeave struct {
-	PromQR
-	State string
-}
-
 func FetchWeaveConnectionGauges(f Fetcher, promHost string, metric string) ([]PromQRWeave, error) {
 
 	var resultMetricList []PromQRWeave
@@ -167,7 +153,6 @@ func ProcessConsulHealthSummary(f Fetcher, promhost string) (ConsulHealth, error
 	if err != nil {
 		log.Error(err)
 	}
-
 	health.ConsulUp = up.Status
 
 	// get and check consul_raft_peers

@@ -69,6 +69,11 @@ type PromQR struct {
 	Instance string
 }
 
+type PromQRWeave struct {
+	PromQR
+	State string
+}
+
 // Consulhealth representates the health state of consul in the  cluster
 type ConsulHealth struct {
 	Health                 int // 0,1,2
@@ -87,3 +92,13 @@ type GlusterHealth struct {
 	GlusterSuccessfullyMounted bool
 	GlusterMountWriteable      bool
 }
+
+type WeaveHealth struct {
+	Health      int   // 0,1,2
+	Established int64 // number of establised connections should be node count -1
+	Connecting  int64
+	Failed      int64
+	Pending     int64
+	Retrying    int64
+}
+
