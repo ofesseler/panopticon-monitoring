@@ -28,7 +28,7 @@ type ErrorStatus struct {
 	Error     string `json:"error"`
 }
 
-type Health struct {
+type PromQueryRequest struct {
 	Instance string `json:"instance"`
 	Job      string `json:"job"`
 	Ok       bool   `json:"ok"`
@@ -51,8 +51,8 @@ type Link struct {
 
 type HealthStatus struct {
 	Status       bool     `json:"status"` // Status 0,1,2 maps to health status green (0), orange(1), red (2)
-	HealthyNodes []Health `json:"healthyNodes"`
-	FailureNodes []Health `json:"failureNodes"`
+	HealthyNodes []PromQueryRequest `json:"healthyNodes"`
+	FailureNodes []PromQueryRequest `json:"failureNodes"`
 }
 
 type HealthSummary struct {

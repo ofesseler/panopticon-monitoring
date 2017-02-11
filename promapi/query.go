@@ -291,8 +291,8 @@ func FetchHealthSummary(f Fetcher, promHost string) (HealthSummary, error) {
 
 func mapBoolValueToHeathStatus(resp StatusCheckReceived) (HealthStatus, error) {
 	var (
-		healthyNodes []Health
-		failureNodes []Health
+		healthyNodes []PromQueryRequest
+		failureNodes []PromQueryRequest
 		healthStatus HealthStatus
 	)
 	for _, v := range resp.Data.Result {
@@ -302,14 +302,14 @@ func mapBoolValueToHeathStatus(resp StatusCheckReceived) (HealthStatus, error) {
 			return healthStatus, err
 		}
 		if status {
-			healthyNodes = append(healthyNodes, Health{
+			healthyNodes = append(healthyNodes, PromQueryRequest{
 				Instance: v.Metric.Instance,
 				Query:    v.Metric.Name,
 				Ok:       status,
 				Job:      v.Metric.Job,
 			})
 		} else {
-			failureNodes = append(failureNodes, Health{
+			failureNodes = append(failureNodes, PromQueryRequest{
 				Instance: v.Metric.Instance,
 				Query:    v.Metric.Name,
 				Ok:       status,
