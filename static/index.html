@@ -1,9 +1,33 @@
 <html>
 <head>
-    <title>Panopticon</title>
+    <title>Panopticon - Cluster Status</title>
+    <link rel="shortcur icon" type="image/png" href="/favicon.ico" />
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/panopticon.js"></script>
 </head>
 <body>
 <h1>Panopticon</h1>
-lalal
+
+<h2>Current State - Health</h2>
+<pre id="current-state"></pre>
+
+<p>Last State</p>
+<pre id="last-state"></pre>
+
+<p id="error-message-label">Message</p>
+<pre id="error-message"></pre>
+
+
+<h2>Consul</h2>
+<pre id="consul-data"></pre>
+
+<h2>Gluster</h2>
+<pre id="gluster-data"></pre>
+
+<h2>Weave</h2>
+<pre id="weave-data"></pre>
+
+
+
 </body>
 </html>

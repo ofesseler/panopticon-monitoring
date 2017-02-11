@@ -100,8 +100,8 @@ func weaveHealth(w http.ResponseWriter, r *http.Request) {
 }
 
 func healthSummary(w http.ResponseWriter, r *http.Request) {
-
-	healthSummary, err := api.FetchHealthSummary(*promHost)
+	var f api.Fetcher = api.PrometheusFetcher{}
+	healthSummary, err := api.FetchHealthSummary(f, *promHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -114,6 +114,7 @@ func state(w http.ResponseWriter, r *http.Request) {
 	var (
 		state    State
 		endpoint string
+		f        api.Fetcher = api.PrometheusFetcher{}
 	)
 	urlPacks := strings.Split(r.URL.Path, "/")
 	endpoint = urlPacks[len(urlPacks)-1]
@@ -122,7 +123,7 @@ func state(w http.ResponseWriter, r *http.Request) {
 	switch endpoint {
 	case CURRENT:
 		state.Request = CURRENT
-		summary, err := api.FetchHealthSummary(*promHost)
+		summary, err := api.FetchHealthSummary(f, *promHost)
 		if err != nil {
 			state.Success = false
 			state.Message = err.Error()
