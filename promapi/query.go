@@ -30,12 +30,12 @@ var (
 )
 
 type WeaveHealth struct {
-	Health int // 0,1,2
+	Health      int   // 0,1,2
 	Established int64 // number of establised connections should be node count -1
-	Connecting int64
-	Failed int64
-	Pending int64
-	Retrying int64
+	Connecting  int64
+	Failed      int64
+	Pending     int64
+	Retrying    int64
 }
 
 type PromQRWeave struct {
@@ -58,11 +58,11 @@ func FetchWeaveConnectionGauges(f Fetcher, promHost string, metric string) ([]Pr
 			log.Error(err)
 			//raftStatus[i].Value = 0
 		}
-		pw := PromQRWeave{ State: result.Metric.State }
+		pw := PromQRWeave{State: result.Metric.State}
 		pw.Instance = result.Metric.Instance
-		pw.Node =  result.Metric.Node
-		pw.Job =   result.Metric.Job
-		pw.Name =  result.Metric.Name
+		pw.Node = result.Metric.Node
+		pw.Job = result.Metric.Job
+		pw.Name = result.Metric.Name
 		pw.Value = int64(peers)
 		resultMetricList = append(resultMetricList, pw)
 	}
@@ -71,7 +71,7 @@ func FetchWeaveConnectionGauges(f Fetcher, promHost string, metric string) ([]Pr
 }
 
 func ProcessWeaveHealthSummary(f Fetcher, promhost string) (WeaveHealth, error) {
-	wh := WeaveHealth{Health:2}
+	wh := WeaveHealth{Health: 2}
 	weaveTest := true
 
 	// weave connections
@@ -106,7 +106,7 @@ func ProcessWeaveHealthSummary(f Fetcher, promhost string) (WeaveHealth, error) 
 }
 
 func ProcessGlusterHealthSummary(f Fetcher, promhost string) (GlusterHealth, error) {
-	gh := GlusterHealth{Health:2}
+	gh := GlusterHealth{Health: 2}
 	glusterTest := true
 
 	// GlusterUP test
@@ -121,7 +121,6 @@ func ProcessGlusterHealthSummary(f Fetcher, promhost string) (GlusterHealth, err
 		}
 	}
 	gh.GlusterUp = glusterTest
-
 
 	// Peers connected test
 	peersConnectedList, err := FetchPromGauge(f, promhost, GlusterPeersConnected)
@@ -273,10 +272,10 @@ func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error)
 			//raftStatus[i].Value = 0
 		}
 		resultMetricList = append(resultMetricList, PromQR{
-			Node:  result.Metric.Node,
-			Job:   result.Metric.Job,
-			Name:  result.Metric.Name,
-			Value: int64(peers),
+			Node:     result.Metric.Node,
+			Job:      result.Metric.Job,
+			Name:     result.Metric.Name,
+			Value:    int64(peers),
 			Instance: result.Metric.Instance,
 		})
 	}
@@ -284,12 +283,11 @@ func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error)
 	return resultMetricList, nil
 }
 
-func FetchHealthSummary(promHost string) (HealthSummary, error) {
+func FetchHealthSummary(f Fetcher, promHost string) (HealthSummary, error) {
 	var healthSummary HealthSummary
 	upList := []string{Up, ConsulUp, GlusterUp, NodeSupervisorUp}
 	count := 0
 	for _, v := range upList {
-		var f Fetcher = PrometheusFetcher{}
 		check, err := FetchServiceUp(f, v, promHost)
 		if err != nil {
 			log.Error(err)
@@ -361,7 +359,7 @@ type Fetcher interface {
 	PromQuery(query string, host string) (StatusCheckReceived, error)
 }
 
-type PrometheusFetcher struct{
+type PrometheusFetcher struct {
 }
 
 func (PrometheusFetcher) PromQuery(query, promHost string) (StatusCheckReceived, error) {

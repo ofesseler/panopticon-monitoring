@@ -62,10 +62,10 @@ type HealthSummary struct {
 }
 
 type PromQR struct {
-	Name  string
-	Job   string
-	Node  string
-	Value int64
+	Name     string
+	Job      string
+	Node     string
+	Value    int64
 	Instance string
 }
 
@@ -78,11 +78,12 @@ type ConsulHealth struct {
 	ConsulRaftLeader       bool
 	ConsulHealthNodeStatus bool
 }
+
 // GlusterHealth representates the health state of glusterfs in the  cluster
 type GlusterHealth struct {
-	Health int // 0,1,2
-	GlusterUp bool
-	GlusterPeersConnected bool
+	Health                     int // 0,1,2
+	GlusterUp                  bool
+	GlusterPeersConnected      bool
 	GlusterSuccessfullyMounted bool
-	GlusterMountWriteable bool
+	GlusterMountWriteable      bool
 }

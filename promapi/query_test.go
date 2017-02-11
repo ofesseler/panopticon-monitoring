@@ -108,10 +108,9 @@ func TestFetchPromGauge(t *testing.T) {
 	}
 }
 
-
 func TestProcessGlusterHealthSummary(t *testing.T) {
 	var test = []testPair{
-		{f: ConsulTest{Total:2, Failed:0, SuccessValue:"1", FailValue:"0"}, expInt64 :1},
+		{f: ConsulTest{Total: 2, Failed: 0, SuccessValue: "1", FailValue: "0"}, expInt64: 1},
 	}
 
 	for _, p := range test {
@@ -127,11 +126,11 @@ func TestProcessGlusterHealthSummary(t *testing.T) {
 		}
 		// TODO
 		/*
-		if !s.GlusterSuccessfullyMounted {
-			t.Error("Mount failed")
-		}
-		if !s.GlusterMountWriteable {
-			t.Error("Gluster write on mount failed")
-		}*/
+			if !s.GlusterSuccessfullyMounted {
+				t.Error("Mount failed")
+			}
+			if !s.GlusterMountWriteable {
+				t.Error("Gluster write on mount failed")
+			}*/
 	}
 }
