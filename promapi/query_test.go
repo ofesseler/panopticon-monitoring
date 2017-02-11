@@ -107,30 +107,3 @@ func TestFetchPromGauge(t *testing.T) {
 		}
 	}
 }
-
-func TestProcessGlusterHealthSummary(t *testing.T) {
-	var test = []testPair{
-		{f: ConsulTest{Total: 2, Failed: 0, SuccessValue: "1", FailValue: "0"}, expInt64: 1},
-	}
-
-	for _, p := range test {
-		s, err := ProcessGlusterHealthSummary(p.f, "ProcessGlusterHealthSummary")
-		if err != nil {
-			t.Error(err)
-		}
-		if !s.GlusterUp {
-			t.Error("GlusterUp failed")
-		}
-		if !s.GlusterPeersConnected {
-			t.Error("Peer connection failed")
-		}
-		// TODO
-		/*
-			if !s.GlusterSuccessfullyMounted {
-				t.Error("Mount failed")
-			}
-			if !s.GlusterMountWriteable {
-				t.Error("Gluster write on mount failed")
-			}*/
-	}
-}

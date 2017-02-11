@@ -60,7 +60,7 @@ func consulUp(w http.ResponseWriter, r *http.Request) {
 
 func consulHealth(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	h, err := api.ProcessConsulHealthSummary(f, *promHost)
+	h, err := ProcessConsulHealthSummary(f, *promHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -81,7 +81,7 @@ func glusterUp(w http.ResponseWriter, r *http.Request) {
 
 func glusterHealth(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	h, err := api.ProcessGlusterHealthSummary(f, *promHost)
+	h, err := ProcessGlusterHealthSummary(f, *promHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -91,7 +91,7 @@ func glusterHealth(w http.ResponseWriter, r *http.Request) {
 
 func weaveHealth(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	h, err := api.ProcessWeaveHealthSummary(f, *promHost)
+	h, err := ProcessWeaveHealthSummary(f, *promHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -101,13 +101,13 @@ func weaveHealth(w http.ResponseWriter, r *http.Request) {
 
 func healthSummary(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	healthSummary, err := api.FetchHealthSummary(f, *promHost)
+	hs, err := ProcessHealthSummary(f, *promHost)
 	if err != nil {
 		log.Error(err)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(healthSummary)
+	json.NewEncoder(w).Encode(hs)
 }
 
 func state(w http.ResponseWriter, r *http.Request) {

@@ -50,7 +50,7 @@ type Link struct {
 }
 
 type HealthStatus struct {
-	Status       bool     `json:"status"` // Status 0,1,2 maps to health status green (0), orange(1), red (2)
+	Status       bool               `json:"status"` // Status 0,1,2 maps to health status green (0), orange(1), red (2)
 	HealthyNodes []PromQueryRequest `json:"healthyNodes"`
 	FailureNodes []PromQueryRequest `json:"failureNodes"`
 }
@@ -76,7 +76,7 @@ type PromQRWeave struct {
 
 // Consulhealth representates the health state of consul in the  cluster
 type ConsulHealth struct {
-	Health                 int // 0,1,2
+	Health                 StateType // 0,1,2
 	ConsulUp               bool
 	ConsulRaftPeers        bool
 	ConsulSerfMembers      bool
@@ -86,7 +86,7 @@ type ConsulHealth struct {
 
 // GlusterHealth representates the health state of glusterfs in the  cluster
 type GlusterHealth struct {
-	Health                     int // 0,1,2
+	Health                     StateType // 0,1,2
 	GlusterUp                  bool
 	GlusterPeersConnected      bool
 	GlusterSuccessfullyMounted bool
@@ -94,11 +94,30 @@ type GlusterHealth struct {
 }
 
 type WeaveHealth struct {
-	Health      int   // 0,1,2
-	Established int64 // number of establised connections should be node count -1
+	Health      StateType // 0,1,2
+	Established int64     // number of establised connections should be node count -1
 	Connecting  int64
 	Failed      int64
 	Pending     int64
 	Retrying    int64
 }
 
+type StateType uint8
+
+const (
+	GREEN  StateType = iota
+	ORANGE StateType = iota
+	RED    StateType = iota
+)
+
+type Service struct {
+	ServiceState StateType
+	Name         string
+	Instance     string
+}
+
+type HS struct {
+	ClusterState   StateType
+	Services       []Service
+	FailedServices []Service
+}
