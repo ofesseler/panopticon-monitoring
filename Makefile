@@ -25,4 +25,4 @@ gotest: fmt
 	$(GO) test -v $(pkgs)
 
 fmt:
-	$(GO) fmt
+	$(GO) fmt ./...
