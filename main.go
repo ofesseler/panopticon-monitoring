@@ -12,13 +12,24 @@ import (
 )
 
 var (
-	promHost      = flag.String("prom-host", "localhost:9090", "Enter hostname of prometheus")
-	listenAddress = flag.String("listen-address", ":8888", "Enter port number to listen on")
 	health        = NewHealth("wolke")
+	conn connection
 )
 
+type connection struct {
+	*api.PrometheusFetcher
+	PromHost string
+}
+
 func main() {
+	var (
+		promHostFlag = flag.String("prom-host", "localhost:9090", "Enter hostname of prometheus")
+		listenAddress = flag.String("listen-address", ":8888", "Enter port number to listen on")
+	)
 	flag.Parse()
+
+	conn.PromHost = *promHostFlag
+	conn.PrometheusFetcher = new(api.PrometheusFetcher)
 
 	log.Infof("Start panopticon. Listening on: %v", *listenAddress)
 
@@ -38,7 +49,7 @@ func main() {
 
 func up(w http.ResponseWriter, r *http.Request) {
 	var httpFetch api.Fetcher = api.PrometheusFetcher{}
-	upHealthStatus, err := api.FetchServiceUp(httpFetch, api.Up, *promHost)
+	upHealthStatus, err := api.FetchServiceUp(httpFetch, api.Up, conn.PromHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -49,7 +60,7 @@ func up(w http.ResponseWriter, r *http.Request) {
 
 func consulUp(w http.ResponseWriter, r *http.Request) {
 	var httpFetch api.Fetcher = api.PrometheusFetcher{}
-	consulUpHealthStatus, err := api.FetchServiceUp(httpFetch, api.ConsulUp, *promHost)
+	consulUpHealthStatus, err := api.FetchServiceUp(httpFetch, api.ConsulUp, conn.PromHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -60,7 +71,7 @@ func consulUp(w http.ResponseWriter, r *http.Request) {
 
 func consulHealth(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	h, err := ProcessConsulHealthSummary(f, *promHost)
+	h, err := ProcessConsulHealthSummary(f, conn.PromHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -70,7 +81,7 @@ func consulHealth(w http.ResponseWriter, r *http.Request) {
 
 func glusterUp(w http.ResponseWriter, r *http.Request) {
 	var httpFetch api.Fetcher = api.PrometheusFetcher{}
-	glusterUpHealthStatus, err := api.FetchServiceUp(httpFetch, *promHost, api.GlusterUp)
+	glusterUpHealthStatus, err := api.FetchServiceUp(httpFetch, conn.PromHost, api.GlusterUp)
 	if err != nil {
 		log.Error(err)
 	}
@@ -81,7 +92,7 @@ func glusterUp(w http.ResponseWriter, r *http.Request) {
 
 func glusterHealth(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	h, err := ProcessGlusterHealthSummary(f, *promHost)
+	h, err := ProcessGlusterHealthSummary(f, conn.PromHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -91,7 +102,7 @@ func glusterHealth(w http.ResponseWriter, r *http.Request) {
 
 func weaveHealth(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	h, err := ProcessWeaveHealthSummary(f, *promHost)
+	h, err := ProcessWeaveHealthSummary(f, conn.PromHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -101,7 +112,7 @@ func weaveHealth(w http.ResponseWriter, r *http.Request) {
 
 func healthSummary(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
-	hs, err := ProcessHealthSummary(f, *promHost)
+	hs, err := ProcessHealthSummary(f, conn.PromHost)
 	if err != nil {
 		log.Error(err)
 	}
@@ -123,7 +134,7 @@ func state(w http.ResponseWriter, r *http.Request) {
 	switch endpoint {
 	case CURRENT:
 		state.Request = CURRENT
-		summary, err := api.FetchHealthSummary(f, *promHost)
+		summary, err := api.FetchHealthSummary(f, conn.PromHost)
 		if err != nil {
 			state.Success = false
 			state.Message = err.Error()
