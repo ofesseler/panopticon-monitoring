@@ -193,7 +193,7 @@ func oldmain() {
 
 	var (
 		//promHost := flag.String("host", "localhost:9090", "hosturl to prometheus"
-		listenAddress =flag.String("listen", ":8881", "Listening Port")
+		listenAddress = flag.String("listen", ":8881", "Listening Port")
 	)
 
 	flag.Parse()
