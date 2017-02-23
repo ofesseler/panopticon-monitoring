@@ -35,7 +35,7 @@ func checkPromResponse(resp api.StatusCheckReceived) bool {
 func promQuery(query string) (api.StatusCheckReceived, api.ErrorStatus) {
 	var errorStatus api.ErrorStatus
 
-	apiURL := fmt.Sprintf("http://%v/api/v1/query", *promHost)
+	apiURL := fmt.Sprintf("http://%v/api/v1/query", conn.PromHost)
 	urlValues := url.Values{}
 	urlValues.Set("query", query)
 	concatedURL := apiURL + "?" + urlValues.Encode()
@@ -190,6 +190,11 @@ func ls(w http.ResponseWriter, r *http.Request) {
 }
 
 func oldmain() {
+
+	var (
+		//promHost := flag.String("host", "localhost:9090", "hosturl to prometheus"
+		listenAddress = flag.String("listen", ":8881", "Listening Port")
+	)
 
 	flag.Parse()
 
