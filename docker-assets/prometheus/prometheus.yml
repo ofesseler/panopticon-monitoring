@@ -27,15 +27,21 @@ scrape_configs:
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'consul'
+- job_name: 'consul_node1'
   scrape_interval: 5s
-  metrics_path: /consul
+  metrics_path: /consul_node1
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'consul-err'
+- job_name: 'consul_node2'
   scrape_interval: 5s
-  metrics_path: /consul_err
+  metrics_path: /consul_node2
+  static_configs:
+    - targets: ['localhost:8080']
+
+- job_name: 'consul_node3'
+  scrape_interval: 5s
+  metrics_path: /consul_node3
   static_configs:
     - targets: ['localhost:8080']
 
@@ -48,6 +54,12 @@ scrape_configs:
 - job_name: 'gluster_node2'
   scrape_interval: 5s
   metrics_path: /gluster_node2
+  static_configs:
+    - targets: ['localhost:8080']
+
+- job_name: 'gluster_node3'
+  scrape_interval: 5s
+  metrics_path: /gluster_node3
   static_configs:
     - targets: ['localhost:8080']
 

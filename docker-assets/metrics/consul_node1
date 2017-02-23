@@ -1,0 +1,29 @@
+# HELP consul_catalog_service_node_healthy Is this service healthy on this node?
+# TYPE consul_catalog_service_node_healthy gauge
+consul_catalog_service_node_healthy{node="node1.example.org",service="consul"} 1
+consul_catalog_service_node_healthy{node="node2.example.org",service="consul"} 1
+consul_catalog_service_node_healthy{node="node3.example.org",service="consul"} 1
+# HELP consul_catalog_services How many services are in the cluster.
+# TYPE consul_catalog_services gauge
+consul_catalog_services 1
+# HELP consul_exporter_build_info A metric with a constant '1' value labeled by version, revision, branch, and goversion from which consul_exporter was built.
+# TYPE consul_exporter_build_info gauge
+consul_exporter_build_info{branch="master",goversion="go1.7.3",revision="bd9a03bfd59490f2cddcf87d1330e46e5f8bb4bb",version="0.2.0"} 1
+# HELP consul_health_node_status Status of health checks associated with a node.
+# TYPE consul_health_node_status gauge
+consul_health_node_status{check="serfHealth",node="node1.example.org"} 1
+consul_health_node_status{check="serfHealth",node="node2.example.org"} 1
+consul_health_node_status{check="serfHealth",node="node3.example.org"} 1
+# HELP consul_raft_leader Does Raft cluster have a leader (according to this node).
+# TYPE consul_raft_leader gauge
+consul_raft_leader 1
+# HELP consul_raft_peers How many peers (servers) are in the Raft cluster.
+# TYPE consul_raft_peers gauge
+consul_raft_peers 2
+# HELP consul_serf_lan_members How many members are in the cluster.
+# TYPE consul_serf_lan_members gauge
+consul_serf_lan_members 1
+# HELP consul_up Was the last query of Consul successful.
+# TYPE consul_up gauge
+consul_up 0
+
