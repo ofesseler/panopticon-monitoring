@@ -12,8 +12,8 @@ import (
 )
 
 var (
-	health       = NewHealth("wolke")
-	conn         connection
+	health = NewHealth("wolke")
+	conn   connection
 )
 
 type connection struct {
@@ -23,7 +23,7 @@ type connection struct {
 
 func main() {
 	var (
-		clusterNodes = flag.Int("cluster-nodes", 3, "Number of nodes in monitored cluster")
+		clusterNodes  = flag.Int("cluster-nodes", 3, "Number of nodes in monitored cluster")
 		promHostFlag  = flag.String("prom-host", "localhost:9090", "Enter hostname of prometheus")
 		listenAddress = flag.String("listen-address", ":8888", "Enter port number to listen on")
 	)
