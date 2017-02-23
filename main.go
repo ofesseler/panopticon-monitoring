@@ -20,7 +20,6 @@ var (
 
 func main() {
 	flag.Parse()
-
 	api.ClusterNodeCount = *clusterNodes
 	log.Infof("Start panopticon. Listening on: %v", *listenAddress)
 	log.Infof("ClusterStatus NULL_STATE: %v", api.NULL_STATE)
@@ -76,7 +75,7 @@ func consulHealth(w http.ResponseWriter, r *http.Request) {
 
 func glusterUp(w http.ResponseWriter, r *http.Request) {
 	var httpFetch api.Fetcher = api.PrometheusFetcher{}
-	glusterUpHealthStatus, err := api.FetchServiceUp(httpFetch, *promHost, api.GlusterUp)
+	glusterUpHealthStatus, err := api.FetchServiceUp(httpFetch, api.GlusterUp, *promHost)
 	if err != nil {
 		log.Error(err)
 	}
