@@ -19,11 +19,11 @@ consul_health_node_status{check="serfHealth",node="node3.example.org"} 1
 consul_raft_leader 1
 # HELP consul_raft_peers How many peers (servers) are in the Raft cluster.
 # TYPE consul_raft_peers gauge
-consul_raft_peers 2
+consul_raft_peers 3
 # HELP consul_serf_lan_members How many members are in the cluster.
 # TYPE consul_serf_lan_members gauge
-consul_serf_lan_members 1
+consul_serf_lan_members 3
 # HELP consul_up Was the last query of Consul successful.
 # TYPE consul_up gauge
-consul_up 0
+consul_up 1
 
