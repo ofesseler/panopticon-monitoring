@@ -155,3 +155,23 @@ func TestQuorumRate_Rater(t *testing.T) {
 		t.Error("ecpected conversion error")
 	}
 }
+
+func TestRateSummaries(t *testing.T) {
+	type SummaryTester struct {
+		sum []api.ClusterStatus
+		exp api.ClusterStatus
+	}
+	tests := []SummaryTester{
+		{sum: []api.ClusterStatus{api.HEALTHY, api.HEALTHY, api.HEALTHY}, exp: api.HEALTHY},
+		{sum: []api.ClusterStatus{api.HEALTHY, api.HEALTHY, api.WARNING}, exp: api.WARNING},
+		{sum: []api.ClusterStatus{api.HEALTHY, api.HEALTHY, api.CRITICAL}, exp: api.CRITICAL},
+		{sum: []api.ClusterStatus{api.CRITICAL, api.WARNING, api.CRITICAL}, exp: api.CRITICAL},
+	}
+
+	for _, test := range tests {
+		ret := RateSummaries(test.sum...)
+		if ret != test.exp {
+			t.Errorf("got %v and expected %v", api.GetClusterStatusString(ret), api.GetClusterStatusString(test.exp))
+		}
+	}
+}

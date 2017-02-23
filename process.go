@@ -23,16 +23,7 @@ func ProcessHealthSummary(f api.Fetcher, promHost string) (api.HS, error) {
 	if err != nil {
 		log.Error(err)
 	}
-
-	if weaveHealth.Health == api.HEALTHY &&
-		glusterHealth.Health == api.HEALTHY &&
-		consulHealth.Health == api.HEALTHY {
-		return api.HS{ClusterState: api.HEALTHY}, nil
-	} else {
-		return api.HS{ClusterState: api.HEALTHY}, nil
-	}
-
-	return api.HS{}, nil
+	return api.HS{ClusterState: RateSummaries(glusterHealth.Health, consulHealth.Health, weaveHealth.Health)}, nil
 }
 
 func ProcessWeaveHealthSummary(f api.Fetcher, promhost string) (api.WeaveHealth, error) {
@@ -230,6 +221,16 @@ func (r QuorumRate) Rater(ivalue, ireference interface{}) (api.ClusterStatus, er
 		cs = api.CRITICAL
 	}
 	return cs, err
+}
+
+func RateSummaries(summaries ...api.ClusterStatus) api.ClusterStatus {
+	retSum := api.NULL_STATE
+	for _, summary := range summaries {
+		if retSum < summary {
+			retSum = summary
+		}
+	}
+	return retSum
 }
 
 func rateBool(value bool, falseState api.ClusterStatus) api.ClusterStatus {
