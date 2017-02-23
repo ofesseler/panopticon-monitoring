@@ -92,6 +92,8 @@ func GetClusterStatusString(cs ClusterStatus) string {
 		p = "warning"
 	case CRITICAL:
 		p = "critical"
+	case NULL_STATE:
+		p = "null_state"
 	}
 	return p
 }
@@ -108,11 +110,12 @@ type ConsulHealth struct {
 
 // GlusterHealth representates the health state of glusterfs in the  cluster
 type GlusterHealth struct {
-	Health                     ClusterStatus
-	GlusterUp                  bool
-	GlusterPeersConnected      bool
-	GlusterSuccessfullyMounted bool
-	GlusterMountWriteable      bool
+	Health                    ClusterStatus
+	GlusterUp                 ClusterStatus
+	GlusterPeersConnected     ClusterStatus
+	GlusterVolumeWriteable    ClusterStatus
+	GlusterMountSuccessful    ClusterStatus
+	GlusterHealInfoFilesCount ClusterStatus
 }
 
 type WeaveHealth struct {

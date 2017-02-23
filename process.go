@@ -70,92 +70,97 @@ func ProcessWeaveHealthSummary(f api.Fetcher, promhost string) (api.WeaveHealth,
 	return wh, nil
 }
 
-func ProcessGlusterHealthSummary(f api.Fetcher, promhost string) (api.GlusterHealth, error) {
-	gh := api.GlusterHealth{Health: 2}
-	glusterTest := true
-
-	// GlusterUP test
-	up, err := api.FetchPromGauge(f, promhost, api.GlusterUp)
+func computeUp(f api.Fetcher, check string, promHost string) (api.ClusterStatus, error) {
+	up, err := api.FetchServiceUp(f, check, promHost)
 	if err != nil {
 		log.Error(err)
-		glusterTest = false
+		return api.NULL_STATE, err
 	}
-	for _, peer := range up {
-		if peer.Value != 1 {
-			glusterTest = false
-		}
+	qr := QuorumRate{}
+	upRated, err := qr.Rater(len(up.HealthyNodes), api.ClusterNodeCount)
+	if err != nil {
+		log.Error(err)
 	}
-	gh.GlusterUp = glusterTest
+	return upRated, nil
+}
+
+func ProcessGlusterHealthSummary(f api.Fetcher, promhost string) (api.GlusterHealth, error) {
+	gh := api.GlusterHealth{Health: 2}
+
+	// GlusterUP test
+	var err error
+	gh.GlusterUp, err = computeUp(f, api.GlusterUp, promhost)
+	if err != nil {
+		log.Error(err)
+	}
 
 	// Peers connected test
 	peersConnectedList, err := api.FetchPromGauge(f, promhost, api.GlusterPeersConnected)
 	if err != nil {
 		log.Error(err)
 	}
-	// reset glusterTest
-	glusterTest = true
-	peersLen := len(peersConnectedList)
-	if peersLen != api.ClusterNodeCount {
-		glusterTest = false
-		log.Errorf("Not all Cluster nodes are reachable expected %v and reached %v", api.ClusterNodeCount, peersLen)
-	}
+	peerRate := GlusterPeerRate{}
+	gh.GlusterPeersConnected = computeCountersFromPromQRs(peerRate, api.ClusterNodeCount, peersConnectedList)
 
-	for _, peer := range peersConnectedList {
-		if int64(peersLen-1) != peer.Value {
-			log.Errorf("cluster_peers_connected value %v and scaped peers( %v ) don't match", peer.Value, peersLen-1)
-			glusterTest = false
+	healFilesStatus := api.HEALTHY
+	healFilesCount, err := api.FetchPromGauge(f, promhost, api.GlusterHealInfoFilesCount)
+	if err != nil {
+		log.Error(err)
+	}
+	for _, file := range healFilesCount {
+		if file.Value != 0 {
+			healFilesStatus = api.CRITICAL
+			break
 		}
 	}
-	if glusterTest {
-		gh.GlusterPeersConnected = true
+	gh.GlusterHealInfoFilesCount = healFilesStatus
+
+	mountSuccessful, err := api.FetchServiceUp(f, api.GlusterMountSuccessful, promhost)
+	if err != nil {
+		log.Error(err)
 	}
+	gh.GlusterMountSuccessful = rateBool(mountSuccessful.Status, api.CRITICAL)
 
-	// TODO
-	//gh.GlusterMountWriteable = true
-	//gh.GlusterSuccessfullyMounted = true
-
-	//if gh.GlusterUp && gh.GlusterPeersConnected && gh.GlusterSuccessfullyMounted && gh.GlusterMountWriteable {
-	//	gh.Health = 0
-	//}
-
-	if gh.GlusterUp && gh.GlusterPeersConnected {
-		gh.Health = 0
+	volumeWriteable, err := api.FetchServiceUp(f, api.GlusterVolumeWriteable, promhost)
+	if err != nil {
+		log.Error(err)
 	}
+	gh.GlusterVolumeWriteable = rateBool(volumeWriteable.Status, api.CRITICAL)
+
+	gh.Health = computeHealthStatus(gh.GlusterUp, gh.GlusterPeersConnected, gh.GlusterHealInfoFilesCount, gh.GlusterHealInfoFilesCount, gh.GlusterMountSuccessful, gh.GlusterVolumeWriteable)
 	return gh, nil
 }
 
-func ProcessConsulHealthSummary(f api.Fetcher, promhost string) (api.ConsulHealth, error) {
+func ProcessConsulHealthSummary(f api.Fetcher, promHost string) (api.ConsulHealth, error) {
 	// check Consul reachable and running
-	var health api.ConsulHealth
-	//health.Health = 2
+	var (
+		health api.ConsulHealth
+		err    error
+		qr     = QuorumRate{}
+		pr     = PromRate{}
+	)
 
-	up, err := api.FetchServiceUp(f, api.ConsulUp, promhost)
+	health.ConsulUp, err = computeUp(f, api.ConsulUp, promHost)
 	if err != nil {
 		log.Error(err)
 	}
-	qr := QuorumRate{}
-	health.ConsulUp, err = qr.Rater(len(up.HealthyNodes), api.ClusterNodeCount)
-	if err != nil {
-		log.Error(err)
-	}
+
 	// get and check consul_raft_peers
-	raftPeers, err := api.FetchPromGauge(f, promhost, api.ConsulRaftPeers)
+	raftPeers, err := api.FetchPromGauge(f, promHost, api.ConsulRaftPeers)
 	if err != nil {
 		log.Error(err)
 	}
-
-	health.ConsulRaftPeers = computeCountersFromPromQRs(raftPeers)
+	health.ConsulRaftPeers = computeCountersFromPromQRs(pr, api.ClusterNodeCount, raftPeers)
 
 	// get and check consul_serf_lan_members
-	serfMembers, err := api.FetchPromGauge(f, promhost, api.ConsulSerfLanMembers)
+	serfMembers, err := api.FetchPromGauge(f, promHost, api.ConsulSerfLanMembers)
 	if err != nil {
 		log.Error(err)
 	}
-
-	health.ConsulSerfLanMembers = computeCountersFromPromQRs(serfMembers)
+	health.ConsulSerfLanMembers = computeCountersFromPromQRs(pr, api.ClusterNodeCount, serfMembers)
 
 	// get and check consul_health_node_status
-	healthNodeStatus, err := api.FetchPromGauge(f, promhost, api.ConsulHealthNodeStatus)
+	healthNodeStatus, err := api.FetchPromGauge(f, promHost, api.ConsulHealthNodeStatus)
 	if err != nil {
 		log.Error(err)
 	}
@@ -181,7 +186,7 @@ func ProcessConsulHealthSummary(f api.Fetcher, promhost string) (api.ConsulHealt
 	health.ConsulHealthNodeStatus = computeMetricStatus(qr, nodeCounts...)
 
 	// Is there a leader?
-	raftLeaderResult, err := api.FetchPromGauge(f, promhost, api.ConsulRaftLeader)
+	raftLeaderResult, err := api.FetchPromGauge(f, promHost, api.ConsulRaftLeader)
 	if err != nil {
 		log.Error(err)
 	}
@@ -262,22 +267,42 @@ type PromRate struct{}
 
 func (r PromRate) Rater(ivalue, ireference interface{}) (api.ClusterStatus, error) {
 	value := ivalue.(api.PromQR)
+	reference := ireference.(int)
 	q := QuorumRate{}
-	return q.Rater(int(value.Value), api.ClusterNodeCount)
+	return q.Rater(int(value.Value), reference)
 }
 
-func computeCountersFromPromQRs(promQRs []api.PromQR) api.ClusterStatus {
+type GlusterPeerRate struct{}
+
+func (r GlusterPeerRate) Rater(ivalue, ireference interface{}) (api.ClusterStatus, error) {
+	prom := ivalue.(api.PromQR)
+	reference := ireference.(int)
+	value := int(prom.Value)
+	var cs api.ClusterStatus
+	var err error = nil
+
+	// adds +1 to value to calculate quorum
+	value += 1
+	if value == reference {
+		cs = api.HEALTHY
+	} else if value >= (reference/2)+1 {
+		cs = api.WARNING
+	} else if value < (reference/2)+1 {
+		cs = api.CRITICAL
+	}
+	return cs, err
+}
+
+func computeCountersFromPromQRs(r Rate, reference int, promQRs []api.PromQR) api.ClusterStatus {
 	var (
-		hCounter  int = 0
-		wCounter  int = 0
-		cCounter  int = 0
-		status    api.ClusterStatus
-		nodeCount int = api.ClusterNodeCount
+		hCounter int = 0
+		wCounter int = 0
+		cCounter int = 0
+		status   api.ClusterStatus
 	)
 
 	for _, promQR := range promQRs {
-		r := PromRate{}
-		computedStatus, err := r.Rater(promQR, api.ClusterNodeCount)
+		computedStatus, err := r.Rater(promQR, reference)
 		if err != nil {
 			log.Error(err)
 		}
@@ -291,11 +316,11 @@ func computeCountersFromPromQRs(promQRs []api.PromQR) api.ClusterStatus {
 			cCounter++
 		}
 	}
-	if hCounter == nodeCount {
+	if hCounter == reference {
 		status = api.HEALTHY
-	} else if wCounter >= (nodeCount/2)+1 || hCounter >= (nodeCount/2)+1 {
+	} else if wCounter >= (reference/2)+1 || hCounter >= (reference/2)+1 {
 		status = api.WARNING
-	} else if cCounter >= (nodeCount / 2) {
+	} else if cCounter >= (reference / 2) {
 		status = api.CRITICAL
 	}
 	return status

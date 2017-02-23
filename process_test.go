@@ -12,6 +12,7 @@ type testPair struct {
 	expInt   int
 	expInt64 int64
 	expBool  bool
+	cs       api.ClusterStatus
 }
 
 type ConsulTest struct {
@@ -45,9 +46,9 @@ func (f ConsulTest) PromQuery(query, promHost string) (api.StatusCheckReceived, 
 }
 
 func TestProcessGlusterHealthSummary(t *testing.T) {
-	api.ClusterNodeCount = 2
+	api.ClusterNodeCount = 3
 	var test = []testPair{
-		{f: ConsulTest{Total: 2, Failed: 0, SuccessValue: "1", FailValue: "0"}, expInt64: 1},
+		{f: ConsulTest{Total: 3, Failed: 0, SuccessValue: "3", FailValue: "0"}, cs: api.HEALTHY},
 	}
 
 	for _, p := range test {
@@ -55,24 +56,25 @@ func TestProcessGlusterHealthSummary(t *testing.T) {
 		if err != nil {
 			t.Error(err)
 		}
-		if !s.GlusterUp {
-			t.Error("GlusterUp failed")
-		}
-		if !s.GlusterPeersConnected {
-			t.Error("Peer connection failed")
-		}
-		// TODO
-		/*
-			if !s.GlusterSuccessfullyMounted {
-				t.Error("Mount failed")
+
+		switch p.cs {
+		case api.HEALTHY:
+			if s.Health != api.HEALTHY {
+				t.Error("Expected healthy state and got:", api.GetClusterStatusString(s.Health))
 			}
-			if !s.GlusterMountWriteable {
-				t.Error("Gluster write on mount failed")
-			}*/
+		case api.WARNING:
+			if s.Health != api.WARNING {
+				t.Error("Expected warning state and got:", api.GetClusterStatusString(s.Health))
+			}
+		case api.CRITICAL:
+			if s.Health != api.CRITICAL {
+				t.Error("Expected critical state and got:", api.GetClusterStatusString(s.Health))
+			}
+		}
 	}
 }
 
-func TestComputeCountersFromPromQRs(t *testing.T) {
+func TestComputeCountersFromPromQRs_Consul(t *testing.T) {
 	api.ClusterNodeCount = 3
 	type GaugeToState struct {
 		Status api.ClusterStatus
@@ -89,7 +91,32 @@ func TestComputeCountersFromPromQRs(t *testing.T) {
 
 	for _, b := range test {
 
-		a := computeCountersFromPromQRs(b.Arr)
+		a := computeCountersFromPromQRs(PromRate{}, api.ClusterNodeCount, b.Arr)
+		if a != b.Status {
+			t.Errorf("For element: %v expected %v actual is : %v", b.Arr, b.Status, a)
+		}
+	}
+
+}
+
+func TestComputeCountersFromPromQRs_Gluster(t *testing.T) {
+	api.ClusterNodeCount = 3
+	type GaugeToState struct {
+		Status api.ClusterStatus
+		Arr    []api.PromQR
+	}
+	test := []GaugeToState{
+		{Status: api.HEALTHY, Arr: []api.PromQR{{Node: "node1", Value: 2}, {Node: "node2", Value: 2}, {Node: "node3", Value: 2}}},
+		{Status: api.WARNING, Arr: []api.PromQR{{Node: "node1", Value: 1}, {Node: "node2", Value: 1}, {Node: "node3", Value: 0}}},
+		{Status: api.WARNING, Arr: []api.PromQR{{Node: "node1", Value: 1}, {Node: "node2", Value: 0}, {Node: "node3", Value: 1}}},
+		{Status: api.CRITICAL, Arr: []api.PromQR{{Node: "node1", Value: 0}, {Node: "node2", Value: 0}, {Node: "node3", Value: 0}}},
+		{Status: api.WARNING, Arr: []api.PromQR{{Node: "node1", Value: 2}, {Node: "node2", Value: 2}, {Node: "node3", Value: 0}}},
+		{Status: api.CRITICAL, Arr: []api.PromQR{{Node: "node1", Value: 0}, {Node: "node2", Value: 0}, {Node: "node3", Value: 0}}},
+	}
+
+	for _, b := range test {
+
+		a := computeCountersFromPromQRs(GlusterPeerRate{}, api.ClusterNodeCount, b.Arr)
 		if a != b.Status {
 			t.Errorf("For element: %v expected %v actual is : %v", b.Arr, b.Status, a)
 		}

@@ -11,16 +11,19 @@ import (
 )
 
 const (
-	Up                     = "up"
-	ConsulUp               = "consul_up"
-	ConsulRaftPeers        = "consul_raft_peers"
-	GlusterUp              = "gluster_up"
-	GlusterPeersConnected  = "gluster_peers_connected"
-	NodeSupervisorUp       = "node_supervisor_up"
-	ConsulHealthNodeStatus = "consul_health_node_status"
-	ConsulRaftLeader       = "consul_raft_leader"
-	ConsulSerfLanMembers   = "consul_serf_lan_members"
-	WeaveConnections       = "weave_connections"
+	Up                        = "up"
+	ConsulUp                  = "consul_up"
+	ConsulRaftPeers           = "consul_raft_peers"
+	GlusterUp                 = "gluster_up"
+	GlusterPeersConnected     = "gluster_peers_connected"
+	GlusterHealInfoFilesCount = "gluster_heal_info_files_count"
+	GlusterVolumeWriteable    = "gluster_volume_writeable"
+	GlusterMountSuccessful    = "gluster_mount_successful"
+	NodeSupervisorUp          = "node_supervisor_up"
+	ConsulHealthNodeStatus    = "consul_health_node_status"
+	ConsulRaftLeader          = "consul_raft_leader"
+	ConsulSerfLanMembers      = "consul_serf_lan_members"
+	WeaveConnections          = "weave_connections"
 )
 
 var (

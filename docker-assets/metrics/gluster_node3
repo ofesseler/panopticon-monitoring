@@ -18,4 +18,12 @@ gluster_volume_status{volume="gv_test"} 1
 # HELP gluster_volumes_count How many volumes were up at the last query.
 # TYPE gluster_volumes_count gauge
 gluster_volumes_count 2
-
+# HELP gluster_mount_successful Checks if mountpoint exists, returns 0 or 1
+# TYPE gluster_mount_successful gauge
+gluster_mount_successful{mountpoint="/mnt/data",volume="localhost:data"} 1
+# HELP gluster_volume_writeable Writes and deletes file in Volume and checks if it is writeable
+# TYPE gluster_volume_writeable gauge
+gluster_volume_writeable{mountpoint="/mnt/data",volume="localhost:data"} 1
+# HELP gluster_heal_info_files_count File count of files out of sync, when calling "gluster v heal VOLNAME info".
+# TYPE gluster_heal_info_files_count gauge
+gluster_heal_info_files_count{volume="localhost:data"} 0
