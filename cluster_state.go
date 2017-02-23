@@ -9,7 +9,7 @@ const (
 	// CURRENT is name of current state event
 	CURRENT = "current"
 	// WARNING is name of warning state event
-	WARNING = "warning"
+	//WARNING = "warning"
 	// FATAL is name of fatal state event
 	FATAL = "fatal"
 	// RESOLV is name of resolv state event

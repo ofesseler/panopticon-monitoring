@@ -11,7 +11,6 @@ import (
 )
 
 const (
-	ClusterNodeCount       = 2
 	Up                     = "up"
 	ConsulUp               = "consul_up"
 	ConsulRaftPeers        = "consul_raft_peers"
@@ -25,8 +24,9 @@ const (
 )
 
 var (
-	fatalMetrics   = []string{ConsulUp, GlusterUp}
-	warningMetrics = []string{Up, NodeSupervisorUp}
+	ClusterNodeCount int
+	fatalMetrics     = []string{ConsulUp, GlusterUp}
+	warningMetrics   = []string{Up, NodeSupervisorUp}
 )
 
 func FetchWeaveConnectionGauges(f Fetcher, promHost string, metric string) ([]PromQRWeave, error) {

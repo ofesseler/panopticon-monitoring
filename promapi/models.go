@@ -74,6 +74,15 @@ type PromQRWeave struct {
 	State string
 }
 
+type ClusterStatus uint8
+
+const (
+	NULL_STATE ClusterStatus = iota
+	HEALTHY    ClusterStatus = iota
+	WARNING    ClusterStatus = iota
+	CRITICAL   ClusterStatus = iota
+)
+
 // Consulhealth representates the health state of consul in the  cluster
 type ConsulHealth struct {
 	Health                 StateType // 0,1,2

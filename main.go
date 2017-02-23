@@ -14,13 +14,19 @@ import (
 var (
 	promHost      = flag.String("prom-host", "localhost:9090", "Enter hostname of prometheus")
 	listenAddress = flag.String("listen-address", ":8888", "Enter port number to listen on")
+	clusterNodes  = flag.Int("cluster-nodes", 3, "Number of nodes in monitored cluster")
 	health        = NewHealth("wolke")
 )
 
 func main() {
 	flag.Parse()
 
+	api.ClusterNodeCount = *clusterNodes
 	log.Infof("Start panopticon. Listening on: %v", *listenAddress)
+	log.Infof("ClusterStatus NULL_STATE: %v", api.NULL_STATE)
+	log.Infof("ClusterStatus HEALTHY: %v", api.HEALTHY)
+	log.Infof("ClusterStatus WARNING: %v", api.WARNING)
+	log.Infof("ClusterStatus CRITICAL: %v", api.CRITICAL)
 
 	http.HandleFunc("/", wrapHandler(http.StripPrefix("/", http.FileServer(http.Dir("static")))))
 
@@ -129,15 +135,15 @@ func state(w http.ResponseWriter, r *http.Request) {
 			state.Message = err.Error()
 		}
 		state.Success = summary.Status
-	case WARNING:
-		state.Request = WARNING
-		err := health.FSM.Event(WARNING)
-		state.Success = true
-		if err != nil {
-			log.Error(err)
-			state.Message = err.Error()
-			state.Success = false
-		}
+	//case WARNING:
+	//	state.Request = WARNING
+	//	err := health.FSM.Event(WARNING)
+	//	state.Success = true
+	//	if err != nil {
+	//		log.Error(err)
+	//		state.Message = err.Error()
+	//		state.Success = false
+	//	}
 
 	case FATAL:
 		state.Request = FATAL
