@@ -143,34 +143,16 @@ func ProcessConsulHealthSummary(f api.Fetcher, promhost string) (api.ConsulHealt
 	if err != nil {
 		log.Error(err)
 	}
-	//peerLen := len(raftPeers)
-	//peerCount := 0
-	//var peers int64 = -1
-	//for _, peer := range raftPeers {
-	//	if peer.Value == int64(peerLen) {
-	//		peerCount++
-	//		if peers == -1 {
-	//			peers = peer.Value
-	//		}
-	//		if peers != peer.Value {
-	//			log.Errorf("RaftPeers is %v and expected %v raft peers", peers, api.ClusterNodeCount)
-	//			break
-	//		}
-	//	}
-	//}
 
-	raftCounters := computeCountersFromPromQRs(raftPeers)
-
-	health.ConsulRaftPeers = computeMetricStatus(qr, raftCounters...)
+	health.ConsulRaftPeers = computeCountersFromPromQRs(raftPeers)
 
 	// get and check consul_serf_lan_members
 	serfMembers, err := api.FetchPromGauge(f, promhost, api.ConsulSerfLanMembers)
 	if err != nil {
 		log.Error(err)
 	}
-	serfCounters := computeCountersFromPromQRs(serfMembers)
 
-	health.ConsulSerfLanMembers = computeMetricStatus(qr, serfCounters...)
+	health.ConsulSerfLanMembers = computeCountersFromPromQRs(serfMembers)
 
 	// get and check consul_health_node_status
 	healthNodeStatus, err := api.FetchPromGauge(f, promhost, api.ConsulHealthNodeStatus)
@@ -241,8 +223,6 @@ func (r QuorumRate) Rater(ivalue, ireference interface{}) (api.ClusterStatus, er
 		cs = api.WARNING
 	} else if value < (reference/2)+1 {
 		cs = api.CRITICAL
-	} else {
-		errors.New(fmt.Sprintf("case did't match %v", value))
 	}
 	return cs, err
 }
@@ -278,21 +258,45 @@ func computeHealthStatus(statuses ...api.ClusterStatus) api.ClusterStatus {
 	return healthStatus
 }
 
-func computeCountersFromPromQRs(promQRs []api.PromQR) []int {
-	length := len(promQRs)
-	counter := 0
-	var members int64 = -1
+type PromRate struct{}
+
+func (r PromRate) Rater(ivalue, ireference interface{}) (api.ClusterStatus, error) {
+	value := ivalue.(api.PromQR)
+	q := QuorumRate{}
+	return q.Rater(int(value.Value), api.ClusterNodeCount)
+}
+
+func computeCountersFromPromQRs(promQRs []api.PromQR) api.ClusterStatus {
+	var (
+		hCounter  int = 0
+		wCounter  int = 0
+		cCounter  int = 0
+		status    api.ClusterStatus
+		nodeCount int = api.ClusterNodeCount
+	)
+
 	for _, promQR := range promQRs {
-		if promQR.Value == int64(length) {
-			counter++
-			if members == -1 {
-				members = promQR.Value
-			}
-			if members != promQR.Value {
-				log.Errorf("RaftPeers is %v and expected %v raft peers", members, api.ClusterNodeCount)
-				break
-			}
+		r := PromRate{}
+		computedStatus, err := r.Rater(promQR, api.ClusterNodeCount)
+		if err != nil {
+			log.Error(err)
+		}
+
+		switch computedStatus {
+		case api.HEALTHY:
+			hCounter++
+		case api.WARNING:
+			wCounter++
+		case api.CRITICAL:
+			cCounter++
 		}
 	}
-	return []int{length, int(members), counter}
+	if hCounter == nodeCount {
+		status = api.HEALTHY
+	} else if wCounter >= (nodeCount/2)+1 || hCounter >= (nodeCount/2)+1 {
+		status = api.WARNING
+	} else if cCounter >= (nodeCount / 2) {
+		status = api.CRITICAL
+	}
+	return status
 }

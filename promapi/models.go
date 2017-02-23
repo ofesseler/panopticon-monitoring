@@ -83,6 +83,19 @@ const (
 	CRITICAL   ClusterStatus = iota
 )
 
+func GetClusterStatusString(cs ClusterStatus) string {
+	var p string
+	switch cs {
+	case HEALTHY:
+		p = "healthy"
+	case WARNING:
+		p = "warning"
+	case CRITICAL:
+		p = "critical"
+	}
+	return p
+}
+
 // Consulhealth representates the health state of consul in the  cluster
 type ConsulHealth struct {
 	Health                 ClusterStatus
