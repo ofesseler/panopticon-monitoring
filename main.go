@@ -38,7 +38,7 @@ func main() {
 	log.Infof("ClusterStatus WARNING: %v", api.WARNING)
 	log.Infof("ClusterStatus CRITICAL: %v", api.CRITICAL)
 
-	http.HandleFunc("/", wrapHandler(http.StripPrefix("/", http.FileServer(http.Dir("static")))))
+	http.Handle("/", http.FileServer(http.Dir("static")))
 
 	http.HandleFunc("/api/v1/up", up)
 	http.HandleFunc("/api/v1/consul/up", consulUp)
