@@ -85,17 +85,17 @@ const (
 
 // Consulhealth representates the health state of consul in the  cluster
 type ConsulHealth struct {
-	Health                 StateType // 0,1,2
-	ConsulUp               bool
-	ConsulRaftPeers        bool
-	ConsulSerfMembers      bool
-	ConsulRaftLeader       bool
-	ConsulHealthNodeStatus bool
+	Health                 ClusterStatus
+	ConsulUp               ClusterStatus
+	ConsulRaftPeers        ClusterStatus
+	ConsulSerfLanMembers   ClusterStatus
+	ConsulRaftLeader       ClusterStatus
+	ConsulHealthNodeStatus ClusterStatus
 }
 
 // GlusterHealth representates the health state of glusterfs in the  cluster
 type GlusterHealth struct {
-	Health                     StateType // 0,1,2
+	Health                     ClusterStatus
 	GlusterUp                  bool
 	GlusterPeersConnected      bool
 	GlusterSuccessfullyMounted bool
@@ -103,30 +103,22 @@ type GlusterHealth struct {
 }
 
 type WeaveHealth struct {
-	Health      StateType // 0,1,2
-	Established int64     // number of establised connections should be node count -1
+	Health      ClusterStatus
+	Established int64 // number of establised connections should be node count -1
 	Connecting  int64
 	Failed      int64
 	Pending     int64
 	Retrying    int64
 }
 
-type StateType uint8
-
-const (
-	GREEN  StateType = iota
-	ORANGE StateType = iota
-	RED    StateType = iota
-)
-
 type Service struct {
-	ServiceState StateType
+	ServiceState ClusterStatus
 	Name         string
 	Instance     string
 }
 
 type HS struct {
-	ClusterState   StateType
+	ClusterState   ClusterStatus
 	Services       []Service
 	FailedServices []Service
 }

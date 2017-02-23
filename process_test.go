@@ -45,6 +45,7 @@ func (f ConsulTest) PromQuery(query, promHost string) (api.StatusCheckReceived, 
 }
 
 func TestProcessGlusterHealthSummary(t *testing.T) {
+	api.ClusterNodeCount = 2
 	var test = []testPair{
 		{f: ConsulTest{Total: 2, Failed: 0, SuccessValue: "1", FailValue: "0"}, expInt64: 1},
 	}

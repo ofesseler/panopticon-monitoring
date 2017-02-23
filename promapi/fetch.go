@@ -66,7 +66,7 @@ func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error)
 		return []PromQR{}, err
 	}
 	for _, result := range promResponse.Data.Result {
-		peers, err := strconv.ParseInt(result.Value[1].(string), 10, 32)
+		peers, err := strconv.ParseInt(result.Value[1].(string), 10, 64)
 		if err != nil {
 			log.Error(err)
 			//raftStatus[i].Value = 0
