@@ -4,17 +4,25 @@
 $(document).ready(function () {
 
     var healthReq = $.ajax({
-        url: "/api/v1/state/current",
+        url: "/api/v1/health",
         method: "GET"
     }).done(function(data){
-        $("#current-state").text(JSON.stringify(data.current));
-        $("#last-state").text(JSON.stringify(data.last));
-        if (data.message == "") {
-            $("#error-message-label").hide();
-            $("#error-message").hide();
-        } else {
-            $("#error-message-label").hide();
-            $("#error-message").text(JSON.stringify(data.message)).show();
+        currentState = $('#current-state');
+        cs = $('div#clusterstatus');
+        switch (data.ClusterState) {
+            case 1:
+                currentState.text("healthy");
+                cs.css("background-color", "#3bcc1a");
+                console.log(cs)
+                break;
+            case 2:
+                currentState.text("warning");
+                cs.css("background-color", "#e2b500");
+                break;
+            case 3:
+                currentState.text("critical");
+                cs.css("background-color", "#af0726");
+                break;
         }
     }).fail(function (jqXHR, textStatus) {
         console.log(textStatus)
