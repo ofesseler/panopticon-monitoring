@@ -17,7 +17,7 @@ type statusOK struct {
 }
 
 func (fetcher statusOK) PromQuery(query, promHost string) (StatusCheckReceived, error) {
-	var scr StatusCheckReceived = StatusCheckReceived{Status: fetcher.status}
+	var scr = StatusCheckReceived{Status: fetcher.status}
 	return scr, nil
 }
 
@@ -29,7 +29,7 @@ func TestFetcher_PromQuery(t *testing.T) {
 	}
 
 	var fasd Fetcher = statusOK{status: "asd"}
-	scr, err = fasd.PromQuery("up", "asd")
+	scr, _ = fasd.PromQuery("up", "asd")
 	if scr.Status != "asd" {
 		t.Fatalf("scr.Status was 'asd' not %v", scr.Status)
 	}
@@ -51,7 +51,7 @@ func (f ConsulTest) PromQuery(query, promHost string) (StatusCheckReceived, erro
 	result := make([]Result, f.Total)
 
 	for i := 0; i < f.Total; i++ {
-		var values []interface{} = make([]interface{}, 2)
+		var values = make([]interface{}, 2)
 		if i < f.Total-f.Failed {
 			values[1] = f.SuccessValue
 		} else {
@@ -67,7 +67,7 @@ func (f ConsulTest) PromQuery(query, promHost string) (StatusCheckReceived, erro
 }
 
 func TestFetchServiceUp(t *testing.T) {
-	var test []testPair = []testPair{
+	var test = []testPair{
 		{f: ConsulTest{Total: 3, Failed: 0, SuccessValue: "1", FailValue: "0"}, expBool: true},
 		{f: ConsulTest{Total: 3, Failed: 1, SuccessValue: "1", FailValue: "0"}, expBool: false},
 		{f: ConsulTest{Total: 3, Failed: 2, SuccessValue: "1", FailValue: "0"}, expBool: false},

@@ -3,35 +3,51 @@ package promapi
 import (
 	"encoding/json"
 	"fmt"
-	log "github.com/Sirupsen/logrus"
 	"net/http"
 	"net/url"
 	"strconv"
 	"time"
+
+	log "github.com/Sirupsen/logrus"
 )
 
 const (
-	Up                        = "up"
-	ConsulUp                  = "consul_up"
-	ConsulRaftPeers           = "consul_raft_peers"
-	GlusterUp                 = "gluster_up"
-	GlusterPeersConnected     = "gluster_peers_connected"
+	// Up defines Prometheus metric for targets
+	Up = "up"
+	// ConsulUp defines respective Prometheus query string
+	ConsulUp = "consul_up"
+	// ConsulRaftPeers defines respective Prometheus query string
+	ConsulRaftPeers = "consul_raft_peers"
+	// GlusterUp defines respective Prometheus query string
+	GlusterUp = "gluster_up"
+	// GlusterPeersConnected defines respective Prometheus query string
+	GlusterPeersConnected = "gluster_peers_connected"
+	// GlusterHealInfoFilesCount defines respective Prometheus query string
 	GlusterHealInfoFilesCount = "gluster_heal_info_files_count"
-	GlusterVolumeWriteable    = "gluster_volume_writeable"
-	GlusterMountSuccessful    = "gluster_mount_successful"
-	NodeSupervisorUp          = "node_supervisor_up"
-	ConsulHealthNodeStatus    = "consul_health_node_status"
-	ConsulRaftLeader          = "consul_raft_leader"
-	ConsulSerfLanMembers      = "consul_serf_lan_members"
-	WeaveConnections          = "weave_connections"
+	// GlusterVolumeWriteable defines respective Prometheus query string
+	GlusterVolumeWriteable = "gluster_volume_writeable"
+	// GlusterMountSuccessful defines respective Prometheus query string
+	GlusterMountSuccessful = "gluster_mount_successful"
+	// NodeSupervisorUp defines respective Prometheus query string
+	NodeSupervisorUp = "node_supervisor_up"
+	// ConsulHealthNodeStatus defines respective Prometheus query string
+	ConsulHealthNodeStatus = "consul_health_node_status"
+	// ConsulRaftLeader defines respective Prometheus query string
+	ConsulRaftLeader = "consul_raft_leader"
+	// ConsulSerfLanMembers defines respective Prometheus query string
+	ConsulSerfLanMembers = "consul_serf_lan_members"
+	// WeaveConnections defines respective Prometheus query string
+	WeaveConnections = "weave_connections"
 )
 
 var (
+	// ClusterNodeCount represents count of Nodes in Cluster. Set py CMD-parameter at start.
 	ClusterNodeCount int
 	fatalMetrics     = []string{ConsulUp, GlusterUp}
 	warningMetrics   = []string{Up, NodeSupervisorUp}
 )
 
+// FetchWeaveConnectionGauges fetches connection values from prometheus API, given the PrometheusFetcher is used
 func FetchWeaveConnectionGauges(f Fetcher, promHost string, metric string) ([]PromQRWeave, error) {
 
 	var resultMetricList []PromQRWeave
@@ -59,6 +75,7 @@ func FetchWeaveConnectionGauges(f Fetcher, promHost string, metric string) ([]Pr
 	return resultMetricList, nil
 }
 
+// FetchPromGauge used to fetch gauge values from Prometheus with PrometheusFetcher
 func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error) {
 
 	var resultMetricList []PromQR
@@ -86,6 +103,7 @@ func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error)
 	return resultMetricList, nil
 }
 
+// FetchHealthSummary used to fetch bool metrics (up, consul_up, gluster_up, node_supervisor_up from Prometheus with PrometheusFetcher
 func FetchHealthSummary(f Fetcher, promHost string) (HealthSummary, error) {
 	var healthSummary HealthSummary
 	upList := []string{Up, ConsulUp, GlusterUp, NodeSupervisorUp}
@@ -142,6 +160,7 @@ func mapBoolValueToHeathStatus(resp StatusCheckReceived) (HealthStatus, error) {
 	return healthStatus, nil
 }
 
+// FetchServiceUp fetches metric from Promethues with PrometheusFetcher and definded check, such as Up
 func FetchServiceUp(f Fetcher, check, promHost string) (HealthStatus, error) {
 	var healthStatus HealthStatus
 	resp, err := f.PromQuery(check, promHost)
@@ -158,13 +177,16 @@ func FetchServiceUp(f Fetcher, check, promHost string) (HealthStatus, error) {
 	return healthStatus, nil
 }
 
+// Fetcher is interface for queries to Prometheus, mainly implemented for testing
 type Fetcher interface {
 	PromQuery(query string, host string) (StatusCheckReceived, error)
 }
 
+// PrometheusFetcher is implementation type for Fetcher
 type PrometheusFetcher struct {
 }
 
+// PromQuery implementation with PrometheusFetcher to issue queries to Prometheus HTTP API
 func (PrometheusFetcher) PromQuery(query, promHost string) (StatusCheckReceived, error) {
 	var errorStatus error
 	apiURL := fmt.Sprintf("http://%v/api/v1/query", promHost)

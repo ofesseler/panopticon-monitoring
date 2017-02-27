@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+
 	log "github.com/Sirupsen/logrus"
 	api "github.com/ofesseler/panopticon/promapi"
 )
@@ -156,11 +157,11 @@ func ProcessConsulHealthSummary(f api.Fetcher, promHost string) (api.ConsulHealt
 		log.Error(err)
 	}
 
-	var nodeStatusCount int = 0
+	var nodeStatusCount int
 	var countByNode = make(map[string]int)
 
 	for _, node := range healthNodeStatus {
-		countByNode[node.Node] += 1
+		countByNode[node.Node]++
 
 		if node.Value == 1 {
 			nodeStatusCount++
@@ -181,7 +182,7 @@ func ProcessConsulHealthSummary(f api.Fetcher, promHost string) (api.ConsulHealt
 	if err != nil {
 		log.Error(err)
 	}
-	var instancesWithLeader int = 0
+	var instancesWithLeader int
 	for _, node := range raftLeaderResult {
 		if node.Value == 1 {
 			instancesWithLeader++
@@ -212,7 +213,7 @@ func (r QuorumRate) Rater(ivalue, ireference interface{}) (api.ClusterStatus, er
 		return api.NULL_STATE, errors.New(fmt.Sprintf("Expected int at parameter ireference and got:%v", ireference))
 	}
 	var cs api.ClusterStatus
-	var err error = nil
+	var err error
 	if value == reference {
 		cs = api.HEALTHY
 	} else if value >= (reference/2)+1 {
@@ -280,10 +281,10 @@ func (r GlusterPeerRate) Rater(ivalue, ireference interface{}) (api.ClusterStatu
 	reference := ireference.(int)
 	value := int(prom.Value)
 	var cs api.ClusterStatus
-	var err error = nil
+	var err error
 
 	// adds +1 to value to calculate quorum
-	value += 1
+	value++
 	if value == reference {
 		cs = api.HEALTHY
 	} else if value >= (reference/2)+1 {
@@ -296,9 +297,9 @@ func (r GlusterPeerRate) Rater(ivalue, ireference interface{}) (api.ClusterStatu
 
 func computeCountersFromPromQRs(r Rate, reference int, promQRs []api.PromQR) api.ClusterStatus {
 	var (
-		hCounter int = 0
-		wCounter int = 0
-		cCounter int = 0
+		hCounter int
+		wCounter int
+		cCounter int
 		status   api.ClusterStatus
 	)
 
