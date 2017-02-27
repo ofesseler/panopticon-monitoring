@@ -29,13 +29,13 @@ func ProcessHealthSummary(f api.Fetcher, promHost string) (api.HS, error) {
 
 func ProcessWeaveHealthSummary(f api.Fetcher, promhost string) (api.WeaveHealth, error) {
 	wh := api.WeaveHealth{Health: 2}
-	weaveTest := true
+	weaveTest := api.CRITICAL
 
-	// weave connections
+	// weave_node1 connections
 	connList, err := api.FetchWeaveConnectionGauges(f, promhost, api.WeaveConnections)
 	if err != nil {
 		log.Error(err)
-		weaveTest = false
+		weaveTest = api.CRITICAL
 	}
 
 	for _, con := range connList {
@@ -53,12 +53,20 @@ func ProcessWeaveHealthSummary(f api.Fetcher, promhost string) (api.WeaveHealth,
 		}
 	}
 
+	n := api.ClusterNodeCount
+	if wh.Established == int64((n * (n - 1))) {
+		weaveTest = api.HEALTHY
+	}
+
+	if wh.Connecting > 0 {
+		weaveTest = api.WARNING
+	}
+
 	if wh.Pending > 0 || wh.Retrying > 0 || wh.Failed > 0 {
-		weaveTest = false
+		weaveTest = api.CRITICAL
 	}
-	if weaveTest {
-		wh.Health = 0
-	}
+
+	wh.Health = weaveTest
 	return wh, nil
 }
 

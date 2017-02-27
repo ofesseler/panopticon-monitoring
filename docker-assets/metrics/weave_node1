@@ -22,7 +22,7 @@ weave_connection_terminations_total 1
 # HELP weave_connections Number of peer-to-peer connections.
 # TYPE weave_connections gauge
 weave_connections{state="connecting"} 0
-weave_connections{state="established"} 3
+weave_connections{state="established"} 2
 weave_connections{state="failed"} 0
 weave_connections{state="pending"} 0
 weave_connections{state="retrying"} 0

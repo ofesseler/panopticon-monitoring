@@ -63,9 +63,20 @@ scrape_configs:
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'weave'
+- job_name: 'weave_node1'
   scrape_interval: 5s
-  metrics_path: /weave
+  metrics_path: /weave_node1
   static_configs:
     - targets: ['localhost:8080']
 
+- job_name: 'weave_node2'
+  scrape_interval: 5s
+  metrics_path: /weave_node2
+  static_configs:
+    - targets: ['localhost:8080']
+
+- job_name: 'weave_node3'
+  scrape_interval: 5s
+  metrics_path: /weave_node3
+  static_configs:
+    - targets: ['localhost:8080']
