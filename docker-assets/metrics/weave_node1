@@ -1,0 +1,40 @@
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 21.39
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 29
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 6.0588032e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.48516334491e+09
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 5.79588096e+08
+# HELP weave_connection_terminations_total Number of peer-to-peer connections terminated.
+# TYPE weave_connection_terminations_total counter
+weave_connection_terminations_total 1
+# HELP weave_connections Number of peer-to-peer connections.
+# TYPE weave_connections gauge
+weave_connections{state="connecting"} 0
+weave_connections{state="established"} 2
+weave_connections{state="failed"} 0
+weave_connections{state="pending"} 0
+weave_connections{state="retrying"} 0
+# HELP weave_dns_entries Number of DNS entries.
+# TYPE weave_dns_entries gauge
+weave_dns_entries 0
+# HELP weave_flows Number of FastDP flows.
+# TYPE weave_flows gauge
+weave_flows 0
+# HELP weave_ips Number of IP addresses.
+# TYPE weave_ips gauge
+weave_ips{state="local-used"} 1
+# HELP weave_max_ips Size of IP address space used by allocator.
+# TYPE weave_max_ips gauge
+weave_max_ips 65536

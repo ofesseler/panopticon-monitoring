@@ -1,0 +1,3 @@
+# HELP machine_cpu_cores Number of CPU cores on the machine.
+# TYPE machine_cpu_cores gauge
+machine_cpu_cores 2
