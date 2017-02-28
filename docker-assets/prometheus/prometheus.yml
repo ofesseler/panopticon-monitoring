@@ -2,8 +2,8 @@
 # our Prometheus install. For a more dynamic configuration
 # we will mount a data volume container over this file.
 global:
-  scrape_interval: 5s
-  evaluation_interval: 5s
+  scrape_interval: 3s
+  evaluation_interval: 1s
   external_labels:
     monitor: panopticon-dev
 
@@ -11,72 +11,80 @@ rule_files:
 
 scrape_configs:
 - job_name: 'prometheus'
-  scrape_interval: 5s
   static_configs:
     - targets: ['localhost:9090']
 
-- job_name: 'node_exporter'
-  scrape_interval: 5s
-  metrics_path: /node
+- job_name: 'node1'
+  metrics_path: /node1
   static_configs:
     - targets: ['localhost:8080']
 
-- job_name: 'cadvisor'
-  scrape_interval: 5s
-  metrics_path: /cadvisor
+- job_name: 'node2'
+  metrics_path: /node2
+  static_configs:
+    - targets: ['localhost:8080']
+
+- job_name: 'node3'
+  metrics_path: /node3
+  static_configs:
+    - targets: ['localhost:8080']
+
+- job_name: 'cadvisor_node1'
+  metrics_path: /cadvisor_node1
+  static_configs:
+    - targets: ['localhost:8080']
+
+- job_name: 'cadvisor_node2'
+  metrics_path: /cadvisor_node2
+  static_configs:
+    - targets: ['localhost:8080']
+
+- job_name: 'cadvisor_node3'
+  metrics_path: /cadvisor_node3
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'consul_node1'
-  scrape_interval: 5s
   metrics_path: /consul_node1
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'consul_node2'
-  scrape_interval: 5s
   metrics_path: /consul_node2
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'consul_node3'
-  scrape_interval: 5s
   metrics_path: /consul_node3
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'gluster_node1'
-  scrape_interval: 5s
   metrics_path: /gluster_node1
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'gluster_node2'
-  scrape_interval: 5s
   metrics_path: /gluster_node2
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'gluster_node3'
-  scrape_interval: 5s
   metrics_path: /gluster_node3
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'weave_node1'
-  scrape_interval: 5s
   metrics_path: /weave_node1
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'weave_node2'
-  scrape_interval: 5s
   metrics_path: /weave_node2
   static_configs:
     - targets: ['localhost:8080']
 
 - job_name: 'weave_node3'
-  scrape_interval: 5s
   metrics_path: /weave_node3
   static_configs:
     - targets: ['localhost:8080']

@@ -1,0 +1,12 @@
+# HELP node_load15 15m load average.
+# TYPE node_load15 gauge
+node_load15 0.25
+# HELP node_memory_MemTotal Memory information field MemTotal.
+# TYPE node_memory_MemTotal gauge
+node_memory_MemTotal 2.080411648e+09
+# HELP node_memory_MemFree Memory information field MemFree.
+# TYPE node_memory_MemFree gauge
+node_memory_MemFree 1.19906304e+08
+# HELP node_memory_MemAvailable Memory information field MemAvailable.
+# TYPE node_memory_MemAvailable gauge
+node_memory_MemAvailable 1.38940416e+09
