@@ -35,7 +35,7 @@ type PromQueryRequest struct {
 	Query    string `json:"query"`
 }
 
-// Node struct represents json node response
+// Node struct represents json node1 response
 type Node struct {
 	Instance string `json:"instance"` // Instance URL
 	Group    int    `json:"group"`    // Group should be 0,1,2 -> green, orange, red
@@ -72,6 +72,14 @@ type PromQR struct {
 type PromQRWeave struct {
 	PromQR
 	State string
+}
+
+type PromQRFloat64 struct {
+	Name     string
+	Job      string
+	Node     string
+	Instance string
+	Value    float64
 }
 
 type ClusterStatus uint8
@@ -120,11 +128,17 @@ type GlusterHealth struct {
 
 type WeaveHealth struct {
 	Health      ClusterStatus
-	Established int64 // number of establised connections should be node count -1
+	Established int64 // number of establised connections should be node1 count -1
 	Connecting  int64
 	Failed      int64
 	Pending     int64
 	Retrying    int64
+}
+
+type HostHealth struct {
+	Health     ClusterStatus
+	Load15     ClusterStatus
+	MemoryFree ClusterStatus
 }
 
 type Service struct {

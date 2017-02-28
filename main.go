@@ -46,6 +46,7 @@ func main() {
 	http.HandleFunc("/api/v1/gluster/up", glusterUp)
 	http.HandleFunc("/api/v1/gluster/health", glusterHealth)
 	http.HandleFunc("/api/v1/weave/health", weaveHealth)
+	http.HandleFunc("/api/v1/hosts/health", hostsHealth)
 
 	http.HandleFunc("/api/v1/health", healthSummary)
 	http.HandleFunc("/api/v1/state/", state)
@@ -108,6 +109,16 @@ func glusterHealth(w http.ResponseWriter, r *http.Request) {
 func weaveHealth(w http.ResponseWriter, r *http.Request) {
 	var f api.Fetcher = api.PrometheusFetcher{}
 	h, err := ProcessWeaveHealthSummary(f, conn.PromHost)
+	if err != nil {
+		log.Error(err)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(h)
+}
+
+func hostsHealth(w http.ResponseWriter, r *http.Request) {
+	var f api.Fetcher = api.PrometheusFetcher{}
+	h, err := ProcessHostsHealthSummary(f, conn.PromHost)
 	if err != nil {
 		log.Error(err)
 	}

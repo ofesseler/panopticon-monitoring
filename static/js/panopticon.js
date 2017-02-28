@@ -6,27 +6,30 @@ $(document).ready(function () {
     var color_warning  = "#fdd00c";
     var color_critical = "#dc2300";
 
+    function changeDivColor(textStatusID, wrapperID, status) {
+        switch (status) {
+            case 1:
+                textStatusID.text("healthy");
+                wrapperID.css("background-color", color_healthy);
+                break;
+            case 2:
+                textStatusID.text("warning");
+                wrapperID.css("background-color", color_warning);
+                break;
+            case 3:
+                textStatusID.text("critical");
+                wrapperID.css("background-color", color_critical);
+                break;
+        }
+    }
+
     var healthReq = $.ajax({
         url: "/api/v1/health",
         method: "GET"
     }).done(function(data){
         currentState = $('#current-state');
         cs = $('div#clusterstatus');
-        switch (data.ClusterState) {
-            case 1:
-                currentState.text("healthy");
-                cs.css("background-color", color_healthy);
-                console.log(cs)
-                break;
-            case 2:
-                currentState.text("warning");
-                cs.css("background-color", color_warning);
-                break;
-            case 3:
-                currentState.text("critical");
-                cs.css("background-color", color_critical);
-                break;
-        }
+        changeDivColor(currentState, cs, data.ClusterState)
     }).fail(function (jqXHR, textStatus) {
         console.log(textStatus)
     });
@@ -35,7 +38,8 @@ $(document).ready(function () {
         url: "/api/v1/consul/health",
         method: "GET"
     }).done(function(data){
-        $("#consul-data").text(JSON.stringify(data))
+        consulData = $("#consul-data")
+        consulData.text(JSON.stringify(data))
     }).fail(function (jqXHR, textStatus) {
         console.log(textStatus)
     });
@@ -54,6 +58,15 @@ $(document).ready(function () {
         method: "GET"
     }).done(function(data){
         $("#weave-data").text(JSON.stringify(data))
+    }).fail(function (jqXHR, textStatus) {
+        console.log(textStatus)
+    });
+
+    var hostsReq = $.ajax({
+        url: "/api/v1/hosts/health",
+        method: "GET"
+    }).done(function(data){
+        $("#hosts-data").text(JSON.stringify(data))
     }).fail(function (jqXHR, textStatus) {
         console.log(textStatus)
     });

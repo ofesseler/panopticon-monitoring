@@ -92,7 +92,7 @@ func TestFetchPromGauge(t *testing.T) {
 	}
 
 	for _, p := range test {
-		h, err := FetchPromGauge(p.f, "PromGauge", "up")
+		h, err := FetchPromInt64(p.f, "PromGauge", "up")
 		if err != nil {
 			t.Error(err)
 		}

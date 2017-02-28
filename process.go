@@ -24,7 +24,12 @@ func ProcessHealthSummary(f api.Fetcher, promHost string) (api.HS, error) {
 	if err != nil {
 		log.Error(err)
 	}
-	return api.HS{ClusterState: RateSummaries(glusterHealth.Health, consulHealth.Health, weaveHealth.Health)}, nil
+
+	hostHealth, err := ProcessHostsHealthSummary(f, promHost)
+	if err != nil {
+		log.Error(err)
+	}
+	return api.HS{ClusterState: RateSummaries(glusterHealth.Health, consulHealth.Health, weaveHealth.Health, hostHealth.Health)}, nil
 }
 
 func ProcessWeaveHealthSummary(f api.Fetcher, promhost string) (api.WeaveHealth, error) {
@@ -95,7 +100,7 @@ func ProcessGlusterHealthSummary(f api.Fetcher, promhost string) (api.GlusterHea
 	}
 
 	// Peers connected test
-	peersConnectedList, err := api.FetchPromGauge(f, promhost, api.GlusterPeersConnected)
+	peersConnectedList, err := api.FetchPromInt64(f, promhost, api.GlusterPeersConnected)
 	if err != nil {
 		log.Error(err)
 	}
@@ -103,7 +108,7 @@ func ProcessGlusterHealthSummary(f api.Fetcher, promhost string) (api.GlusterHea
 	gh.GlusterPeersConnected = computeCountersFromPromQRs(peerRate, api.ClusterNodeCount, peersConnectedList)
 
 	healFilesStatus := api.HEALTHY
-	healFilesCount, err := api.FetchPromGauge(f, promhost, api.GlusterHealInfoFilesCount)
+	healFilesCount, err := api.FetchPromInt64(f, promhost, api.GlusterHealInfoFilesCount)
 	if err != nil {
 		log.Error(err)
 	}
@@ -146,21 +151,21 @@ func ProcessConsulHealthSummary(f api.Fetcher, promHost string) (api.ConsulHealt
 	}
 
 	// get and check consul_raft_peers
-	raftPeers, err := api.FetchPromGauge(f, promHost, api.ConsulRaftPeers)
+	raftPeers, err := api.FetchPromInt64(f, promHost, api.ConsulRaftPeers)
 	if err != nil {
 		log.Error(err)
 	}
 	health.ConsulRaftPeers = computeCountersFromPromQRs(pr, api.ClusterNodeCount, raftPeers)
 
 	// get and check consul_serf_lan_members
-	serfMembers, err := api.FetchPromGauge(f, promHost, api.ConsulSerfLanMembers)
+	serfMembers, err := api.FetchPromInt64(f, promHost, api.ConsulSerfLanMembers)
 	if err != nil {
 		log.Error(err)
 	}
 	health.ConsulSerfLanMembers = computeCountersFromPromQRs(pr, api.ClusterNodeCount, serfMembers)
 
 	// get and check consul_health_node_status
-	healthNodeStatus, err := api.FetchPromGauge(f, promHost, api.ConsulHealthNodeStatus)
+	healthNodeStatus, err := api.FetchPromInt64(f, promHost, api.ConsulHealthNodeStatus)
 	if err != nil {
 		log.Error(err)
 	}
@@ -186,7 +191,7 @@ func ProcessConsulHealthSummary(f api.Fetcher, promHost string) (api.ConsulHealt
 	health.ConsulHealthNodeStatus = computeMetricStatus(qr, nodeCounts...)
 
 	// Is there a leader?
-	raftLeaderResult, err := api.FetchPromGauge(f, promHost, api.ConsulRaftLeader)
+	raftLeaderResult, err := api.FetchPromInt64(f, promHost, api.ConsulRaftLeader)
 	if err != nil {
 		log.Error(err)
 	}
@@ -203,6 +208,100 @@ func ProcessConsulHealthSummary(f api.Fetcher, promHost string) (api.ConsulHealt
 	health.Health = computeHealthStatus(health.ConsulUp, health.ConsulRaftPeers, health.ConsulHealthNodeStatus, health.ConsulRaftLeader, health.ConsulSerfLanMembers)
 
 	return health, nil
+}
+
+func ProcessHostsHealthSummary(f api.Fetcher, promHost string) (api.HostHealth, error) {
+	var hostHealth api.HostHealth
+	nodesLoad, err := api.FetchPromFloat64(f, promHost, api.NodeLoad15)
+	if err != nil {
+		log.Error(err)
+		hostHealth.Load15 = api.CRITICAL
+	}
+
+	hostCores, err := api.FetchPromInt64(f, promHost, api.MachineCPUCores)
+	if err != nil {
+		log.Error(err)
+		hostHealth.Load15 = api.CRITICAL
+	}
+
+	var loadMax float64
+
+	for _, load := range nodesLoad {
+		core, ok := findInstanceInt(load.Instance, hostCores)
+		if !ok {
+			log.Errorf("Could not find %v in slice %v", load.Instance, hostCores)
+			hostHealth.Load15 = api.CRITICAL
+			break
+		}
+		if core.Value == 0 {
+			log.Errorf("Core count for instance %v is 0", core.Instance)
+			hostHealth.Load15 = api.CRITICAL
+			break
+		}
+
+		if (load.Value / float64(core.Value)) > loadMax {
+			loadMax = load.Value
+		}
+	}
+	if hostHealth.Load15 == api.NULL_STATE {
+		if loadMax > 2.0 {
+			hostHealth.Load15 = api.CRITICAL
+		} else if loadMax < 2.0 && loadMax > 1.0 {
+			hostHealth.Load15 = api.WARNING
+		} else if loadMax < 1.0 {
+			hostHealth.Load15 = api.HEALTHY
+		}
+	}
+
+	nodesMemAvailible, err := api.FetchPromInt64(f, promHost, api.NodeMemoryAvailible)
+	if err != nil {
+		log.Error(err)
+	}
+	nodesMemTotal, err := api.FetchPromInt64(f, promHost, api.NodeMemoryMemTotal)
+	if err != nil {
+		log.Error(err)
+	}
+
+	for _, node := range nodesMemAvailible {
+		total, ok := findInstanceInt(node.Instance, nodesMemTotal)
+		if !ok {
+			log.Error("Could not find host from MemAvailible list in MemTotal list")
+			hostHealth.MemoryFree = api.CRITICAL
+			break
+		}
+		memFree := float64(total.Value-node.Value) / float64(total.Value) * 100.0
+		if memFree < 5.0 {
+			hostHealth.MemoryFree = api.CRITICAL
+			break
+		} else if memFree < 15.0 {
+			hostHealth.MemoryFree = api.WARNING
+			break
+		} else {
+			hostHealth.MemoryFree = api.HEALTHY
+		}
+	}
+
+	hostHealth.Health = computeHealthStatus(hostHealth.Load15, hostHealth.MemoryFree)
+
+	return hostHealth, nil
+}
+
+func findInstance64(term string, arr []api.PromQRFloat64) (api.PromQRFloat64, bool) {
+	for _, elem := range arr {
+		if term == elem.Instance {
+			return elem, true
+		}
+	}
+	return api.PromQRFloat64{}, false
+}
+
+func findInstanceInt(term string, arr []api.PromQR) (api.PromQR, bool) {
+	for _, elem := range arr {
+		if term == elem.Instance {
+			return elem, true
+		}
+	}
+	return api.PromQR{}, false
 }
 
 type Rate interface {

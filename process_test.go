@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"fmt"
+	"reflect"
 )
 
 type testPair struct {
@@ -173,5 +174,17 @@ func TestRateSummaries(t *testing.T) {
 		if ret != test.exp {
 			t.Errorf("got %v and expected %v", api.GetClusterStatusString(ret), api.GetClusterStatusString(test.exp))
 		}
+	}
+}
+
+func TestFindInstance(t *testing.T) {
+	arr := []api.PromQRFloat64{
+		{Instance: "1"},
+		{Instance: "2"},
+	}
+	erg, ok := findInstance64("2", arr)
+
+	if !reflect.DeepEqual(erg, arr[1]) && ok {
+		t.Error("expected 2 got", erg)
 	}
 }

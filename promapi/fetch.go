@@ -38,6 +38,14 @@ const (
 	ConsulSerfLanMembers = "consul_serf_lan_members"
 	// WeaveConnections defines respective Prometheus query string
 	WeaveConnections = "weave_connections"
+	// NodeLoad15 defines 15m load average
+	NodeLoad15 = "node_load15"
+	// NodeMemoryMemTotal Memory information field MemTotal.
+	NodeMemoryMemTotal = "node_memory_MemTotal"
+	// NodeMemoryAvailible Memory information field MemAvailable.
+	NodeMemoryAvailible = "node_memory_MemAvailable"
+	// MachineCPUCores Number of CPU cores on the machine.
+	MachineCPUCores = "machine_cpu_cores"
 )
 
 var (
@@ -75,8 +83,8 @@ func FetchWeaveConnectionGauges(f Fetcher, promHost string, metric string) ([]Pr
 	return resultMetricList, nil
 }
 
-// FetchPromGauge used to fetch gauge values from Prometheus with PrometheusFetcher
-func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error) {
+// FetchPromInt64 used to fetch int64 values from Prometheus with PrometheusFetcher
+func FetchPromInt64(f Fetcher, promHost string, metric string) ([]PromQR, error) {
 
 	var resultMetricList []PromQR
 
@@ -96,6 +104,34 @@ func FetchPromGauge(f Fetcher, promHost string, metric string) ([]PromQR, error)
 			Job:      result.Metric.Job,
 			Name:     result.Metric.Name,
 			Value:    int64(peers),
+			Instance: result.Metric.Instance,
+		})
+	}
+
+	return resultMetricList, nil
+}
+
+// FetchPromFloat64 used to fetch float64 values from Prometheus with PrometheusFetcher
+func FetchPromFloat64(f Fetcher, promHost string, metric string) ([]PromQRFloat64, error) {
+
+	var resultMetricList []PromQRFloat64
+
+	promResponse, err := f.PromQuery(metric, promHost)
+	if err != nil {
+		log.Error(err)
+		return []PromQRFloat64{}, err
+	}
+	for _, result := range promResponse.Data.Result {
+		peers, err := strconv.ParseFloat(result.Value[1].(string), 64)
+		if err != nil {
+			log.Error(err)
+			//raftStatus[i].Value = 0
+		}
+		resultMetricList = append(resultMetricList, PromQRFloat64{
+			Node:     result.Metric.Node,
+			Job:      result.Metric.Job,
+			Name:     result.Metric.Name,
+			Value:    peers,
 			Instance: result.Metric.Instance,
 		})
 	}
